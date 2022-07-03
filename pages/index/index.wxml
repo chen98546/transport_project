@@ -1,0 +1,93 @@
+<view class="indexHeader">
+    <view class="radius"></view>
+    <swiper class="swiper" indicator-dots indicator-color="#ffffff50" indicator-active-color="#fff" autoplay circular>
+        <swiper-item class="swiperItem" wx:for="{{swiperData}}" wx:key="index">
+            <image class="banner" src="{{item.src}}"></image>
+        </swiper-item>
+    </swiper>
+
+    <view class="bournCardBox">
+        <view class="bournCard">
+            <view class="bournCardAddr">中国</view>
+            <view class="bournCardPlane">
+                <image class="bournCardPlaneIcon" src="/asset/images/plane.png"></image>
+            </view>
+            <view class="bournCardAddr">美国</view>
+        </view>
+        <button class="transportBtn">立即转运</button>
+    </view>
+    <view class="service">
+        <view class="serviceLeft">
+            <image class="serviceImg" src="/asset/images/service.png"></image>
+            <view class="serviceText">
+                <view class="serviceCnt1">联系客服</view>
+                <view class="serviceCnt2">为您解决下单疑问？</view>
+            </view>
+        </view>
+        <view class="serviceRight">
+            <van-icon name="arrow" color="#fff" size="46rpx" style="margin-right: 30rpx;" />
+        </view>
+    </view>
+
+    <view class="noticeBox">
+        <view class="noticeCard">
+            <view class="noticeTip1">转运须知</view>
+            <view class="noticeTip2">流程和注意事项</view>
+            <view class="noticeBottom">
+                <view class="noticeIcon">
+                    <van-icon name="arrow" />
+                </view>
+                <image class="noticeImg" src="/asset/images/car.png"></image>
+            </view>
+        </view>
+        <view class="noticeCard noticeCardCalc">
+            <view class="noticeTip1">运费估算</view>
+            <view class="noticeTip2">费用心中有数</view>
+            <view class="noticeBottom">
+                <view class="noticeIcon noticeIconCalc">
+                    <van-icon name="arrow" />
+                </view>
+                <image class="noticeImg noticeCalcImg" src="/asset/images/calc.png"></image>
+            </view>
+        </view>
+    </view>
+
+    <view class="transportTitle">轻松转运</view>
+    <view class="processBox">
+        <view class="processItem">
+            <van-icon name="shopping-cart-o" size="50rpx" />
+            <view class="processTitle">购物</view>
+            <view class="processText">电商平台下单</view>
+            <van-icon name="down" class="arrow" />
+        </view>
+        <view class="processItem">
+            <van-icon name="orders-o" size="50rpx" />
+            <view class="processTitle">预报</view>
+            <view class="processText">填写寄送到仓的快递单号</view>
+            <van-icon name="down" class="arrow" />
+        </view>
+        <view class="processItem">
+            <van-icon name="debit-pay" size="50rpx" />
+            <view class="processTitle">合包</view>
+            <view class="processText">将已到库提交合箱打包</view>
+            <van-icon name="down" class="arrow" />
+        </view>
+        <view class="processItem">
+            <van-icon name="pending-payment" size="50rpx" />
+            <view class="processTitle">支付</view>
+            <view class="processText">核对打包详情并支付运费</view>
+            <van-icon name="down" class="arrow" />
+        </view>
+        <view class="processItem">
+            <van-icon name="sign" size="50rpx" />
+            <view class="processTitle">收货</view>
+            <view class="processText">留意包裹物流轨迹坐等收货</view>
+        </view>
+    </view>
+
+    <van-button class="copyAddress" round type="info" color="#4c168e">
+        <van-icon name="description" />
+        复制仓库地址去购物
+    </van-button>
+    <view class="addrText">电商平台的收货地址请填写我们</view>
+</view>

@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ticket/ticket",
+    "pages/order/order",
+    "pages/user/user",
+    "pages/login/login"
+  ],
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "iconPath": "/asset/images/home.png",
+        "selectedIconPath": "/asset/images/home_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/ticket/ticket",
+        "iconPath": "/asset/images/ticket.png",
+        "selectedIconPath": "/asset/images/ticket_active.png",
+        "text": "优惠券"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "/asset/images/order.png",
+        "selectedIconPath": "/asset/images/order_active.png",
+        "text": "订单信息"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "/asset/images/user.png",
+        "selectedIconPath": "/asset/images/user_active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "跨境物流",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
