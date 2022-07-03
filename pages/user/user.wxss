@@ -1,1 +1,107 @@
-/* pages/user/user.wxss */
+.userHeader {
+    height: 240rpx;
+    background-color: #e7691d;
+    display: flex;
+    align-items: center;
+}
+
+.userLeft {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 0 60rpx 16rpx;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+}
+
+.userRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    color: #fff;
+}
+
+.username {
+    font-size: 50rpx;
+    line-height: 1.5;
+    margin-left:20rpx;
+}
+
+.usercode {
+    line-height: 4;
+}
+
+.myOrder {
+    width: 93vw;
+    margin: 40rpx auto;
+    padding: 0 20rpx 20rpx;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
+}
+
+.orderTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2rpx solid #f1f1f1;
+    padding: 20rpx 0 ;
+    font-size: 30rpx;
+    color: #999999;
+}
+
+.orderTitleLeft {
+    color: #333;
+}
+
+.orderList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orderItem {
+    position: relative;
+    text-align: center;
+    flex: 1;
+    margin: 30rpx 0 20rpx;
+}
+
+.orderItem::after {
+    content: '';
+    height: 50rpx;
+    width: 2rpx;
+    background-color: #dfdfdf;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.orderItem:last-child::after {
+    content: '';
+    height: 0;
+    width: 0;
+}
+
+
+.orderText {
+    margin-top: 10rpx;
+    color: #1a1a1a;
+    font-size: 24rpx;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #f1f1f1;
+    /* padding: 0 0 20rpx; */
+    padding: 20rpx 0;
+}
+

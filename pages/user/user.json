@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#e7691d",
+  "navigationBarTitleText": "跨境物流",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+
+  }
 }
