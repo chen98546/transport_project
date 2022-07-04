@@ -1,0 +1,25 @@
+<view class="copAddressBox" wx:for="{{address}}" wx:key="index">
+    <view class="copAddress">
+        <view class="surnames" style="background: {{item.status ? '#ffa726' : '#1296db'}};">{{item.status ? '我' : item.surnames}}</view>
+        <view class="userInfo">
+            <view class="usertext">
+                <view class="username">{{item.username}}</view>
+                <view class="userPhone">{{item.encryPhone}}</view>
+            </view>
+            <view class="userAddress">
+                {{item.userAddr}}
+            </view>
+        </view>
+    </view>
+    <view class="copAddressBottom">
+        <view class="copAddressLeft">
+            <van-checkbox value="{{ item.status }}" icon-size="30rpx" checked-color="#e7691d" bindtap="isFlagFn" data-id="{{item.id}}" />
+            <text style="color:{{item.status ? '#e7691d' : '#333'}}" bindtap="isFlagFn" data-id="{{item.id}}">{{item.status ? '默认收货地址' : '设为默认收货地址'}}</text>
+        </view>
+
+        <view class="copAddressRight">
+            <van-icon name="edit" size="40rpx" color="#999999" />
+            <van-icon name="delete-o" class="delIcon" size="40rpx" color="#999999" />
+        </view>
+    </view>
+</view>

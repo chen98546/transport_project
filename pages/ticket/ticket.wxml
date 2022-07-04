@@ -1,2 +1,5 @@
-<!--pages/ticket/ticket.wxml-->
-<text>pages/ticket/ticket.wxml</text>
+<view class="ticketHeader"></view>
+
+<image class="ticketImg" src="/asset/images/ticket1.png"></image>
+<image class="ticketImg" src="/asset/images/ticket2.png"></image>
+<image class="ticketImg" src="/asset/images/ticket3.png"></image>

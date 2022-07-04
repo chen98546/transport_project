@@ -1,0 +1,32 @@
+<view class="modalMask"></view>
+<view class="modal">
+    <view class="modalTitle">
+        <slot name="modalTitle" />
+    </view>
+    <!-- <van-icon class="modalClose" name="cross" size="40rpx" color="#999" /> -->
+    <view class="copAddress">
+        <view class="cityIcon">
+            <slot name="cityIcon" />
+        </view>
+        <view class="userInfo">
+            <view class="usertext">
+                <view class="username">
+                    <slot name="username" />
+                </view>
+                <view class="userPhone">
+                    <slot name="userPhone" />
+                </view>
+            </view>
+            <view class="userAddress">
+                <slot name="userAddress" />
+            </view>
+        </view>
+    </view>
+
+    <view class="modalBtn">
+        <button class="modalRefuse">
+            <slot name="modalRefuse" />
+        </button>
+        <button class="modalAllow"><slot name="modalAllow" /></button>
+    </view>
+</view>

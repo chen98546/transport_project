@@ -1,0 +1,3 @@
+<view class="emptyBox">
+    <van-empty description="亲，暂时没有活动哦！~" />
+</view>

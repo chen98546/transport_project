@@ -25,7 +25,7 @@
 
 
 <view class="myOrder">
-    <view class="list"  wx:for="{{pathList}}" wx:key="index">
+    <view class="list" wx:for="{{pathList}}" wx:key="index">
         <view class="listLeft">{{item.text}}</view>
         <view class="listRight">
             <van-icon name="arrow" />

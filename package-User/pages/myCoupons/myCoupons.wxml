@@ -1,0 +1,14 @@
+<view class="box" catchtouchmove="{{closeModal ? 'return' : ''}}">
+    <Coupons couponsList="{{couponsList}}"></Coupons>
+
+    <ConfirmModal wx:if="{{closeModal}}">
+        <view slot="modalTitle" class="ConfirmModalTitle">兑换优惠券</view>
+        <view slot="userAddress">
+            <input class="input" type="text" placeholder="请输入优惠卷code，进行兑换" />
+        </view>
+        <text slot="modalRefuse" bind:tap="aa">取消</text>
+        <text slot="modalAllow" bind:tap="bb">确认</text>
+    </ConfirmModal>
+
+    <button class="transportBtn" bindtap="transportBtn">兑换优惠券</button>
+</view>

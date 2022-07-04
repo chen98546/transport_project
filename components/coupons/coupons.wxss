@@ -1,0 +1,93 @@
+.coupons {
+    width: 95vw;
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 25rpx auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2rpx 0rpx 6rpx -4rpx #ffd163;
+}
+
+.couponsLeft {
+    position: relative;
+    width: 280rpx;
+    height: 200rpx;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.couponsRight {
+    height: 200rpx;
+    position: relative;
+}
+
+.discountText {
+    margin-right: 30rpx;
+}
+
+.deduction {
+    position: absolute;
+    top: 38rpx;
+    right: 0;
+    color: #fff;
+    transform: rotate(43deg);
+    font-size: 26rpx;
+}
+
+.couponsLeftImg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.discount {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 140rpx;
+    height: 120rpx;
+}
+
+.newDiscount {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #5b5b5b;
+    line-height: 3;
+}
+
+.discountDate {
+    color: #c3c3c3;
+}
+
+.price {
+    margin-top: 10rpx;
+}
+
+.num {
+    font-size: 90rpx;
+    margin-right: 15rpx;
+}
+
+.yen {
+    font-size: 40rpx;
+}
+
+.minus {
+    font-size: 28rpx;
+}
+
+.statusImg{
+    position: absolute;
+    right: 50rpx;
+    bottom: 0;
+    width: 160rpx;
+    height: 160rpx;
+    z-index: 9;
+}

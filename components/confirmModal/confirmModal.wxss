@@ -1,0 +1,143 @@
+.modalMask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+    background-color: #00000095;
+}
+
+/* 370 460 */
+.modal {
+    width: 630rpx;
+    /* height: 600rpx; */
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    z-index: 99;
+    transform: translate(-50%, 0);
+    border-radius: 10rpx;
+    text-align: center;
+    color: #333;
+    overflow: hidden;
+    padding: 20rpx 0 0;
+}
+
+.modal .modalClose {
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    cursor: pointer;
+}
+
+.modal .modalIcon {
+    margin-top: 80rpx;
+}
+
+
+.modal .modalContent1 {
+    margin-top: 30rpx;
+    font-size: 34rpx;
+}
+
+.modal .modalContent2 {
+    margin-top: 10rpx;
+    font-size: 30rpx;
+}
+
+.modal .modalBtn {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1rpx solid #e5e5e5;
+    font-size: 38rpx;
+}
+
+.modal .modalBtn .modalRefuse {
+    display: inline-block;
+    flex: 1;
+    background-color: #fff;
+    border-radius: 0;
+    font-size: 30rpx;
+    line-height: 90rpx;
+}
+
+.modal .modalBtn .modalRefuse::after {
+    border: none;
+    outline: none;
+}
+
+.modal .modalBtn .modalAllow {
+    display: inline-block;
+    flex: 1;
+    color: #02bb00;
+    border-left: 1rpx solid #e5e5e5;
+    background-color: #fff;
+    border-radius: 0rpx;
+    font-size: 30rpx;
+    line-height: 90rpx;
+}
+
+.modal .modalBtn .modalAllow::after {
+    border: none;
+    outline: none;
+}
+
+
+.copAddress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 100rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.cityIcon {
+    /* width: 50rpx;
+    height: 50rpx; */
+    border-radius: 50%;
+    background-color: #ffa726;
+    margin-right: 30rpx;
+    font-size: 20rpx;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.userInfo {
+    flex: 1;
+}
+
+.usertext {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.userPhone {
+    margin-left: 40rpx;
+    font-size: 22rpx;
+}
+
+.userAddress {
+    font-size: 24rpx;
+    color: #999999;
+    line-height: 2;
+    text-align: left;
+    margin-bottom: 20rpx;
+    padding: 0 60rpx 0 0px;
+}
+
+.modalTitle {
+    margin-bottom: 30rpx;
+    font-size: 28rpx;
+}

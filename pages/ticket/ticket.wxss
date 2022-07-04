@@ -1,1 +1,14 @@
-/* pages/ticket/ticket.wxss */
+.ticketHeader {
+    height: 240rpx;
+    background-color: #e7691d;
+    display: flex;
+    align-items: center;
+}
+
+
+.ticketImg {
+    display: block;
+    width: 90vw;
+    height: 245rpx;
+    margin: 40rpx auto;
+}

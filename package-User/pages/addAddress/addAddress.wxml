@@ -1,0 +1,18 @@
+<view class="addAddress">
+    <van-cell-group>
+        <van-field label="Name：" placeholder="Please fill in the recipient‘s name" border="{{ false }}" />
+        <van-field label="Phone：" placeholder="Please fill in the recipient‘s phone" border="{{ false }}" />
+        <van-field label="Address：" placeholder="Please fill in the address" border="{{ false }}" />
+        <van-field label="City：" placeholder="Please fill in the city" border="{{ false }}" />
+        <van-field label="PostCode：" placeholder="Please fill in the postcode" border="{{ false }}" />
+        <van-field label="Country" placeholder="Please select a country" icon="arrow" class="country" bind:click-input="showCountryEv" disabled />
+    </van-cell-group>
+</view>
+<block wx:if="{{isShowCountry}}">
+    <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" title="Country" />
+</block>
+
+<view class="settingDefaultBox">
+    <view class="settingDefault">设为默认</view>
+    <van-switch checked="{{ checked }}" active-color="#00e065" inactive-color="#dcdee0"  size="48rpx" bind:change="onChange" />
+</view>

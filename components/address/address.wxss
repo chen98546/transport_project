@@ -1,0 +1,60 @@
+.copAddressBox {
+    padding: 0 20rpx;
+    margin-bottom: 50rpx;
+}
+
+.copAddress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 30rpx 0 40rpx;
+}
+
+.surnames {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    background-color: #ffa726;
+    margin-right: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.userInfo {
+    flex: 1;
+    
+}
+
+.usertext {
+    display: flex;
+    align-items: center;
+}
+
+.userPhone {
+    margin-left: 80rpx;
+}
+
+.userAddress {
+    font-size: 24rpx;
+    color: #999999;
+    line-height: 2;
+}
+
+.copAddressBottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.copAddressLeft {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.delIcon {
+    margin-left: 20rpx;
+}

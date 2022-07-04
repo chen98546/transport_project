@@ -7,12 +7,20 @@
     "pages/login/login"
   ],
   "usingComponents": {
+    "Coupons": "/components/coupons/coupons",
+    "Address": "/components/address/address",
+    "SelectAddr": "/components/selectAddr/selectAddr",
+    "ConfirmModal": "/components/confirmModal/confirmModal",
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-area": "@vant/weapp/area/index",
+    "van-switch": "@vant/weapp/switch/index"
   },
   "tabBar": {
     "custom": true,
@@ -46,6 +54,20 @@
       }
     ]
   },
+  "subPackages": [{
+    "root": "package-User",
+    "name": "userInfo",
+    "pages": [
+      "pages/myAddress/myAddress",
+      "pages/addAddress/addAddress",
+      "pages/myCoupons/myCoupons",
+      "pages/activity/activity",
+      "pages/service/service",
+      "pages/transportProcess/transportProcess",
+      "pages/transportNotice/transportNotice",
+      "pages/aboutUs/aboutUs"
+    ]
+  }],
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
