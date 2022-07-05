@@ -1,2 +1,5 @@
-<!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<van-tabs active="{{ active }}">
+    <van-tab wx:for="{{tabList}}" wx:key="index" title="{{item.title}}">
+    123s
+    </van-tab>
+</van-tabs>

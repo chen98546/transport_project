@@ -1,0 +1,113 @@
+<view class="wrap">
+    <view class="warehouse">
+        <view class="noticeIcon">
+            <van-icon name="location-o" color="#fff" size="40rpx" />
+        </view>
+        <view class="warehouseBox">
+            <view class="warehouseInfo">
+                <view class="warehouseInfoLeft">
+                    {{warehouseInfo.warehouse}}
+                </view>
+                <view class="warehouseInfoRight" bindtap="copyPhoneNumber" data-phoneNum="{{warehouseInfo.warehouseNum}}">
+                    {{warehouseInfo.warehouseNum}}<text class="copyPhoneNumber">复制</text>
+                </view>
+            </view>
+            <view class="warehouseAddress">{{warehouseInfo.warehouseAddr}}</view>
+        </view>
+    </view>
+
+    <view class="warehouse">
+        <view class="noticeIcon noticeIcon2">
+            <van-icon name="location-o" color="#fff" size="40rpx" />
+        </view>
+        <view class="warehouseBox">
+            <view class="warehouseInfo">
+                <view class="warehouseInfoLeft">
+                    {{warehouseInfo.warehouse}}
+                </view>
+                <view class="warehouseInfoRight">
+                    {{warehouseInfo.warehouseNum}}
+                </view>
+            </view>
+            <view class="warehouseAddress">{{warehouseInfo.warehouseAddr}}</view>
+        </view>
+    </view>
+</view>
+
+<view class="wrap">
+    <view>
+        <van-icon class="warningIcon" name="warning-o" color="#ef0606" size="24rpx" />
+        <text class="fillEnInfo">快递全部到齐点击确认打包后，订单不可修改</text>
+    </view>
+    <view class="courierNumBox">
+        <text class="asterisk">*</text>
+        <text class="courierNum">快递个数</text>
+        <input class="courierInput" type="number" bindblur="gettingDataEv" type="text" placeholder="请输入（输入后弹出快递单号位置）" disabled="{{disabledInput}}" value="{{inputValue}}" style="background:{{disabledInput ? '#666' : ''}};color:{{disabledInput ? '#f9f9f9' : ''}} ;" />
+    </view>
+    <textarea class="textarea" name="" id="" cols="30" rows="10" placeholder="备注信息，例如：去掉包装盒等" placeholder-class="placeholder"></textarea>
+
+    <view class="orderNumber">
+        <view class="orderItem" wx:for="{{orderItemList}}" wx:key="index">
+            <text class="sort">{{index+1}}.</text>
+            <van-field placeholder="请输入快递单号" icon="delete-o" style="width: 100%;" bind:click-icon="removeItemEv" value="{{item.value}}" bind:change="changeEv" data-index="{{index}}" />
+        </view>
+
+        <view class="supplement" wx:if="{{orderItemList.length}}" bindtap="addOrderItemEv">
+            <text>+</text>
+            <text>补充快递单号</text>
+        </view>
+    </view>
+</view>
+
+<view class="wrap statusWrap">
+    <view class="row"  bindtap="copyPhoneNumber" data-phoneNum="{{orderNumber}}">
+        订单号：<text>{{orderNumber}}</text>
+        <text class="copyPhoneNumber copyOrderNumber">复制</text>
+    </view>
+    <view class="row">
+        转运路线：<text>中国 - 美国</text>
+    </view>
+    <view class="row">
+        预选渠道：<text>普通货物</text>
+    </view>
+    <view class="row">
+        订单状态：<text style="color: #e18100;">待填写</text>
+    </view>
+    <view class="row">
+        下单时间：<text>2022-05-09 14:07:12</text>
+    </view>
+</view>
+
+<view class="buttonGroup">
+    <button class="btn">联系客服</button>
+    <button class="btn" wx:if="{{submitBtn}}" bindtap="cancleBtnEv">取消订单</button>
+    <button class="btn submitBtn" wx:else bindtap="submitBtnEv">确认打包</button>
+</view>
+
+<ConfirmModal closeModal="{{closeModal}}">
+    <view slot="modalTitle" class="ConfirmModalTitle">是否增加快递单号？</view>
+    <view slot="userAddress" class="addOrder">
+        增加快递单号后，发往转运中心的快递个数+1。是否要继续？
+    </view>
+    <view slot="modalRefuse" bind:tap="modalRefuseEv">取消</view>
+    <view slot="modalAllow" bind:tap="modalAllowEv">确认</view>
+</ConfirmModal>
+
+<ConfirmModal closeModal="{{closeModal2}}">
+    <view slot="modalTitle" class="ConfirmModalTitle">是否取消订单</view>
+    <view slot="userAddress" class="addOrder cancleOrder">
+        取消订单后，订单将不能进行后续操作 是否继续？
+    </view>
+    <view slot="modalRefuse" bind:tap="cancleHandleEv">取消</view>
+    <view slot="modalAllow" bind:tap="confirmHandleEv">确认</view>
+</ConfirmModal>
+
+<ConfirmModal closeModal="{{closeModal3}}">
+    <view slot="modalTitle" class="ConfirmModalTitle">请确认快递单号是否无误</view>
+    <view slot="userAddress" class="addOrder cancleOrder">
+        请确认快递单号【{{arrValue}}】是否无误，一旦提交，不可修改
+    </view>
+    <view slot="modalRefuse" bind:tap="cancleHandleEv2">取消</view>
+    <view slot="modalAllow" bind:tap="confirmHandleEv2">确认</view>
+</ConfirmModal>
+<!-- 是否确认打包所有的快递包裹 确认后，订单进入捡货状态，快递包裹将会进行打包称重，是否要继续？ -->

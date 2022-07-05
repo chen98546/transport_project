@@ -27,6 +27,9 @@
         2020-11-02 23:46:48
     </view>
 
-    <button class="transportBtn" bindtap="transportBtnEv">已阅读</button>
+    <view class="btnWrap">
+        <button class="transportBtn" bindtap="transportBtnEv" disabled="{{disabledBtn}}">
+            我已知悉<text hidden="{{!disabledBtn}}">{{countdown}}</text>
+        </button>
+    </view>
 </view>
-

@@ -1,0 +1,113 @@
+.van-field__label {
+    text-align: right;
+}
+
+.field-index--van-field.van-cell.van-cell--borderless {
+    padding: var(--cell-vertical-padding, 20rpx) var(--cell-horizontal-padding, 0);
+}
+
+.wrap {
+    width: 93vw;
+    margin: 40rpx auto;
+    box-sizing: border-box;
+    box-shadow: 0 5rpx 20rpx -2rpx rgba(0, 0, 0, 0.4);
+    padding: 30rpx;
+}
+
+
+.receiptInfo {
+    margin-left: 110rpx;
+}
+
+.warehouse {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.noticeIcon {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background: #4e148c;
+    box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
+    margin-right: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.warehouseInfo {
+    display: flex;
+    font-size: 30rpx;
+    color: #101010;
+    margin: 20rpx 0 20rpx 60rpx;
+}
+
+.warehouseInfoLeft {
+    margin-right: 60rpx;
+}
+
+.warehouseInfoRight {
+    display: flex;
+    align-items: center;
+}
+
+.warehouseAddress {
+    font-size: 24rpx;
+    color: #9fa19f;
+    margin: 0 20rpx 0 60rpx;
+    line-height: 1.7;
+}
+
+.copyPhoneNumber {
+    background-color: #d9f1dd;
+    color: #40b850;
+    font-size: 16rpx;
+    display: inline-block;
+    padding: 2rpx 4rpx;
+    border-radius: 10rpx;
+    margin-left: 10rpx;
+}
+
+
+
+.receipt {
+    padding: 30rpx 0 200rpx;
+}
+
+.receiptInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fillEnInfo {
+    font-size: 20rpx;
+    color: #ef943d;
+    margin-left: 15rpx;
+    font-weight: 700;
+}
+
+.van-icon.van-icon-warning-o {
+    font-weight: 700;
+}
+
+.receiptRight {
+    background: #d9f1dd;
+    color: #5dbd8b;
+    font-size: 24rpx;
+    padding: 4rpx 10rpx;
+    border-radius: 10rpx;
+    border: 4rpx solid #40b850;
+    margin-right: 40rpx;
+}
+
+.transportBtn {
+    width: 320rpx;
+    background-color: #4e148c;
+    color: #fff;
+    font-size: 30rpx;
+    padding: 0;
+    margin-top: 110rpx;
+}

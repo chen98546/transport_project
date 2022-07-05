@@ -1,0 +1,8 @@
+<van-index-bar>
+    <view>
+        <van-index-anchor index="A" />
+        <block wx:for="{{contryList}}" wx:key="index">
+            <van-cell title="{{item}}" />
+        </block>
+    </view>
+</van-index-bar>

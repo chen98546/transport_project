@@ -1,0 +1,248 @@
+.wrap {
+    width: 93vw;
+    margin: 40rpx auto;
+    box-sizing: border-box;
+    box-shadow: 0 5rpx 20rpx -2rpx rgba(0, 0, 0, 0.4);
+    padding: 20rpx 30rpx;
+}
+
+
+.warehouse {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.noticeIcon {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background: #40b850;
+    box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
+    margin-right: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noticeIcon2 {
+    background-color: #4c168e;
+}
+
+.warehouseInfo {
+    display: flex;
+    font-size: 30rpx;
+    color: #101010;
+    margin: 20rpx 0 20rpx 0;
+}
+
+.warehouseInfoLeft {
+    margin-right: 30rpx;
+}
+
+.warehouseInfoRight {
+    display: flex;
+    align-items: center;
+}
+
+.warehouseAddress {
+    font-size: 24rpx;
+    color: #9fa19f;
+    margin: 0 20rpx 0 0;
+    line-height: 1.7;
+}
+
+.copyPhoneNumber {
+    background-color: #d9f1dd;
+    color: #40b850;
+    font-size: 16rpx;
+    display: inline-block;
+    padding: 2rpx 4rpx;
+    border-radius: 10rpx;
+    margin-left: 10rpx;
+}
+
+.warehouseBox {
+    flex: 1;
+}
+
+
+.fillEnInfo {
+    font-size: 24rpx;
+    color: #ef0606;
+    margin-left: 15rpx;
+}
+
+.van-icon.van-icon-warning-o {
+    font-weight: 700;
+}
+
+.courierNumBox {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 10rpx auto 20rpx;
+}
+
+.asterisk {
+    font-size: 50rpx;
+    color: red;
+    margin-top: 4rpx;
+}
+
+.courierNum {
+    font-size: 30rpx;
+    color: #4c168e;
+    margin: 0 20rpx 0 10rpx;
+}
+
+.courierInput {
+    border: 2rpx solid #ccc;
+    border-radius: 14rpx;
+    font-size: 22rpx;
+    padding: 0 20rpx;
+    flex: 1;
+}
+
+.textarea {
+    border: 2rpx solid #ccc;
+    width: 90%;
+    border-radius: 14rpx;
+    height: 180rpx;
+    margin: 0 auto;
+    padding: 10rpx 20rpx;
+    box-sizing: border-box;
+}
+
+.placeholder {
+    font-size: 26rpx;
+}
+
+.row {
+    font-size: 26rpx;
+    margin: 20rpx 0;
+    color: #101010;
+}
+
+.copyOrderNumber {
+    font-size: 20rpx;
+}
+
+.buttonGroup {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn {
+    flex: 1;
+    border-radius: 0;
+    line-height: 120rpx;
+    background-color: #e2e2e2;
+}
+
+.btn:first-child {
+    background-color: #4c168e;
+    color: #fff;
+}
+
+.btn::after {
+    border: none;
+}
+
+.van-field__body.van-field__body--text {
+    border: 2rpx solid #ccc !important;
+    padding: 4rpx 10rpx 4rpx 20rpx !important;
+    font-size: 24rpx !important;
+    border-radius: 10rpx !important;
+}
+
+.orderItem {
+    display: flex;
+    align-items: center;
+    width: 570rpx;
+    margin: 0 auto;
+
+}
+
+
+.van-cell {
+    padding: var(--cell-vertical-padding, 20rpx) var(--cell-horizontal-padding, 0) !important;
+}
+
+.van-icon.van-icon-delete-o {
+    font-size: 40rpx;
+}
+
+.supplement {
+    border: 2rpx solid #58bf66;
+    color: #40b850;
+    font-size: 24rpx;
+    border-radius: 30rpx;
+    padding: 10rpx 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 190rpx;
+    position: relative;
+    left: 170px;
+    box-shadow: 0 2rpx 12rpx -2rpx #666;
+}
+
+.statusWrap {
+    margin-bottom: 180rpx;
+}
+
+.sort {
+    width: 70rpx;
+    text-align: center;
+}
+
+.orderNumber {
+    margin-top: 20rpx;
+}
+
+.modal {
+    width: 520rpx !important;
+    box-sizing: border-box !important;
+}
+
+.addOrder {
+    font-size: 26rpx;
+    color: #999;
+    text-align: center;
+    width: 400rpx;
+    margin: 40rpx auto 0;
+    word-break:break-all;
+}
+
+.ConfirmModalTitle {
+    text-align: left;
+    margin-left: 30rpx;
+    font-weight: 700;
+}
+
+.userAddress  {
+    padding: 0 !important;
+}
+
+.modalTitle {
+    margin: 0 !important;
+}
+
+
+.copAddress {
+    padding-top: 0 !important;
+}
+
+.submitBtn {
+    background-color: #40b850;
+    color: #fff;
+}
+
+.cancleOrder {
+    font-size: 22rpx;
+    font-weight: 700;
+}

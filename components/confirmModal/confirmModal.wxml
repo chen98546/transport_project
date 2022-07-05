@@ -1,5 +1,5 @@
-<view class="modalMask"></view>
-<view class="modal">
+<view class="modalMask" hidden="{{closeModal}}"></view>
+<view class="modal" hidden="{{closeModal}}">
     <view class="modalTitle">
         <slot name="modalTitle" />
     </view>
@@ -24,9 +24,11 @@
     </view>
 
     <view class="modalBtn">
-        <button class="modalRefuse">
+        <view class="modalRefuse">
             <slot name="modalRefuse" />
-        </button>
-        <button class="modalAllow"><slot name="modalAllow" /></button>
+        </view>
+        <view class="modalAllow">
+            <slot name="modalAllow" />
+        </view>
     </view>
 </view>

@@ -1,0 +1,30 @@
+<view class="wrap">
+    <view class="warehouse">
+        <view class="noticeIcon">
+            <van-icon name="location-o" color="#fff" size="40rpx" />
+        </view>
+        <text>仓库地址</text>
+    </view>
+    <view class="warehouseInfo">
+        <view class="warehouseInfoLeft">{{warehouseInfo.warehouse}}</view>
+        <view class="warehouseInfoRight" bindtap="copyPhoneNumber" data-phoneNum="{{warehouseInfo.warehouseNum}}">
+            {{warehouseInfo.warehouseNum}}<text class="copyPhoneNumber">复制</text>
+        </view>
+    </view>
+    <view class="warehouseAddress">{{warehouseInfo.warehouseAddr}}</view>
+</view>
+<view class="wrap receipt">
+    <view class="receiptInfo">目标国收件信息</view>
+    <view class="receiptInfo">
+        <view class="receiptLeft">
+            <van-icon class="warningIcon" name="warning-o" color="#ed9560" size="24rpx" />
+            <text class="fillEnInfo">请用英文填写</text>
+        </view>
+        <view class="receiptRight">
+            选择地址
+        </view>
+    </view>
+    <FillAddrInfo bind:receiveInfo="receiveInfoEv">
+        <button slot="button" class="transportBtn" bindtap="transportBtnEv">立即转运</button>
+    </FillAddrInfo>
+</view>

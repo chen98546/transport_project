@@ -7,7 +7,11 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {},
+  properties: {
+    closeModal: {
+      type: Boolean,
+    },
+  },
 
   /**
    * 组件的初始数据

@@ -1,0 +1,4 @@
+.buttonStyle {
+    width: 320rpx;
+    margin: 0 auto;
+}

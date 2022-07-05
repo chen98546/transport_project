@@ -11,6 +11,7 @@
     "Address": "/components/address/address",
     "SelectAddr": "/components/selectAddr/selectAddr",
     "ConfirmModal": "/components/confirmModal/confirmModal",
+    "FillAddrInfo": "/components/fillAddrInfo/fillAddrInfo",
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
@@ -20,7 +21,12 @@
     "van-empty": "@vant/weapp/empty/index",
     "van-field": "@vant/weapp/field/index",
     "van-area": "@vant/weapp/area/index",
-    "van-switch": "@vant/weapp/switch/index"
+    "van-switch": "@vant/weapp/switch/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "tabBar": {
     "custom": true,
@@ -55,19 +61,30 @@
     ]
   },
   "subPackages": [{
-    "root": "package-User",
-    "name": "userInfo",
-    "pages": [
-      "pages/myAddress/myAddress",
-      "pages/addAddress/addAddress",
-      "pages/myCoupons/myCoupons",
-      "pages/activity/activity",
-      "pages/service/service",
-      "pages/transportProcess/transportProcess",
-      "pages/transportNotice/transportNotice",
-      "pages/aboutUs/aboutUs"
-    ]
-  }],
+      "root": "package-user",
+      "name": "userInfo",
+      "pages": [
+        "pages/myAddress/myAddress",
+        "pages/addAddress/addAddress",
+        "pages/myCoupons/myCoupons",
+        "pages/activity/activity",
+        "pages/service/service",
+        "pages/transportProcess/transportProcess",
+        "pages/transportNotice/transportNotice",
+        "pages/aboutUs/aboutUs"
+      ]
+    },
+    {
+      "root": "package-home",
+      "name": "home",
+      "pages": [
+        "pages/selectCountry/selectCountry",
+        "pages/fillInAddress/fillInAddress",
+        "pages/orderDetail/orderDetail",
+        "pages/transportNotice/transportNotice"
+      ]
+    }
+  ],
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
@@ -79,6 +96,5 @@
     "navigationBarTitleText": "跨境物流",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "sitemapLocation": "sitemap.json"
 }

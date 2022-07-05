@@ -9,13 +9,29 @@ Page({
       { id: 4, icon: "flower-o", text: "待评价", info: 1 },
     ],
     pathList: [
-      { id: 1, text: "我的地址", url: "/" },
-      { id: 2, text: "我的优惠券", url: "/" },
-      { id: 3, text: "活动中心", url: "/" },
-      { id: 4, text: "联系客服", url: "/" },
-      { id: 5, text: "转运流程", url: "/" },
-      { id: 6, text: "转运须知", url: "/" },
-      { id: 7, text: "关于我们", url: "/" },
+      {
+        id: 1,
+        text: "我的地址",
+        url: "/package-user/pages/myAddress/myAddress",
+      },
+      {
+        id: 2,
+        text: "我的优惠券",
+        url: "/package-user/pages/myCoupons/myCoupons",
+      },
+      { id: 3, text: "活动中心", url: "/package-user/pages/activity/activity" },
+      { id: 4, text: "联系客服", url: "/package-user/pages/service/service" },
+      {
+        id: 5,
+        text: "转运流程",
+        url: "/package-user/pages/transportProcess/transportProcess",
+      },
+      {
+        id: 6,
+        text: "转运须知",
+        url: "/package-user/pages/transportNotice/transportNotice",
+      },
+      { id: 7, text: "关于我们", url: "/package-user/pages/aboutUs/aboutUs" },
     ],
   },
 
@@ -42,4 +58,11 @@ Page({
 
   // 用户点击右上角分享
   onShareAppMessage: function () {},
+
+  toSpecifiedPageEv(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: e.target.dataset.url,
+    });
+  },
 });

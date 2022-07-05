@@ -2,7 +2,7 @@
 Page({
   // 页面的初始数据
   data: {
-    closeModal: false,
+    closeModal: true,
     couponsList: [
       {
         id: 1,
@@ -116,17 +116,15 @@ Page({
   onShareAppMessage: function () {},
 
   // 模态框取消操作
-  aa() {
-    console.log(123);
-    this.setData({ closeModal: false });
+  modalRefuseEv() {
+    this.setData({ closeModal: true });
   },
   // 模态框确认操作
-  bb() {
-    console.log(465);
-    this.setData({ closeModal: false });
+  modalAllowEv() {
+    this.setData({ closeModal: true });
   },
 
   transportBtn() {
-    this.setData({ closeModal: true });
+    this.setData({ closeModal: false });
   },
 });

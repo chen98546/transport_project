@@ -12,9 +12,9 @@
             <view class="bournCardPlane">
                 <image class="bournCardPlaneIcon" src="/asset/images/plane.png"></image>
             </view>
-            <view class="bournCardAddr">美国</view>
+            <view class="bournCardAddr" catchtap="selectContryEv">美国</view>
         </view>
-        <button class="transportBtn">立即转运</button>
+        <button class="transportBtn" bindtap="transportBtnEv">立即转运</button>
     </view>
     <view class="service">
         <view class="serviceLeft">
@@ -29,7 +29,7 @@
         </view>
     </view>
 
-    <view class="noticeBox">
+    <view class="noticeBox" bindtap="toTransportEv">
         <view class="noticeCard">
             <view class="noticeTip1">转运须知</view>
             <view class="noticeTip2">流程和注意事项</view>
@@ -90,4 +90,15 @@
         复制仓库地址去购物
     </van-button>
     <view class="addrText">电商平台的收货地址请填写我们</view>
+
+    <ConfirmModal closeModal="{{closeModal}}">
+        <view slot="modalTitle" class="channelTitle">预选渠道</view>
+        <view slot="userAddress" class="channelAddress">
+            <block wx:for="{{channelList}}" wx:key="index">
+                <text style="color:{{item.selected ? '#fff' : '#4c168e'}};background: {{item.selected ? '#4c168e' : '#fff'}};" class="channel" bindtap="selectedChannelEv" data-id="{{item.id}}">{{item.text}}</text>
+            </block>
+        </view>
+        <view slot="modalRefuse" bindtap="cancelEv">取消</view>
+        <view slot="modalAllow" bindtap="nextStepEv" data-item="{{item}}">下一步</view>
+    </ConfirmModal>
 </view>
