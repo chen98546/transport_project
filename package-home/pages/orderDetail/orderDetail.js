@@ -1,3 +1,4 @@
+import { copyInfoFn } from "../../../utils/methods.js";
 Page({
   // 页面的初始数据
   data: {
@@ -43,19 +44,9 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
-  // 复制手机号
-  copyPhoneNumber(e) {
-    console.log(e.currentTarget.dataset.phonenum);
-    wx.setClipboardData({
-      data: e.currentTarget.dataset.phonenum.toString(),
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showToast({ title: "复制成功" });
-          },
-        });
-      },
-    });
+  // 复制手机号和订单号
+  copyDetailInfoEv(e) {
+    copyInfoFn(e.currentTarget.dataset.phonenum);
   },
 
   gettingDataEv(e) {
@@ -110,6 +101,7 @@ Page({
       orderItemList: this.data.orderItemList,
       disabledInput: true,
       inputValue: "",
+      submitBtn:true
     });
   },
 

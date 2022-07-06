@@ -12,6 +12,7 @@
     "SelectAddr": "/components/selectAddr/selectAddr",
     "ConfirmModal": "/components/confirmModal/confirmModal",
     "FillAddrInfo": "/components/fillAddrInfo/fillAddrInfo",
+    "OrderCard": "/components/orderCard/orderCard",
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
@@ -71,7 +72,8 @@
         "pages/service/service",
         "pages/transportProcess/transportProcess",
         "pages/transportNotice/transportNotice",
-        "pages/aboutUs/aboutUs"
+        "pages/aboutUs/aboutUs",
+        "pages/couponsDetail/couponsDetail"
       ]
     },
     {
@@ -81,7 +83,9 @@
         "pages/selectCountry/selectCountry",
         "pages/fillInAddress/fillInAddress",
         "pages/orderDetail/orderDetail",
-        "pages/transportNotice/transportNotice"
+        "pages/transportNotice/transportNotice",
+        "pages/weight/weight",
+        "pages/warehouseAddr/warehouseAddr"
       ]
     }
   ],
@@ -96,5 +100,6 @@
     "navigationBarTitleText": "跨境物流",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

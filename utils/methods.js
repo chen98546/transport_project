@@ -10,3 +10,16 @@ module.exports.throttle = function (fn, delay) {
     }
   };
 };
+
+module.exports.copyInfoFn = function (data) {
+  wx.setClipboardData({
+    data: data.toString(),
+    success: function (res) {
+      wx.getClipboardData({
+        success: function (res) {
+          wx.showToast({ title: "复制成功" });
+        },
+      });
+    },
+  });
+};

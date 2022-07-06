@@ -29,7 +29,7 @@
     width: 60rpx;
     height: 60rpx;
     border-radius: 50%;
-    background: #4e148c;
+    background: #83a4ff;
     box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
     margin-right: 20rpx;
     display: flex;
@@ -105,7 +105,7 @@
 
 .transportBtn {
     width: 320rpx;
-    background-color: #4e148c;
+    background-color: #83a4ff;
     color: #fff;
     font-size: 30rpx;
     padding: 0;

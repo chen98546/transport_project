@@ -3,6 +3,6 @@
     <button class="addAddrBtn">添加地址</button>
 </view>
 <block wx:else>
-    <Address address="{{address}}"></Address>
+    <Address address="{{address}}" bindtap="getAddressEv"></Address>
     <van-button round type="info" color="#e7691d">新建地址</van-button>
 </block>

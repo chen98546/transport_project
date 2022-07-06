@@ -1,0 +1,26 @@
+<image class="weighImg" src="/asset/images/weigh.png"></image>
+
+<view class="weighTitle">
+    预估运费
+</view>
+
+<view class="noticeBox">
+    <view class="noticeCard">
+        <view class="noticeTip1">转运渠道</view>
+        <view class="noticeTip2">普通货物</view>
+    </view>
+    <view class="noticeCard noticeCardCalc">
+        <view class="noticeTip1">预估重量</view>
+        <view class="noticeTip2">请输入重量</view>
+    </view>
+</view>
+
+<view class="noticeCard weighWrap">
+    <view class="noticeTip1">预估体积</view>
+    <view class="noticeTip2">请输入长宽高</view>
+</view>
+
+<view class="noticeCard weighWrap weighWrap2">
+    <view class="noticeTip1">预估运费（实际结果以订单为准）</view>
+    <view class="noticeTip2">￥0.00</view>
+</view>

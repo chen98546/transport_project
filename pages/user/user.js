@@ -3,10 +3,34 @@ Page({
   // 页面的初始数据
   data: {
     myOrderList: [
-      { id: 1, icon: "pending-payment", text: "待付款", info: 2 },
-      { id: 2, icon: "logistics", text: "待发货", info: 3 },
-      { id: 3, icon: "gift-o", text: "待收货", info: 2 },
-      { id: 4, icon: "flower-o", text: "待评价", info: 1 },
+      {
+        id: 1,
+        icon: "pending-payment",
+        text: "待付款",
+        info: 2,
+        path: "/pages/order/order",
+      },
+      {
+        id: 2,
+        icon: "logistics",
+        text: "待发货",
+        info: 3,
+        path: "/pages/order/order",
+      },
+      {
+        id: 3,
+        icon: "gift-o",
+        text: "待收货",
+        info: 2,
+        path: "/pages/order/order",
+      },
+      {
+        id: 4,
+        icon: "flower-o",
+        text: "待评价",
+        info: 1,
+        path: "/pages/order/order",
+      },
     ],
     pathList: [
       {
@@ -33,10 +57,17 @@ Page({
       },
       { id: 7, text: "关于我们", url: "/package-user/pages/aboutUs/aboutUs" },
     ],
+    token: "",
+    userInfo: {},
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.setData({
+      token: wx.getStorageSync("token"),
+      userInfo: wx.getStorageSync("userInfo"),
+    });
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
@@ -63,6 +94,18 @@ Page({
     console.log(e);
     wx.navigateTo({
       url: e.target.dataset.url,
+    });
+  },
+
+  toOrderListPageEv() {
+    wx.switchTab({
+      url: "/pages/order/order",
+    });
+  },
+
+  toLoginEv() {
+    wx.navigateTo({
+      url: "/pages/login/login",
     });
   },
 });

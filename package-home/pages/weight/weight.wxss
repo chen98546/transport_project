@@ -1,0 +1,54 @@
+.weighImg {
+    width: 100%;
+    height: 1100rpx;
+}
+
+
+.noticeBox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.noticeCard {
+    position: relative;
+    padding: 30rpx;
+    box-sizing: border-box;
+    width: 320rpx;
+    border-radius: 20rpx;
+    background-color: #83a4ff;
+    color: rgba(16, 16, 16, 100);
+    box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
+    border: 2rpx solid rgba(187, 187, 187, 100);
+    color: #fff;
+}
+
+.noticeTip1 {
+    font-size: 34rpx;
+    text-align: center;
+}
+
+.noticeTip2 {
+    font-size: 34rpx;
+    text-align: center;
+    margin-top: 16rpx;
+}
+
+.noticeCardCalc {
+    background-color: #9083ff;
+}
+
+.weighTitle {
+    font-size: 36rpx;
+    font-weight: 600;
+    margin: 40rpx 0 30rpx 30rpx;
+}
+
+.weighWrap {
+    width: 93vw;
+    margin: 30rpx auto;
+    background-color: #4475fb;
+}
+
+.weighWrap2 {
+    background-color: #7e67ff;
+}

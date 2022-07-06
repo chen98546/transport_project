@@ -1,0 +1,81 @@
+.warehouseAddr {
+    position: relative;
+    width: 93vw;
+    background-color: #fff;
+    padding: 30rpx;
+    box-sizing: border-box;
+    margin: 30rpx auto;
+    box-sizing: border-box;
+    box-shadow: 0 5rpx 20rpx -2rpx rgba(0, 0, 0, 0.4);
+}
+
+.warehouse {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.noticeIcon {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background: #83a4ff;
+    box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
+    margin-right: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width: 538rpx;
+    margin: 30rpx auto 10rpx;
+}
+
+.info {
+    line-height: 1.8;
+    font-size: 30rpx;
+    margin: 10rpx 0;
+}
+
+.address {
+    display: flex;
+}
+
+.addrDetail {
+    flex: 1;
+}
+
+.van-button.van-button--info.van-button--normal.van-button--round {
+    color: #fff;
+    width: 88vw;
+    font-size: 32rpx;
+    position: relative;
+    top: 40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    margin-bottom: 60rpx;
+}
+
+.step {
+    padding: 0 30rpx;
+}
+
+.stepTitle {
+    font-weight: 700;
+    margin: 20rpx 0 15rpx;
+    font-size: 32rpx;
+}
+
+.stepInfo {
+    text-indent: 55rpx;
+    font-size: 26rpx;
+    line-height: 1.6;
+    margin-bottom: 50rpx;
+}

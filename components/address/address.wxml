@@ -1,4 +1,4 @@
-<view class="copAddressBox" wx:for="{{address}}" wx:key="index">
+<view class="copAddressBox" wx:for="{{address}}" wx:key="index" data-address="{{item}}">
     <view class="copAddress">
         <view class="surnames" style="background: {{item.status ? '#ffa726' : '#1296db'}};">{{item.status ? '我' : item.surnames}}</view>
         <view class="userInfo">

@@ -1,0 +1,27 @@
+<view wx:for="{{orderInfo}}" wx:key="index" class="OrderCard">
+    <view class="orderNumber" bindtap="copyOrderNumber" data-phoneNum="{{item.orderNumber}}">
+        订单号：<text>{{item.orderNumber}}</text>
+        <text class="copyOrderNumber">复制</text>
+    </view>
+
+    <view class="bournCard">
+        <view class="bournCardAddr">中国</view>
+        <view class="bournCardPlane">
+            <image class="bournCardPlaneIcon" src="/asset/images/plane.png"></image>
+            <view class="status" wx:if="{{item.status == 0}}">待填写</view>
+            <view class="status" wx:elif="{{item.status == 1}}">待支付</view>
+            <view class="status" wx:elif="{{item.status == 2}}">已支付</view>
+            <!-- <view class="status" wx:elif="{{item.status == 2 && !item.warehouse}}">待入仓</view>
+            <view class="status" wx:elif="{{item.status == 2 && item.warehouse}}">待出仓</view> -->
+            <view class="status" wx:elif="{{item.status == 3}}">已完成</view>
+        </view>
+        <view class="bournCardAddr" catchtap="selectContryEv">美国</view>
+    </view>
+
+    <view class="buttonGroup">
+        <van-button plain type="primary" color="#f47575" size="small" wx:if="{{item.status == 0}}">去填写</van-button>
+        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.status == 1}}">去支付</van-button>
+        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.status == 2}}">确认打包</van-button>
+        <van-button type="info" color="#83a4ff" size="small" class="detail">详情</van-button>
+    </view>
+</view>

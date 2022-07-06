@@ -1,6 +1,6 @@
 .userHeader {
     height: 240rpx;
-    background-color: #e7691d;
+    background-color: #83a4ff;
     display: flex;
     align-items: center;
 }

@@ -1,5 +1,5 @@
 <view class="footer">
-    <van-tabbar active="{{ tabbarIndex }}" bind:change="activeFn" active-color="#dd3b27" inactive-color="#333">
+    <van-tabbar active="{{ tabbarIndex }}" icon-active="{{2}}" bind:change="activeFn" active-color="#dd3b27" inactive-color="#333" placeholder>
         <van-tabbar-item wx:for="{{list}}" wx:key="index" info="{{item.info ? item.info : ''}}">
             <image class="img" slot="icon" src="{{ item.iconPath }}" mode="aspectFit" />
             <image class="img" slot="icon-active" src="{{ item.selectedIconPath }}" mode="aspectFit" />

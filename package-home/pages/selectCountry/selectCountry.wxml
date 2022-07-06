@@ -1,8 +1,8 @@
 <van-index-bar>
-    <view>
-        <van-index-anchor index="A" />
-        <block wx:for="{{contryList}}" wx:key="index">
-            <van-cell title="{{item}}" />
+    <block wx:for="{{contryMap}}" wx:key="index">
+        <van-index-anchor index="{{index}}" />
+        <block wx:for="{{contryMap[index]}}" wx:for-item="addr" wx:key="index">
+            <van-cell title="{{addr}}" bindtap="getAddressEv" data-addr="{{addr}}" />
         </block>
-    </view>
+    </block>
 </van-index-bar>

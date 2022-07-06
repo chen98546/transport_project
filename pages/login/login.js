@@ -17,9 +17,7 @@ Page({
     wx.login({
       timeout: 10000,
       success: async (res) => {
-        console.log(666, res);
         let { session_key, openid } = await fetchOpenId(res.code);
-        console.log(openid);
         wx.setStorageSync("openid", openid);
         this.setData({ session_key });
       },
@@ -51,7 +49,6 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
-  // 事件
 
   // 协议勾选
   isFlagFn() {

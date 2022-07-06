@@ -12,11 +12,12 @@
             <view class="bournCardPlane">
                 <image class="bournCardPlaneIcon" src="/asset/images/plane.png"></image>
             </view>
-            <view class="bournCardAddr" catchtap="selectContryEv">美国</view>
+            <view class="bournCardAddr" catchtap="selectContryEv">{{addr}}</view>
         </view>
         <button class="transportBtn" bindtap="transportBtnEv">立即转运</button>
     </view>
-    <view class="service">
+
+    <view class="service" bindtap="toServicePageEv">
         <view class="serviceLeft">
             <image class="serviceImg" src="/asset/images/service.png"></image>
             <view class="serviceText">
@@ -29,8 +30,8 @@
         </view>
     </view>
 
-    <view class="noticeBox" bindtap="toTransportEv">
-        <view class="noticeCard">
+    <view class="noticeBox">
+        <view class="noticeCard" bindtap="toTransportEv">
             <view class="noticeTip1">转运须知</view>
             <view class="noticeTip2">流程和注意事项</view>
             <view class="noticeBottom">
@@ -40,7 +41,7 @@
                 <image class="noticeImg" src="/asset/images/car.png"></image>
             </view>
         </view>
-        <view class="noticeCard noticeCardCalc">
+        <view class="noticeCard noticeCardCalc" bindtap="toWeightEv">
             <view class="noticeTip1">运费估算</view>
             <view class="noticeTip2">费用心中有数</view>
             <view class="noticeBottom">
@@ -58,25 +59,25 @@
             <van-icon name="shopping-cart-o" size="50rpx" />
             <view class="processTitle">购物</view>
             <view class="processText">电商平台下单</view>
-            <van-icon name="down" class="arrow" />
+            <van-icon name="down" class="arrow" size="46rpx" />
         </view>
         <view class="processItem">
             <van-icon name="orders-o" size="50rpx" />
             <view class="processTitle">预报</view>
             <view class="processText">填写寄送到仓的快递单号</view>
-            <van-icon name="down" class="arrow" />
+            <van-icon name="down" class="arrow" size="46rpx" />
         </view>
         <view class="processItem">
             <van-icon name="debit-pay" size="50rpx" />
             <view class="processTitle">合包</view>
             <view class="processText">将已到库提交合箱打包</view>
-            <van-icon name="down" class="arrow" />
+            <van-icon name="down" class="arrow" size="46rpx" />
         </view>
         <view class="processItem">
             <van-icon name="pending-payment" size="50rpx" />
             <view class="processTitle">支付</view>
             <view class="processText">核对打包详情并支付运费</view>
-            <van-icon name="down" class="arrow" />
+            <van-icon name="down" class="arrow" size="46rpx" />
         </view>
         <view class="processItem">
             <van-icon name="sign" size="50rpx" />
@@ -85,7 +86,7 @@
         </view>
     </view>
 
-    <van-button class="copyAddress" round type="info" color="#4c168e">
+    <van-button class="copyAddress" round type="info" color="#83a4ff" bindtap="toWarehouseAddrEv">
         <van-icon name="description" />
         复制仓库地址去购物
     </van-button>
@@ -95,7 +96,7 @@
         <view slot="modalTitle" class="channelTitle">预选渠道</view>
         <view slot="userAddress" class="channelAddress">
             <block wx:for="{{channelList}}" wx:key="index">
-                <text style="color:{{item.selected ? '#fff' : '#4c168e'}};background: {{item.selected ? '#4c168e' : '#fff'}};" class="channel" bindtap="selectedChannelEv" data-id="{{item.id}}">{{item.text}}</text>
+                <text style="color:{{item.selected ? '#fff' : '#83a4ff'}};background: {{item.selected ? '#83a4ff' : '#fff'}};" class="channel" bindtap="selectedChannelEv" data-id="{{item.id}}">{{item.text}}</text>
             </block>
         </view>
         <view slot="modalRefuse" bindtap="cancelEv">取消</view>

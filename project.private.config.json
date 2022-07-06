@@ -14,7 +14,7 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "package-home/pages/orderDetail/orderDetail",
+                    "pathName": "package-user/pages/myAddress/myAddress",
                     "query": "",
                     "scene": null,
                     "launchMode": "default"

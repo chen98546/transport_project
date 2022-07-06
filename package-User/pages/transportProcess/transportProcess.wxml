@@ -16,5 +16,5 @@
         2020-11-02 23:46:48
     </view>
 
-    <button class="transportBtn">已阅读</button>
+    <button class="transportBtn" bindtap="transportBtnEv">已阅读</button>
 </view>

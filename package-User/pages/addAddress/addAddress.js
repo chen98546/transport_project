@@ -33,13 +33,11 @@ Page({
   onShareAppMessage: function () {},
 
   showCountryEv() {
-    console.log(123);
     this.setData({
       isShowCountry: !this.data.isShowCountry,
     });
   },
   onChange({ detail }) {
-    // 需要手动对 checked 状态进行更新
     this.setData({ checked: detail });
   },
 });

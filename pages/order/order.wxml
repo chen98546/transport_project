@@ -1,5 +1,5 @@
-<van-tabs active="{{ active }}">
+<van-tabs active="{{ status }}" type="card" bind:change="changTabEv" color="#83a4ff">
     <van-tab wx:for="{{tabList}}" wx:key="index" title="{{item.title}}">
-    123s
+        <OrderCard orderInfo="{{orderInfoList}}"></OrderCard>
     </van-tab>
 </van-tabs>

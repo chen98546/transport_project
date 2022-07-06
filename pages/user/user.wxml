@@ -1,17 +1,27 @@
 <view class="userHeader">
-    <view class="userLeft">
-        <image class="avatar" src="/asset/images/logo1.png"></image>
-    </view>
-    <view class="userRight">
-        <view class="username">KK</view>
-        <view class="usercode">编码：HBK</view>
-    </view>
+    <block wx:if="{{!token}}">
+        <view class="userLeft">
+            <image class="avatar" src="/asset/images/logo.png"></image>
+        </view>
+        <view class="userRight">
+            <van-button plain type="info" size="small" bindtap="toLoginEv">登录</van-button>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="userLeft">
+            <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="userRight">
+            <view class="username">{{userInfo.nickName}}</view>
+            <view class="usercode">编码：HBK</view>
+        </view>
+    </block>
 </view>
 
 <view class="myOrder">
     <view class="orderTitle">
         <view class="orderTitleLeft">我的订单</view>
-        <view class="orderTitleRight">全部订单
+        <view class="orderTitleRight" bindtap="toOrderListPageEv">全部订单
             <van-icon name="arrow" />
         </view>
     </view>

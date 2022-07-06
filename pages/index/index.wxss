@@ -7,8 +7,8 @@ page {
     top: 0;
     left: 0;
     width: 100%;
-    height: 470rpx;
-    background-color: #4e148c;
+    height: 550rpx;
+    background: linear-gradient(#83a4ff, #83a4ff, #f7f6f6);
 }
 
 .radius {
@@ -16,7 +16,7 @@ page {
     /* top: 260rpx; */
     left: 0;
     z-index: -1;
-    background-color: #4e148c;
+    background-color: #83a4ff;
     width: 100%;
     height: 400rpx;
     /* border-bottom-left-radius: 50%; */
@@ -39,7 +39,8 @@ page {
 }
 
 .bournCardBox {
-    width: 560rpx;
+    width: 93vw;
+    /* width: 560rpx; */
     height: 346rpx;
     border-radius: 14px;
     background-color: rgba(255, 255, 255, 100);
@@ -62,7 +63,7 @@ page {
 
 .transportBtn {
     width: 320rpx;
-    background-color: #4e148c;
+    background-color: #83a4ff;
     color: #fff;
     font-size: 30rpx;
     padding: 0;
@@ -70,6 +71,10 @@ page {
 
 .bournCard .bournCardAddr {
     font-size: 54rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 30%;
 }
 
 .bournCard .bournCardPlane .bournCardPlaneIcon {
@@ -81,7 +86,7 @@ page {
     width: 95vw;
     height: 100rpx;
     border-radius: 100rpx;
-    background-color: rgba(255, 102, 0, 100);
+    background-color: #83a4ff;
     color: rgba(16, 16, 16, 100);
     font-size: 14px;
     text-align: center;
@@ -101,7 +106,7 @@ page {
 .serviceImg {
     position: absolute;
     left: -4rpx;
-    top: -14rpx;
+    top: -16rpx;
     width: 110rpx;
     height: 110rpx;
 }
@@ -137,7 +142,7 @@ page {
     width: 320rpx;
     height: 320rpx;
     border-radius: 20rpx;
-    background-color: #9977bb;
+    background-color: #83a4ff;
     color: rgba(16, 16, 16, 100);
     box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
     border: 2rpx solid rgba(187, 187, 187, 100);
@@ -159,7 +164,7 @@ page {
     height: 60rpx;
     line-height: 60rpx;
     border-radius: 50%;
-    background: #4e148c;
+    background: #4b7bff;
     text-align: center;
     box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
     align-self: center;
@@ -169,24 +174,26 @@ page {
 }
 
 .noticeImg {
-    width: 180rpx;
-    height: 180rpx;
+    transform: rotateY(180deg);
+    width: 150rpx;
+    height: 150rpx;
     position: absolute;
-    right: -6px;
-    bottom: -6px;
+    right: 15rpx;
+    bottom: 0px;
+    transform: rotateY(180deg);
 }
 
 .noticeCardCalc {
-    background-color: #fc9d62;
+    background-color: #9083ff;
 }
 
 .noticeIconCalc {
-    background-color: #ff6200;
+    background-color: #5f4ef1;
 }
 
 .noticeCalcImg {
-    width: 130rpx;
-    height: 130rpx;
+    width: 140rpx;
+    height: 140rpx;
     right: 0;
     bottom: 10rpx;
 }
@@ -236,7 +243,8 @@ page {
 .van-button.van-button--info.van-button--normal.van-button--round {
     color: #fff;
     width: 88vw;
-    line-height: 85rpx;
+    height: 80rpx;
+    line-height: 80rpx;
     font-size: 32rpx;
     position: relative;
     left: 50%;
@@ -247,10 +255,10 @@ page {
     text-align: center;
     margin: 10rpx 0 250rpx;
     font-size: 28rpx;
-    color: #4c168e;
+    color: #83a4ff;
 }
 
-.userAddress  {
+.userAddress {
     padding: 0 !important;
 }
 
@@ -282,6 +290,6 @@ page {
     font-size: 34rpx;
 }
 
-.copAddress  {
+.copAddress {
     padding: 20rpx 20rpx 0;
 }

@@ -76,7 +76,7 @@
 .modal .modalBtn .modalAllow {
     display: inline-block;
     flex: 1;
-    color: #02bb00;
+    color: #83a4ff;
     border-left: 1rpx solid #e5e5e5;
     background-color: #fff;
     border-radius: 0rpx;

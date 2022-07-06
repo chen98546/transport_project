@@ -8,7 +8,7 @@
                 <view class="warehouseInfoLeft">
                     {{warehouseInfo.warehouse}}
                 </view>
-                <view class="warehouseInfoRight" bindtap="copyPhoneNumber" data-phoneNum="{{warehouseInfo.warehouseNum}}">
+                <view class="warehouseInfoRight" bindtap="copyDetailInfoEv" data-phoneNum="{{warehouseInfo.warehouseNum}}">
                     {{warehouseInfo.warehouseNum}}<text class="copyPhoneNumber">复制</text>
                 </view>
             </view>
@@ -60,7 +60,7 @@
 </view>
 
 <view class="wrap statusWrap">
-    <view class="row"  bindtap="copyPhoneNumber" data-phoneNum="{{orderNumber}}">
+    <view class="row"  bindtap="copyDetailInfoEv" data-phoneNum="{{orderNumber}}">
         订单号：<text>{{orderNumber}}</text>
         <text class="copyPhoneNumber copyOrderNumber">复制</text>
     </view>
@@ -81,7 +81,7 @@
 <view class="buttonGroup">
     <button class="btn">联系客服</button>
     <button class="btn" wx:if="{{submitBtn}}" bindtap="cancleBtnEv">取消订单</button>
-    <button class="btn submitBtn" wx:else bindtap="submitBtnEv">确认打包</button>
+    <button class="btn submitBtn" wx:else bindtap="submitBtnEv">提交订单</button>
 </view>
 
 <ConfirmModal closeModal="{{closeModal}}">

@@ -13,6 +13,7 @@
     </view>
     <view class="warehouseAddress">{{warehouseInfo.warehouseAddr}}</view>
 </view>
+
 <view class="wrap receipt">
     <view class="receiptInfo">目标国收件信息</view>
     <view class="receiptInfo">
@@ -20,11 +21,11 @@
             <van-icon class="warningIcon" name="warning-o" color="#ed9560" size="24rpx" />
             <text class="fillEnInfo">请用英文填写</text>
         </view>
-        <view class="receiptRight">
+        <view class="receiptRight" bindtap="selectAddrEv">
             选择地址
         </view>
     </view>
     <FillAddrInfo bind:receiveInfo="receiveInfoEv">
-        <button slot="button" class="transportBtn" bindtap="transportBtnEv">立即转运</button>
+        <button slot="button" class="transportBtn" bindtap="transportEv">立即转运</button>
     </FillAddrInfo>
 </view>

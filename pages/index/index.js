@@ -10,23 +10,23 @@ Page({
       },
       {
         id: "banner2",
-        src: "/asset/images/banner2.png",
-      },
-      {
-        id: "banner3",
         src: "/asset/images/banner3.png",
       },
       {
+        id: "banner3",
+        src: "/asset/images/banner1.png",
+      },
+      {
         id: "banner4",
-        src: "/asset/images/banner4.png",
+        src: "/asset/images/banner3.png",
       },
       {
         id: "banner5",
-        src: "/asset/images/banner5.png",
+        src: "/asset/images/banner1.png",
       },
       {
         id: "banner6",
-        src: "/asset/images/banner6.png",
+        src: "/asset/images/banner3.png",
       },
     ],
     channelList: [
@@ -36,6 +36,7 @@ Page({
       { id: 4, text: "内地EMS", selected: false },
       { id: 5, text: "广东EMS", selected: false },
     ],
+    addr: "美国",
   },
 
   // 生命周期函数--监听页面加载
@@ -97,4 +98,21 @@ Page({
       url: "/package-user/pages/transportNotice/transportNotice",
     });
   },
+
+  toServicePageEv() {
+    wx.navigateTo({
+      url: "/package-user/pages/service/service",
+    });
+  },
+  toWeightEv() {
+    wx.navigateTo({
+      url: "/package-home/pages/weight/weight",
+    });
+  },
+
+  toWarehouseAddrEv(){
+    wx.navigateTo({
+      url: "/package-home/pages/warehouseAddr/warehouseAddr",
+    });
+  }
 });

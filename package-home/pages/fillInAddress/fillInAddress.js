@@ -1,4 +1,4 @@
-// package-home/pages/fillInAddress/fillInAddress.js
+import { copyInfoFn } from "../../../utils/methods.js";
 Page({
   // 页面的初始数据
   data: {
@@ -33,36 +33,22 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
-  //   transportBtnEv() {
-  //     // wx.navigateTo({
-  //     // url: '/package-user/pages/transportNotice/transportNotice',
-  //     // });
-  //   },
-
   // 复制手机号
   copyPhoneNumber(e) {
-    wx.setClipboardData({
-      data: e.currentTarget.dataset.phonenum,
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showToast({ title: "复制成功" });
-          },
-        });
-      },
-    });
+    copyInfoFn(e.currentTarget.dataset.phonenum);
   },
 
   receiveInfoEv(data) {
-    console.log(data.detail);
-    // wx.navigateTo({
-    //   url: "/package-user/pages/transportNotice/transportNotice",
-    // });
-  },
-
-  transportBtnEv() {
     wx.navigateTo({
       url: "/package-home/pages/transportNotice/transportNotice",
     });
   },
+
+  transportEv() {},
+
+  selectAddrEv(){
+    wx.navigateTo({
+      url: '/package-user/pages/myAddress/myAddress',
+    })
+  }
 });

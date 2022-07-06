@@ -1,25 +1,48 @@
+import { contryAddress } from "../../utils/contryAddr";
+const { pinyin, customPinyin } = require("pinyin-pro");
 Page({
   // 页面的初始数据
   data: {
-    contryList: [
-      { id: 1, contry: "中国" },
-      { id: 2, contry: "美国" },
-      { id: 3, contry: "俄罗斯" },
-      { id: 4, contry: "日本" },
-      { id: 5, contry: "韩国" },
-      { id: 6, contry: "泰国" },
-    ],
+    contryList: [],
+    contryMap: [],
   },
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
-    let contryList = this.data.contryList.map((item) => {
-      return item.contry;
+    let contryList = contryAddress.map((item) => {
+      return item.address;
     });
     contryList.sort((a, b) =>
       a.localeCompare(b, "zh-Hans-CN", { sensitivity: "accent" })
     );
-    this.setData({ contryList });
+    let contryMap = {};
+    let firstName;
+    contryList.map((item) => {
+      if (item == "朝鲜") {
+        customPinyin({ 朝鲜: "chaoxian" });
+        firstName = pinyin(item, {
+          pattern: "first",
+          toneType: "none",
+        }).toLocaleUpperCase();
+        if (contryMap[firstName]) {
+          contryMap[firstName].push(item);
+        } else {
+          contryMap[firstName] = [item];
+        }
+      } else {
+        firstName = pinyin(item.split("")[0], {
+          pattern: "first",
+          toneType: "none",
+        }).toLocaleUpperCase();
+        if (contryMap[firstName]) {
+          contryMap[firstName].push(item);
+        } else {
+          contryMap[firstName] = [item];
+        }
+        console.log(firstName); 
+      }
+    });
+    this.setData({ contryList, contryMap });
   },
 
   // 生命周期函数--监听页面初次渲染完成
@@ -42,4 +65,13 @@ Page({
 
   // 用户点击右上角分享
   onShareAppMessage: function () {},
+
+  getAddressEv(e) {
+    let pages = getCurrentPages(); //当前页面
+    let prevPage = pages[pages.length - 2]; //上一页面
+    prevPage.setData({ addr: e.target.dataset.addr });
+    wx.navigateBack({
+      delta: 1,
+    });
+  },
 });

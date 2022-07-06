@@ -28,6 +28,13 @@ Component({
       let city = this.data.city;
       let postcode = this.data.postcode;
       let userInfo = { username, phone, address, city, postcode };
+      if (!username || !phone || !address || !city || !postcode) {
+        wx.showToast({
+          title: "地址信息不能为空，请补全地址信息",
+          icon: "none",
+        });
+        return;
+      }
       let reg = /^[A-Za-z0-9]+$/;
       let info = reg.test(username) && reg.test(address) && reg.test(city);
       if (info) {

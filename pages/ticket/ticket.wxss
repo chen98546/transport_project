@@ -1,6 +1,6 @@
 .ticketHeader {
     height: 240rpx;
-    background-color: #e7691d;
+    background-color: #83a4ff;
     display: flex;
     align-items: center;
 }
@@ -11,4 +11,8 @@
     width: 90vw;
     height: 245rpx;
     margin: 40rpx auto;
+}
+
+.ticketImg:last-child {
+    margin-bottom: 200rpx;
 }
