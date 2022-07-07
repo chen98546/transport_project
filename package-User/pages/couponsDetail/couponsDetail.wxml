@@ -1,10 +1,11 @@
 <view class="coupons">
     <view class="couponsLeft">
         <view class="price">
-            <text class="yen">￥</text>
-            <text class="num">10</text>
+            <text class="yen" wx:if="{{!coupons.deduction}}">￥</text>
+            <text class="num">{{coupons.num}}</text>
+            <text class="yen" wx:if="{{coupons.deduction}}">折</text>
         </view>
-        <view class="minus">满￥599使用</view>
+        <view class="minus">{{coupons.meet}}</view>
     </view>
     <view class="couponsRight">
         <view class="discountText">
@@ -13,7 +14,7 @@
                 双十一无门槛10元券
             </view>
             <view class="discountDate">
-                2022.07.08到期<text class="onlyDate">(仅剩1天)</text>
+                {{coupons.expiryDate}}到期<text class="onlyDate">(仅剩1天)</text>
                 <van-button round type="info" size="mini" color="#f6390d">立即领取</van-button>
             </view>
         </view>
@@ -30,7 +31,7 @@
         <view class="detailTitle">使用须知</view>
         <view class="itemInfo">
             有效期：
-            <view>2022.03.03至2022.05.05</view>
+            <view>{{coupons.validityDate}}至{{coupons.expiryDate}}</view>
         </view>
         <view class="itemInfo">
             不可用日期：

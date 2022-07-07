@@ -8,21 +8,27 @@ Page({
         username: "老六",
         userPhone: 18600005555,
         userAddr: "MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A TUCSON, AZ 85705 USA",
+        city: "Los Angeles",
         status: true,
+        postcode: '566530',
       },
       {
         id: 2,
         username: "张三",
         userPhone: 15566668888,
         userAddr: "MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A TUCSON, AZ 85705 USA",
+        city: "Washington",
         status: false,
+        postcode: '606214',
       },
       {
         id: 3,
         username: "李四",
         userPhone: 13322226666,
         userAddr: "MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A TUCSON, AZ 85705 USA",
+        city: "Washington",
         status: false,
+        postcode: '012545',
       },
     ],
   },
@@ -58,8 +64,4 @@ Page({
 
   // 用户点击右上角分享
   onShareAppMessage: function () {},
-
-  getAddressEv(e){
-    console.log(e);
-  }
 });

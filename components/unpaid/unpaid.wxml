@@ -1,0 +1,58 @@
+<view class="wrap" wx:if="{{isPaid}}">
+    <view>运费：￥<text>138.00</text></view>
+    <view>附加费：￥<text>0.00</text></view>
+    <view>称重重量：<text>5.6</text>kg</view>
+    <view>分拣备注：<text class="note">已拆封分拣，统一归类</text></view>
+    <view>打包备注：<text class="note">东西太多，已统一打包加固</text></view>
+    <view>
+        称重图片：
+        <view class="imgWrap">
+            <block wx:for="{{imageList}}" wx:key="index">
+                <image bindtap="previewMediaEv" class="img" src="{{item.src}}" data-src="{{item.src}}"></image>
+            </block>
+        </view>
+    </view>
+
+    <view class="itemWrap">
+        <view class="bill">账单：</view>
+        <view class="item">
+            <view class="left">
+                <image class="img" src="/asset/images/logo.png"></image>
+            </view>
+            <view class="right">
+                <view class="title">包裹一</view>
+                <view class="info">属性：<text>普通货物</text></view>
+                <view class="info">长宽高：<text>12*5*5</text>CM</view>
+                <view class="info">计费重量：<text>1.25</text>KG</view>
+                <view class="info">计费方式：<text>实际重量</text></view>
+                <view class="info">运费：￥<text>125</text></view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <image class="img" src="/asset/images/logo.png"></image>
+            </view>
+            <view class="right">
+                <view class="title">包裹一</view>
+                <view class="info">属性：<text>普通货物</text></view>
+                <view class="info">长宽高：<text>12*5*5</text>CM</view>
+                <view class="info">计费重量：<text>1.25</text>KG</view>
+                <view class="info">计费方式：<text>实际重量</text></view>
+                <view class="info">运费：￥<text>125</text></view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <image class="img" src="/asset/images/logo.png"></image>
+            </view>
+            <view class="right">
+                <view class="title">包裹一</view>
+                <view class="info">属性：<text>普通货物</text></view>
+                <view class="info">长宽高：<text>12*5*5</text>CM</view>
+                <view class="info">计费重量：<text>1.25</text>KG</view>
+                <view class="info">计费方式：<text>实际重量</text></view>
+                <view class="info">运费：￥<text>125</text></view>
+            </view>
+        </view>
+    </view>
+</view>

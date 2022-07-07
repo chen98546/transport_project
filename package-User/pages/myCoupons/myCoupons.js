@@ -3,8 +3,7 @@ Page({
   // 页面的初始数据
   data: {
     closeModal: true,
-    couponsList: [
-      {
+    couponsList: [{
         id: 1,
         num: 15,
         status: 1,
@@ -82,17 +81,16 @@ Page({
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
     let couponsList = this.data.couponsList.map((item) => {
-      if (item.status == 0) {
-        item.style = "grayscale(1)";
-      } else if (item.status == 1) {
-        item.style = "opacity(0.5)";
-      } else {
-        item.style = "none";
-      }
+      if (item.status == 0) item.style = "grayscale(1)";
+      else if (item.status == 1) item.style = "opacity(0.5)";
+      else item.style = "none";
       return item;
+    }).sort((a, b) => b.status - a.status)
+    this.setData({
+      couponsList
     });
-    this.setData({ couponsList });
   },
+  // 优惠卷的选择判定（满减，有效期，折扣的最大值，优先判定的条件）
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
@@ -117,14 +115,20 @@ Page({
 
   // 模态框取消操作
   modalRefuseEv() {
-    this.setData({ closeModal: true });
+    this.setData({
+      closeModal: true
+    });
   },
   // 模态框确认操作
   modalAllowEv() {
-    this.setData({ closeModal: true });
+    this.setData({
+      closeModal: true
+    });
   },
 
   transportBtn() {
-    this.setData({ closeModal: false });
+    this.setData({
+      closeModal: false
+    });
   },
 });

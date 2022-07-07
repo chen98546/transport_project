@@ -1,10 +1,16 @@
-import { contryAddress } from "../../utils/contryAddr";
-const { pinyin, customPinyin } = require("pinyin-pro");
+import {
+  contryAddress
+} from "../../utils/contryAddr";
+const {
+  pinyin,
+  customPinyin
+} = require("pinyin-pro");
 Page({
   // 页面的初始数据
   data: {
     contryList: [],
     contryMap: [],
+    indexList: []
   },
 
   // 生命周期函数--监听页面加载
@@ -13,13 +19,17 @@ Page({
       return item.address;
     });
     contryList.sort((a, b) =>
-      a.localeCompare(b, "zh-Hans-CN", { sensitivity: "accent" })
+      a.localeCompare(b, "zh-Hans-CN", {
+        sensitivity: "accent"
+      })
     );
     let contryMap = {};
     let firstName;
     contryList.map((item) => {
       if (item == "朝鲜") {
-        customPinyin({ 朝鲜: "chaoxian" });
+        customPinyin({
+          朝鲜: "chaoxian"
+        });
         firstName = pinyin(item, {
           pattern: "first",
           toneType: "none",
@@ -39,10 +49,17 @@ Page({
         } else {
           contryMap[firstName] = [item];
         }
-        console.log(firstName); 
       }
     });
-    this.setData({ contryList, contryMap });
+    let arr = [];
+    for (const key in contryMap) {
+      arr.push(key)
+    }
+    this.setData({
+      contryList,
+      contryMap,
+      indexList: arr
+    });
   },
 
   // 生命周期函数--监听页面初次渲染完成
@@ -69,9 +86,15 @@ Page({
   getAddressEv(e) {
     let pages = getCurrentPages(); //当前页面
     let prevPage = pages[pages.length - 2]; //上一页面
-    prevPage.setData({ addr: e.target.dataset.addr });
+    prevPage.setData({
+      addr: e.target.dataset.addr
+    });
     wx.navigateBack({
       delta: 1,
     });
   },
+
+  getSelectIndexEv(e){
+    console.log(e);
+  }
 });

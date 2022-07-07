@@ -5,6 +5,7 @@
     font-size: 30rpx;
     padding: 0;
     font-size: 28rpx;
+    margin-top: 50rpx;
 }
 
 .userAddress {

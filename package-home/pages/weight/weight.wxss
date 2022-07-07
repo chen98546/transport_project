@@ -31,6 +31,9 @@
     font-size: 34rpx;
     text-align: center;
     margin-top: 16rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .noticeCardCalc {
@@ -51,4 +54,33 @@
 
 .weighWrap2 {
     background-color: #7e67ff;
+    margin-bottom: 200rpx;
+}
+
+.volume {
+    margin: 0 auto;
+    text-align: left;
+    width: 130rpx;
+    border-bottom: 2rpx solid #ccc;
+}
+
+.placeholder {
+    color: #fff;
+}
+
+.weight {
+    width: 230rpx;
+    margin: 0 auto;
+}
+
+
+.van-picker {
+    margin-top: 30rpx;
+}
+
+.item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30rpx;
 }

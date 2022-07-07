@@ -1,10 +1,16 @@
 // package-user/pages/couponsDetail/couponsDetail.js
 Page({
   // 页面的初始数据
-  data: {},
+  data: {
+    coupons: {}
+  },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.setData({
+      coupons: JSON.parse(options.coupons)
+    })
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},

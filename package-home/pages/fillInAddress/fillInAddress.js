@@ -7,6 +7,7 @@ Page({
       warehouseNum: "15566669999",
       warehouseAddr: "深圳市龙华区龙华街道工业路壹城环智中心C座2607室",
     },
+    address: {},
   },
 
   // 生命周期函数--监听页面加载
@@ -46,9 +47,9 @@ Page({
 
   transportEv() {},
 
-  selectAddrEv(){
+  selectAddrEv() {
     wx.navigateTo({
-      url: '/package-user/pages/myAddress/myAddress',
-    })
-  }
+      url: "/package-user/pages/myAddress/myAddress",
+    });
+  },
 });

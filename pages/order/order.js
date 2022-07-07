@@ -2,27 +2,199 @@
 Page({
   // 页面的初始数据
   data: {
-    tabList: [
-      { id: 1, status: 0, title: "全部" },
-      { id: 2, status: 1, title: "待支付" },
-      { id: 3, status: 2, title: "已支付" },
-      { id: 4, status: 3, title: "已完成" },
+    tabList: [{
+        id: 1,
+        status: 0,
+        title: "全部"
+      },
+      {
+        id: 2,
+        status: 1,
+        title: "待支付"
+      },
+      {
+        id: 3,
+        status: 2,
+        title: "已支付"
+      },
+      {
+        id: 4,
+        status: 3,
+        title: "已完成"
+      },
     ],
-    testData: [
-      { id: 1, status: 1, orderstate:0, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 2, status: 1, orderstate:1, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 3, status: 2, orderstate:2, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 4, status: 3, orderstate:3, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 5, status: 2, orderstate:2, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 6, status: 3, orderstate:1, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
+    testData: [{
+        id: 1,
+        orderstate: 0,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545565256'
+      },
+      {
+        id: 2,
+        orderstate: 1,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223312'
+      },
+      {
+        id: 3,
+        orderstate: 2,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223231'
+      },
+      {
+        id: 4,
+        orderstate: 3,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223218'
+      },
+      {
+        id: 5,
+        orderstate: 4,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223219'
+      },
+      {
+        id: 6,
+        orderstate: 5,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223217'
+      },
+      {
+        id: 7,
+        orderstate: 6,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223213'
+      },
     ],
-    orderInfoList: [
-      { id: 1, status: 1, orderstate:0, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 2, status: 1, orderstate:1, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 3, status: 2, orderstate:2, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 4, status: 3, orderstate:3, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 5, status: 2, orderstate:2, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
-      { id: 6, status: 3, orderstate:1, warehouse:false, origin:'中国', terminus:'美国', orderNumber:'20220506015545223215' },
+    orderInfoList: [{
+        id: 1,
+        orderstate: 0,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545565256',
+        orderList: []
+      },
+      {
+        id: 2,
+        orderstate: 1,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223312',
+        orderList: [{
+            id: 124543,
+            orderStatus: 0
+          },
+          {
+            id: 478556,
+            orderStatus: 0
+          }, {
+            id: 784524529,
+            orderStatus: 0
+          },
+        ]
+      },
+      {
+        id: 3,
+        orderstate: 2,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223231',
+        orderList: [{
+            id: 1245453,
+            orderStatus: 0
+          },
+          {
+            id: 45857856,
+            orderStatus: 0
+          }, {
+            id: 78245259,
+            orderStatus: 0
+          }
+        ]
+      },
+      {
+        id: 4,
+        orderstate: 3,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223218',
+        orderList: [{
+            id: 1212757883,
+            orderStatus: 1
+          },
+          {
+            id: 454524526,
+            orderStatus: 0
+          }, {
+            id: 785245,
+            orderStatus: 1
+          },
+        ]
+      },
+      {
+        id: 5,
+        orderstate: 4,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223219',
+        orderList: [{
+            id: 17585235785,
+            orderStatus: 1
+          },
+          {
+            id: 425256,
+            orderStatus: 1
+          }, {
+            id: 45245789,
+            orderStatus: 1
+          }
+        ]
+      },
+      {
+        id: 6,
+        orderstate: 5,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223217',
+        orderList: [{
+            id: 12652378,
+            orderStatus: 1
+          },
+          {
+            id: 45645245,
+            orderStatus: 1
+          }, {
+            id: 7245249,
+            orderStatus: 1
+          }
+        ]
+      },
+      {
+        id: 7,
+        orderstate: 6,
+        origin: '中国',
+        terminus: '美国',
+        orderNumber: '20220506015545223213',
+        orderList: [{
+            id: 1452787823,
+            orderStatus: 0
+          },
+          {
+            id: 45245256,
+            orderStatus: 0
+          }, {
+            id: 72452489,
+            orderStatus: 1
+          }
+        ]
+      },
     ],
     status: 0,
   },
@@ -59,11 +231,15 @@ Page({
         }
       })
       .filter((item) => item);
+    console.log(orderInfoList);
     if (e.detail.index == 0) {
-      this.setData({ orderInfoList: this.data.testData });
+      this.setData({
+        orderInfoList: this.data.testData
+      });
     } else {
-      this.setData({ orderInfoList });
+      this.setData({
+        orderInfoList
+      });
     }
-    console.log(this.data.orderInfoList);
   },
 });

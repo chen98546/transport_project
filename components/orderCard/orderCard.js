@@ -1,4 +1,6 @@
-import { copyInfoFn } from "../../utils/methods.js";
+import {
+  copyInfoFn
+} from "../../utils/methods.js";
 Component({
   // 组件的属性列表
   properties: {
@@ -16,5 +18,13 @@ Component({
     copyOrderNumber(e) {
       copyInfoFn(e.currentTarget.dataset.phonenum);
     },
+    toOrderDetailEv(e) {
+      wx.navigateTo({
+        url: '/package-home/pages/orderDetail/orderDetail',
+        success(res) {
+          res.eventChannel.emit('getOrderInfoEV', e.target.dataset.item)
+        }
+      })
+    }
   },
 });

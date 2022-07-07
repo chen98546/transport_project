@@ -1,26 +1,43 @@
+<wxs src="/utils/filter.wxs" module="filter"></wxs>
+
 <image class="weighImg" src="/asset/images/weigh.png"></image>
 
-<view class="weighTitle">
-    预估运费
-</view>
+<view class="weighTitle">预估运费</view>
 
 <view class="noticeBox">
     <view class="noticeCard">
         <view class="noticeTip1">转运渠道</view>
-        <view class="noticeTip2">普通货物</view>
+        <view class="noticeTip2" bindtap="noticeTipEv">{{selectChanne}}</view>
     </view>
     <view class="noticeCard noticeCardCalc">
         <view class="noticeTip1">预估重量</view>
-        <view class="noticeTip2">请输入重量</view>
+        <view class="noticeTip2">
+            <input class="weight" value="{{weightNum}}" bindinput="changeWeightEv" type="number" placeholder="请输入重量(斤)" placeholder-class="placeholder" />
+        </view>
     </view>
 </view>
 
+<van-picker show-toolbar title="请选择货物渠道" wx:if="{{!isShow}}" columns="{{ channelList }}" bind:confirm="onConfirmEv" bind:cancel="onCancelEv" />
+
 <view class="noticeCard weighWrap">
-    <view class="noticeTip1">预估体积</view>
-    <view class="noticeTip2">请输入长宽高</view>
+    <view class="noticeTip1">预估体积(请输入长宽高,单位：cm)</view>
+    <view class="noticeTip2">
+        <view class="item">
+            <text>长：</text>
+            <input class="volume" type="number" value="{{length}}" bindinput="changeLengthEv" />
+        </view>
+        <view class="item">
+            <text>宽：</text>
+            <input class="volume" type="number" value="{{width}}" bindinput="changeWidthEv" />
+        </view>
+        <view class="item">
+            <text>高：</text>
+            <input class="volume" type="number" value="{{height}}" bindinput="changeHeightEv" />
+        </view>
+    </view>
 </view>
 
 <view class="noticeCard weighWrap weighWrap2">
     <view class="noticeTip1">预估运费（实际结果以订单为准）</view>
-    <view class="noticeTip2">￥0.00</view>
+    <view class="noticeTip2">￥{{ filter.toFixed(totalPrice,2) }}</view>
 </view>

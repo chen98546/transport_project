@@ -1,4 +1,4 @@
-.van-button.van-button--info.van-button--mini.van-button--round{
+.van-button.van-button--info.van-button--mini.van-button--round {
     padding: 0 20rpx;
 }
 
@@ -97,7 +97,7 @@
     font-size: 26rpx;
 }
 
-.statusImg{
+.statusImg {
     position: absolute;
     right: 50rpx;
     bottom: 0;

@@ -1,0 +1,59 @@
+<view class="valuationCard">
+    <view class="orderNumber">订单号：202205050612315645456</view>
+    <view class="valuation">
+        <van-icon name="shield-o" color="#e7691d" size="50rpx" />
+        <view>保价</view>
+    </view>
+    <van-field placeholder="请填写真实的物品价格" style="width: 100%;" value="{{value}}" bind:change="fieldChangeEv" />
+</view>
+
+<view class="valuationCard">
+    <view class="warning">
+        <van-icon class="warningIcon" name="warning-o" color="#ef0606" size="24rpx" />
+        <view>
+            <view class="fillEnInfo">国际快递由于多国调度，存在一定比例丢失的情况！</view>
+            <view class="fillEnInfo">如丢失包裹，购买丢失险可获得全额赔付(最高5000元)！</view>
+        </view>
+    </view>
+    <view class="switchWrap">
+        <view>丢失险（保价的3%）</view>
+        <van-switch checked="{{ checked1 }}" size="24px" bind:change="onChangeEv1" />
+    </view>
+    <view class="insurance">
+        保险费：￥{{p1}}
+    </view>
+</view>
+
+<view class="valuationCard">
+    <view class="warning">
+        <van-icon class="warningIcon" name="warning-o" color="#ef0606" size="24rpx" />
+        <view>
+            <view class="fillEnInfo">电子产品等容易被税的高客单价产品建议购买关税保险!英国关税起征点为0.01英镑!</view>
+            <view class="fillEnInfo">综合关税=货值x增值税率+(货值+运费+货值x产品税率)x20%+清关杂费。</view>
+        </view>
+    </view>
+    <view class="switchWrap">
+        <view>关税险（保价的2%）</view>
+        <van-switch checked="{{ checked2 }}" size="24px" bind:change="onChangeEv2" />
+    </view>
+    <view class="insurance">
+        保险费：￥{{p2}}
+    </view>
+</view>
+
+<view class="buttonGroup">
+    <button class="btn">联系客服</button>
+    <button class="btn submitBtn" bindtap="nextStepEv">下一步</button>
+</view>
+
+<ConfirmModal closeModal="{{closeModal}}">
+    <view slot="modalTitle" class="ConfirmModalTitle">风险告知书</view>
+    <view slot="userAddress" class="addOrder">
+        <view>尊敬的客户:</view>
+        <view class="text">
+            您好，系统识别到您的订单未投保丢失保险，丢件的概率为万分之三，未购买丢失保险发生丢失的赔付原则为:退运费，按照实际货值赔付但不超过运费价值且最高不超过100美元。请悉知。
+        </view>
+    </view>
+    <view slot="modalRefuse" bind:tap="cancleHandleEv">承担风险</view>
+    <view slot="modalAllow" bind:tap="confirmHandleEv">购买保险</view>
+</ConfirmModal>

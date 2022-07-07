@@ -1,4 +1,5 @@
-<view class="box" catchtouchmove="{{closeModal ? 'return' : ''}}">
+<!-- <view class="box" catchtouchmove="{{closeModal ? 'return' : ''}}"> -->
+<view class="box">
     <Coupons couponsList="{{couponsList}}"></Coupons>
 
     <ConfirmModal closeModal="{{closeModal}}">

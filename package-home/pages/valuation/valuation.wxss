@@ -1,0 +1,126 @@
+.valuationCard {
+    position: relative;
+    width: 93vw;
+    background-color: #fff;
+    padding: 26rpx;
+    box-sizing: border-box;
+    margin: 50rpx auto;
+    box-sizing: border-box;
+    box-shadow: 0 5rpx 20rpx -2rpx rgba(0, 0, 0, 0.4);
+}
+
+.van-field__body.van-field__body--text {
+    border: 2rpx solid #ccc !important;
+    padding: 4rpx 10rpx 4rpx 20rpx !important;
+    font-size: 24rpx !important;
+    border-radius: 10rpx !important;
+}
+
+.valuation {
+    display: flex;
+    align-items: center;
+    font-size: 36rpx;
+    font-weight: 700;
+    margin-top: 20rpx;
+}
+
+.van-icon.van-icon-shield-o {
+    margin-right: 30rpx;
+    margin-top: 6rpx;
+}
+
+.orderNumber {
+    font-size: 28rpx;
+}
+
+
+.fillEnInfo {
+    font-size: 24rpx;
+    color: #ef0606;
+    margin-left: 15rpx;
+    font-weight: 700;
+}
+
+.van-icon.van-icon-warning-o {
+    font-weight: 700;
+}
+
+
+.warning {
+    display: flex;
+    align-items: baseline;
+}
+
+.switchWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20rpx 0;
+    font-size: 26rpx;
+    border-bottom: 2rpx solid #bcbcbc;
+}
+
+.insurance {
+    padding: 20rpx 0 10rpx;
+    font-size: 26rpx;
+}
+
+
+.buttonGroup {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.btn {
+    flex: 1;
+    border-radius: 0;
+    line-height: 120rpx;
+    background-color: #e2e2e2;
+}
+
+.btn:first-child {
+    background-color: #5d88ff;
+    color: #fff;
+}
+
+.btn::after {
+    border: none;
+}
+
+
+.submitBtn {
+    background-color: #40b850;
+    color: #fff;
+}
+
+.userAddress  {
+    padding: 0 !important;
+}
+
+.text {
+    text-indent: 50rpx;
+}
+.ConfirmModalTitle {
+    margin-left: 30rpx;
+    font-weight: 700;
+    font-size: 36rpx;
+    margin-top: 30rpx;
+}
+
+
+.addOrder {
+    font-size: 30rpx;
+    color: #999;
+    word-break:break-all;
+}
+
+.modalTitle {
+    margin: 0 !important;
+}
+
+.copAddress  {
+    padding-top: 0 !important;
+}

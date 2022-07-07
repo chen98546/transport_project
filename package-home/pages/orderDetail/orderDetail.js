@@ -1,4 +1,6 @@
-import { copyInfoFn } from "../../../utils/methods.js";
+import {
+  copyInfoFn
+} from "../../../utils/methods.js";
 Page({
   // 页面的初始数据
   data: {
@@ -15,19 +17,50 @@ Page({
     closeModal: true,
     closeModal2: true,
     closeModal3: true,
+    closeModal4: true,
+    closeModal5: true,
     submitBtn: true,
     arrValue: "",
     orderNumber: 20220509140712345678,
+    params: [],
+    isPaid: false
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: function (options) {
+
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
 
   // 生命周期函数--监听页面显示
-  onShow: function () {},
+  onShow: function () {
+    const pages = getCurrentPages()
+    const current = pages[pages.length - 1];
+    const event = current.getOpenerEventChannel();
+    event.on('getOrderInfoEV', params => {
+      this.setData({
+        params
+      })
+    });
+    console.log(this.data.params.orderList.length);
+    if (this.data.params.orderList.length) {
+      for (let i = 0; i < this.data.params.orderList.length; i++) {
+        let list = {
+          nodeId: this.data.nodeId++,
+          value: this.data.params.orderList[i].id,
+          orderStatus: this.data.params.orderList[i].orderStatus,
+        };
+        this.data.orderItemList.push(list);
+      }
+      this.setData({
+        orderItemList: this.data.orderItemList,
+        disabledInput: true,
+        inputValue: "",
+      });
+    }
+  },
 
   // 生命周期函数--监听页面隐藏
   onHide: function () {},
@@ -50,7 +83,10 @@ Page({
   },
 
   gettingDataEv(e) {
-    this.setData({ inputValue: e.detail.value });
+    this.setData({
+      inputValue: e.detail.value
+    });
+
     for (let i = 0; i < e.detail.value; i++) {
       let list = {
         nodeId: this.data.nodeId++,
@@ -64,30 +100,46 @@ Page({
       inputValue: "",
     });
     if (!this.data.orderItemList.length) {
-      this.setData({ disabledInput: false });
+      this.setData({
+        disabledInput: false
+      });
     } else {
-      this.setData({ disabledInput: true });
+      this.setData({
+        disabledInput: true
+      });
     }
   },
 
   removeItemEv(e) {
     this.data.orderItemList.splice(e.target.dataset.index, 1);
-    this.setData({ orderItemList: this.data.orderItemList });
+    this.setData({
+      orderItemList: this.data.orderItemList
+    });
     if (!this.data.orderItemList.length) {
-      this.setData({ disabledInput: false, submitBtn: true });
+      this.setData({
+        disabledInput: false,
+        submitBtn: true
+      });
     } else {
-      this.setData({ disabledInput: true, submitBtn: false });
+      this.setData({
+        disabledInput: true,
+        submitBtn: false
+      });
     }
   },
 
   // 补充单号
   addOrderItemEv() {
-    this.setData({ closeModal: false });
+    this.setData({
+      closeModal: false
+    });
   },
 
   // 模态框取消操作
   modalRefuseEv() {
-    this.setData({ closeModal: true });
+    this.setData({
+      closeModal: true
+    });
   },
   // 模态框确认操作
   modalAllowEv() {
@@ -101,28 +153,71 @@ Page({
       orderItemList: this.data.orderItemList,
       disabledInput: true,
       inputValue: "",
-      submitBtn:true
+      submitBtn: true
     });
   },
 
   // 模态框取消操作
   cancleHandleEv() {
-    this.setData({ closeModal2: true });
+    this.setData({
+      closeModal2: true
+    });
   },
   // 模态框确认操作
   confirmHandleEv() {
-    this.setData({ closeModal2: true });
-    wx.switchTab({ url: "/pages/index/index" });
+    this.setData({
+      closeModal2: true
+    });
+    wx.switchTab({
+      url: "/pages/index/index"
+    });
   },
 
   // 模态框取消操作
   cancleHandleEv2() {
-    this.setData({ closeModal3: true });
+    this.setData({
+      closeModal3: true
+    });
   },
   // 模态框确认操作
   confirmHandleEv2() {
-    this.setData({ closeModal3: true });
-    wx.switchTab({ url: "/pages/order/order" });
+    this.setData({
+      closeModal3: true
+    });
+    wx.switchTab({
+      url: "/pages/order/order"
+    });
+  },
+
+  // 模态框取消操作
+  cancleHandleEv3() {
+    this.setData({
+      closeModal4: true
+    });
+  },
+  // 模态框确认操作
+  confirmHandleEv3() {
+    this.setData({
+      closeModal4: true,
+      isPaid: true
+    });
+  },
+
+  // 模态框取消操作
+  cancleHandleEv4() {
+    this.setData({
+      closeModal5: true
+    });
+  },
+  // 模态框确认操作
+  confirmHandleEv4() {
+    this.setData({
+      closeModal5: true,
+      isPaid: true
+    });
+    wx.navigateTo({
+      url: '/package-home/pages/valuation/valuation',
+    })
   },
 
   changeEv(e) {
@@ -131,15 +226,35 @@ Page({
       return item;
     });
     let submitBtn = orderItemList.every((item) => item.value !== "");
-    this.setData({ orderItemList, submitBtn: !submitBtn });
+    this.setData({
+      orderItemList,
+      submitBtn: !submitBtn
+    });
   },
 
   cancleBtnEv() {
-    this.setData({ closeModal2: false });
+    this.setData({
+      closeModal2: false
+    });
   },
 
   submitBtnEv() {
     let arrValue = this.data.orderItemList.map((item) => item.value);
-    this.setData({ closeModal3: false, arrValue: arrValue.join(",") });
+    this.setData({
+      closeModal3: false,
+      arrValue: arrValue.join(",")
+    });
   },
+
+  orderPackageEv() {
+    this.setData({
+      closeModal4: false,
+    });
+  },
+
+  paidOptionsEv() {
+    this.setData({
+      closeModal5: false,
+    });
+  }
 });

@@ -1,4 +1,4 @@
-<van-index-bar>
+<van-index-bar  index-list="{{ indexList }}" bind:select="getSelectIndexEv">
     <block wx:for="{{contryMap}}" wx:key="index">
         <van-index-anchor index="{{index}}" />
         <block wx:for="{{contryMap[index]}}" wx:for-item="addr" wx:key="index">

@@ -34,6 +34,8 @@
     </view>
 </view>
 
+<Unpaid isPaid="{{isPaid}}"></Unpaid>
+
 <view class="wrap">
     <view>
         <van-icon class="warningIcon" name="warning-o" color="#ef0606" size="24rpx" />
@@ -44,12 +46,13 @@
         <text class="courierNum">快递个数</text>
         <input class="courierInput" type="number" bindblur="gettingDataEv" type="text" placeholder="请输入（输入后弹出快递单号位置）" disabled="{{disabledInput}}" value="{{inputValue}}" style="background:{{disabledInput ? '#666' : ''}};color:{{disabledInput ? '#f9f9f9' : ''}} ;" />
     </view>
-    <textarea class="textarea" name="" id="" cols="30" rows="10" placeholder="备注信息，例如：去掉包装盒等" placeholder-class="placeholder"></textarea>
+    <textarea class="textarea" cols="30" rows="10" placeholder="备注信息，例如：去掉包装盒等" placeholder-class="placeholder"></textarea>
 
     <view class="orderNumber">
         <view class="orderItem" wx:for="{{orderItemList}}" wx:key="index">
-            <text class="sort">{{index+1}}.</text>
-            <van-field placeholder="请输入快递单号" icon="delete-o" style="width: 100%;" bind:click-icon="removeItemEv" value="{{item.value}}" bind:change="changeEv" data-index="{{index}}" />
+            <text class="sort">{{index + 1}}.</text>
+            <van-field placeholder="请输入快递单号" icon="{{!params.orderstate ? 'delete-o' : ''}}" style="width: 100%;" bind:click-icon="removeItemEv" value="{{item.value}}" bind:change="changeEv" data-index="{{index}}" />
+            <view slot="right-icon" class="statusTag" wx:if="{{params.orderstate}}">{{item.orderStatus ? '已入库' : '待入仓'}}</view>
         </view>
 
         <view class="supplement" wx:if="{{orderItemList.length}}" bindtap="addOrderItemEv">
@@ -60,7 +63,7 @@
 </view>
 
 <view class="wrap statusWrap">
-    <view class="row"  bindtap="copyDetailInfoEv" data-phoneNum="{{orderNumber}}">
+    <view class="row" bindtap="copyDetailInfoEv" data-phoneNum="{{orderNumber}}">
         订单号：<text>{{orderNumber}}</text>
         <text class="copyPhoneNumber copyOrderNumber">复制</text>
     </view>
@@ -73,6 +76,9 @@
     <view class="row">
         订单状态：<text style="color: #e18100;">待填写</text>
     </view>
+    <view class="row" wx:if="{{isPaid}}">
+        支付状态：<text style="color: #e18100;">待支付</text>
+    </view>
     <view class="row">
         下单时间：<text>2022-05-09 14:07:12</text>
     </view>
@@ -80,8 +86,14 @@
 
 <view class="buttonGroup">
     <button class="btn">联系客服</button>
-    <button class="btn" wx:if="{{submitBtn}}" bindtap="cancleBtnEv">取消订单</button>
-    <button class="btn submitBtn" wx:else bindtap="submitBtnEv">提交订单</button>
+    <block wx:if="{{!params.orderstate}}">
+        <button class="btn" wx:if="{{submitBtn}}" bindtap="cancleBtnEv">取消订单</button>
+        <button class="btn submitBtn" wx:else bindtap="submitBtnEv">提交订单</button>
+    </block>
+    <block wx:else>
+        <button class="btn submitBtn" wx:if="{{params.orderstate && !isPaid}}" bindtap="orderPackageEv">确认打包</button>
+        <button class="btn submitBtn" wx:elif="{{isPaid}}" bindtap="paidOptionsEv">支付选项</button>
+    </block>
 </view>
 
 <ConfirmModal closeModal="{{closeModal}}">
@@ -110,4 +122,34 @@
     <view slot="modalRefuse" bind:tap="cancleHandleEv2">取消</view>
     <view slot="modalAllow" bind:tap="confirmHandleEv2">确认</view>
 </ConfirmModal>
-<!-- 是否确认打包所有的快递包裹 确认后，订单进入捡货状态，快递包裹将会进行打包称重，是否要继续？ -->
+
+<ConfirmModal closeModal="{{closeModal4}}">
+    <view slot="modalTitle" class="ConfirmModalTitle">是否确认打包所有的快递包裹</view>
+    <view slot="userAddress" class="addOrder cancleOrder">
+        确认后，订单进入捡货状态，快递包裹将会进行打包称重，是否要继续？
+    </view>
+    <view slot="modalRefuse" bind:tap="cancleHandleEv3">取消</view>
+    <view slot="modalAllow" bind:tap="confirmHandleEv3">确认</view>
+</ConfirmModal>
+
+<ConfirmModal closeModal="{{closeModal5}}">
+    <view slot="modalTitle" class="ConfirmModalTitle">请确认您的收货地址</view>
+    <view slot="userAddress" class="addOrder confirmAddress">
+        <view class="noticeIcon">
+            <van-icon name="location-o" color="#fff" size="40rpx" />
+        </view>
+        <view class="warehouseBox">
+            <view class="warehouseInfo confirmWarehouseInfo">
+                <view class="warehouseInfoLeft">
+                    {{warehouseInfo.warehouse}}
+                </view>
+                <view class="warehouseInfoRight">
+                    {{warehouseInfo.warehouseNum}}
+                </view>
+            </view>
+            <view class="warehouseAddress confirmAddr">{{warehouseInfo.warehouseAddr}}</view>
+        </view>
+    </view>
+    <view slot="modalRefuse" bind:tap="cancleHandleEv4">取消</view>
+    <view slot="modalAllow" bind:tap="confirmHandleEv4">确认</view>
+</ConfirmModal>

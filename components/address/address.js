@@ -23,5 +23,11 @@ Component({
       });
       this.setData({ address });
     },
+    getAddressEv(e) {
+      let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+      let prevPage = pages[pages.length - 2]; //获取上一个页面的js里面的pages的所有信息,-2 是上一个页面
+      prevPage.setData({ address: e.currentTarget.dataset.address });
+      wx.navigateBack({delta: 1});
+    },
   },
 });

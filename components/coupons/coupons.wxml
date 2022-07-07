@@ -1,4 +1,4 @@
-<view class="coupons" wx:for="{{couponsList}}" wx:key="index" style="filter:{{item.style }}">
+<view class="coupons" wx:for="{{couponsList}}" wx:key="index" style="filter:{{item.style }}" bindtap="couponsDetailEv" data-coupons="{{item}}">
     <view class="couponsLeft">
         <image class="couponsLeftImg" src="/asset/images/usable1.png"></image>
         <view class="price">

@@ -25,7 +25,7 @@
             选择地址
         </view>
     </view>
-    <FillAddrInfo bind:receiveInfo="receiveInfoEv">
+    <FillAddrInfo bind:receiveInfo="receiveInfoEv" addressInfo="{{address}}">
         <button slot="button" class="transportBtn" bindtap="transportEv">立即转运</button>
     </FillAddrInfo>
 </view>

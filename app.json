@@ -9,10 +9,10 @@
   "usingComponents": {
     "Coupons": "/components/coupons/coupons",
     "Address": "/components/address/address",
-    "SelectAddr": "/components/selectAddr/selectAddr",
     "ConfirmModal": "/components/confirmModal/confirmModal",
     "FillAddrInfo": "/components/fillAddrInfo/fillAddrInfo",
     "OrderCard": "/components/orderCard/orderCard",
+    "Unpaid": "/components/unpaid/unpaid",
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
@@ -27,7 +27,9 @@
     "van-index-anchor": "@vant/weapp/index-anchor/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-image": "@vant/weapp/image/index"
   },
   "tabBar": {
     "custom": true,
@@ -85,7 +87,9 @@
         "pages/orderDetail/orderDetail",
         "pages/transportNotice/transportNotice",
         "pages/weight/weight",
-        "pages/warehouseAddr/warehouseAddr"
+        "pages/warehouseAddr/warehouseAddr",
+        "pages/valuation/valuation",
+        "pages/payment/payment"
       ]
     }
   ],

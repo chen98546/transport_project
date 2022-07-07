@@ -1,0 +1,55 @@
+<view class="warehouse warp">
+    <view class="noticeIcon">
+        <van-icon name="location-o" color="#fff" size="40rpx" />
+    </view>
+    <view class="warehouseBox">
+        <view class="warehouseInfo">
+            <view class="warehouseInfoLeft">
+                用户1
+            </view>
+            <view class="warehouseInfoRight">
+                15699998888
+            </view>
+        </view>
+        <view class="warehouseAddress">
+            MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A
+            TUCSON, AZ 85705 USA
+        </view>
+    </view>
+</view>
+
+
+<view class="warp">
+    <view class="flex">
+        <view class="flexLeft">订单号：</view>
+        <view class="flexRight">202245454054631313125</view>
+    </view>
+    <view class="flex">
+        <view class="flexLeft">转运线路</view>
+        <view class="flexRight">中国 - 美国</view>
+    </view>
+    <view class="flex">
+        <view class="flexLeft">预选渠道</view>
+        <view class="flexRight">普通货物</view>
+    </view>
+    <view class="flex">
+        <view class="flexLeft">货物属性</view>
+        <view class="flexRight">普通货物</view>
+    </view>
+    <view class="flex">
+        <view class="flexLeft">转运费</view>
+        <view class="flexRight">￥138.00</view>
+    </view>
+    <view class="flex">
+        <view class="flexLeft">附加费</view>
+        <view class="flexRight">￥38.00</view>
+    </view>
+    <view class="flex">
+        <view class="flexLeft">丢失险</view>
+        <view class="flexRight">￥0.00</view>
+    </view>
+    <view class="flex">
+        <view class="flexLeft">关税险</view>
+        <view class="flexRight">￥28.00</view>
+    </view>
+</view>

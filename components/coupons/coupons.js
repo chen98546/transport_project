@@ -11,5 +11,12 @@ Component({
   data: {},
 
   // 组件的方法列表
-  methods: {},
+  methods: {
+    couponsDetailEv(e) {
+      console.log(e.currentTarget.dataset.coupons);
+      wx.navigateTo({
+        url: '/package-user/pages/couponsDetail/couponsDetail?coupons=' + JSON.stringify(e.currentTarget.dataset.coupons),
+      })
+    }
+  },
 });
