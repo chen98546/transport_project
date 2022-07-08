@@ -1,0 +1,8 @@
+<view class="emptyBox" wx:if="{{!address.length}}">
+    <van-empty description="亲，你还没有添加地址信息喔~" />
+    <button class="addAddrBtn">添加地址</button>
+</view>
+<block wx:else>
+    <Address address="{{address}}"></Address>
+    <van-button round type="info" color="#e7691d">新建地址</van-button>
+</block>

@@ -1,0 +1,3 @@
+.emptyBox {
+    margin-top: 150rpx;
+}
