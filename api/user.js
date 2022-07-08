@@ -8,6 +8,7 @@ module.exports.wxlogin = function (code) {
 };
 
 module.exports.fetchPhoneNumber = function (sessionKey, encryptedData, iv) {
+  console.log(10086,sessionKey, encryptedData, iv);
   return request({
     url: "http://127.0.0.1:5566/maoyan/getPhoneNumber",
     method: "post",

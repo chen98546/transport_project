@@ -51,7 +51,8 @@
         "pages/transportProcess/transportProcess",
         "pages/transportNotice/transportNotice",
         "pages/aboutUs/aboutUs",
-        "pages/couponsDetail/couponsDetail"
+        "pages/couponsDetail/couponsDetail",
+        "pages/myParcel/myParcel"
       ]
     },
   {
@@ -94,7 +95,8 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-picker": "@vant/weapp/picker/index",
     "van-image": "@vant/weapp/image/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-steps": "@vant/weapp/steps/index"
   },
   
   "permission": {

@@ -236,6 +236,7 @@
 
 .copAddress {
     padding-top: 0 !important;
+    background-color: #fff !important; 
 }
 
 .submitBtn {

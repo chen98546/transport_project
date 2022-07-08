@@ -21,13 +21,41 @@ Component({
         }
         return item;
       });
-      this.setData({ address });
+      this.setData({
+        address
+      });
     },
     getAddressEv(e) {
       let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
-      let prevPage = pages[pages.length - 2]; //获取上一个页面的js里面的pages的所有信息,-2 是上一个页面
-      prevPage.setData({ address: e.currentTarget.dataset.address });
-      wx.navigateBack({delta: 1});
+      if (pages[0].route == 'pages/index/index') {
+        let prevPage = pages[pages.length - 2]; //获取上一个页面的js里面的pages的所有信息,-2 是上一个页面
+        prevPage.setData({
+          address: e.currentTarget.dataset.address
+        });
+        wx.navigateBack();
+      } else {
+        return
+      }
     },
+    editAddressEv(e) {
+      wx.navigateTo({
+        url: '/package-user/pages/addAddress/addAddress',
+        success(res) {
+          res.eventChannel.emit('transmitAddrEv', e.target.dataset.item)
+        }
+      })
+    },
+    removeAddressEv(e) {
+     let address =  this.data.address.filter((item, index) => {
+        if (index == e.target.dataset.index) {
+          this.data.address.slice(index, 1)
+        } else {
+          return item
+        }
+      })
+      this.setData({
+        address
+      })
+    }
   },
 });

@@ -40,37 +40,42 @@ Page({
       },
       {
         id: 2,
+        text: "我的包裹",
+        url: "/package-user/pages/myParcel/myParcel",
+      },
+      {
+        id: 3,
         text: "我的优惠券",
         url: "/package-user/pages/myCoupons/myCoupons",
       },
-      { id: 3, text: "活动中心", url: "/package-user/pages/activity/activity" },
-      { id: 4, text: "联系客服", url: "/package-user/pages/service/service" },
+      { id: 4, text: "活动中心", url: "/package-user/pages/activity/activity" },
+      { id: 5, text: "联系客服", url: "/package-user/pages/service/service" },
       {
-        id: 5,
+        id: 6,
         text: "转运流程",
         url: "/package-user/pages/transportProcess/transportProcess",
       },
       {
-        id: 6,
+        id: 7,
         text: "转运须知",
         url: "/package-user/pages/transportNotice/transportNotice",
       },
-      { id: 7, text: "关于我们", url: "/package-user/pages/aboutUs/aboutUs" },
+      { id: 8, text: "关于我们", url: "/package-user/pages/aboutUs/aboutUs" },
     ],
     token: "",
     userInfo: {},
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {
+  onLoad: function (options) {},
+
+  // 生命周期函数--监听页面初次渲染完成
+  onReady: function () {
     this.setData({
       token: wx.getStorageSync("token"),
       userInfo: wx.getStorageSync("userInfo"),
     });
   },
-
-  // 生命周期函数--监听页面初次渲染完成
-  onReady: function () {},
 
   // 生命周期函数--监听页面显示
   onShow: function () {},
@@ -91,7 +96,6 @@ Page({
   onShareAppMessage: function () {},
 
   toSpecifiedPageEv(e) {
-    console.log(e);
     wx.navigateTo({
       url: e.target.dataset.url,
     });

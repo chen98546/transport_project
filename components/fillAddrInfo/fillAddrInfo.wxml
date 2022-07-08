@@ -1,10 +1,10 @@
 <view class="addAddress">
     <van-cell-group>
-        <van-field label="Name：" placeholder="Please fill in the recipient‘s name" border="{{ false }}" model:value="{{ username }}" error-message="{{errorMessage1}}" bind:blur="InfoBlurEv1" />
-        <van-field label="Phone：" type="number" placeholder="Please fill in the recipient‘s phone" border="{{ false }}" model:value="{{ phone }}" />
-        <van-field label="Address：" placeholder="Please fill in the address" border="{{ false }}" model:value="{{ address }}" error-message="{{errorMessage2}}" bind:blur="InfoBlurEv2" />
-        <van-field label="City：" placeholder="Please fill in the city" border="{{ false }}" model:value="{{ city }}" error-message="{{errorMessage3}}" bind:blur="InfoBlurEv3" />
-        <van-field label="PostCode：" type="number" placeholder="Please fill in the postcode" border="{{ false }}" model:value="{{ postcode  }}" />
+        <van-field label="Name：" placeholder="Please fill in the recipient‘s name" border="{{ false }}" model:value="{{ username }}" error-message="{{errorMessage1}}" value="{{ addressInfo.username || params.username }}" bind:blur="InfoBlurEv1" />
+        <van-field label="Phone：" type="number" placeholder="Please fill in the recipient‘s phone" border="{{ false }}" model:value="{{ phone }}" value="{{addressInfo.userPhone || params.userPhone }}" />
+        <van-field label="Address：" placeholder="Please fill in the address" border="{{ false }}" model:value="{{ address }}" error-message="{{errorMessage2}}" bind:blur="InfoBlurEv2" value="{{addressInfo.userAddr || params.userAddr }}" />
+        <van-field label="City：" placeholder="Please fill in the city" border="{{ false }}" model:value="{{ city }}" error-message="{{errorMessage3}}" bind:blur="InfoBlurEv3" value="{{  addressInfo.city ||  params.city }}" />
+        <van-field label="PostCode：" type="number" placeholder="Please fill in the postcode" border="{{ false }}" model:value="{{ postcode  }}" value="{{ addressInfo.postcode || params.postcode }}" />
         <slot name="country" />
     </van-cell-group>
 

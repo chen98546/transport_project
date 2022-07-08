@@ -17,6 +17,8 @@ Component({
     // 复制
     copyOrderNumber(e) {
       copyInfoFn(e.currentTarget.dataset.phonenum);
+      console.log(this.data.orderInfo);
+
     },
     toOrderDetailEv(e) {
       wx.navigateTo({
@@ -24,6 +26,11 @@ Component({
         success(res) {
           res.eventChannel.emit('getOrderInfoEV', e.target.dataset.item)
         }
+      })
+    },
+    toPayPageEv(){
+      wx.navigateTo({
+        url: '/package-home/pages/payment/payment',
       })
     }
   },

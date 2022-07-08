@@ -79,7 +79,8 @@ Page({
         origin: '中国',
         terminus: '美国',
         orderNumber: '20220506015545565256',
-        orderList: []
+        orderList: [],
+        payState:0
       },
       {
         id: 2,
@@ -96,7 +97,8 @@ Page({
         }, {
           id: 784524529,
           orderStatus: 0
-        }, ]
+        }, ],
+        payState:0
       },
       {
         id: 3,
@@ -115,7 +117,8 @@ Page({
             id: 78245259,
             orderStatus: 0
           }
-        ]
+        ],
+        payState:0
       },
       {
         id: 4,
@@ -134,7 +137,8 @@ Page({
             id: 785245,
             orderStatus: 1
           },
-        ]
+        ],
+        payState:1
       },
       {
         id: 5,
@@ -153,7 +157,8 @@ Page({
             id: 45245789,
             orderStatus: 1
           }
-        ]
+        ],
+        payState:1
       },
       {
         id: 6,
@@ -172,7 +177,8 @@ Page({
             id: 7245249,
             orderStatus: 1
           }
-        ]
+        ],
+        payState:1
       },
       {
         id: 7,
@@ -191,7 +197,8 @@ Page({
             id: 72452489,
             orderStatus: 1
           }
-        ]
+        ],
+        payState:1
       },
     ],
     status: 0,

@@ -14,15 +14,24 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "pages/index/index",
+                    "pathName": "pages/login/login",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "pages/index/index",
-                    "pathName": "pages/index/index",
+                    "pathName": "package-user/pages/addAddress/addAddress",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "package-home/pages/orderDetail/orderDetail",
+                    "query": "",
+                    "scene": null,
+                    "launchMode": "default"
                 }
             ]
         }

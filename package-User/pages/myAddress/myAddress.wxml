@@ -4,5 +4,5 @@
 </view>
 <block wx:else>
     <Address address="{{address}}"></Address>
-    <van-button round type="info" color="#e7691d">新建地址</van-button>
+    <van-button round type="info" color="#83a4ff" bindtap="toAddAddressEv">新建地址</van-button>
 </block>

@@ -4,7 +4,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 9;
+    z-index: 9998;
     background-color: #00000095;
 }
 
@@ -16,7 +16,7 @@
     position: fixed;
     left: 50%;
     top: 30%;
-    z-index: 99;
+    z-index: 9999;
     transform: translate(-50%, 0);
     border-radius: 10rpx;
     text-align: center;
@@ -98,6 +98,7 @@
     margin-bottom: 100rpx;
     padding: 20rpx;
     box-sizing: border-box;
+    background-color: #fff;
 }
 
 .cityIcon {
@@ -115,6 +116,7 @@
 
 .userInfo {
     flex: 1;
+    background-color: #fff;
 }
 
 .usertext {
@@ -135,6 +137,7 @@
     text-align: left;
     margin-bottom: 20rpx;
     padding: 0 60rpx 0 0px;
+    background-color: #fff;
 }
 
 .modalTitle {

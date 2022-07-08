@@ -1,0 +1,115 @@
+.noticeBox {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 30rpx;
+}
+
+.noticeCard {
+    position: relative;
+    padding: 30rpx;
+    box-sizing: border-box;
+    width: 320rpx;
+    border-radius: 20rpx;
+    background-color: #9083ff;
+    color: rgba(16, 16, 16, 100);
+    box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
+    border: 2rpx solid rgba(187, 187, 187, 100);
+    color: #fff;
+    margin: 10rpx 0;
+}
+
+.noticeTip1 {
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.noticeTip2 {
+    font-size: 26rpx;
+    text-align: center;
+    margin-top: 16rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weight {
+    width: 230rpx;
+    margin: 0 auto;
+}
+
+.steps {
+    width: 88vw;
+    margin: 50rpx auto;
+    border-radius: 20rpx;
+    overflow: hidden;
+    box-shadow: 0 5rpx 10rpx 3rpx rgba(0, 0, 0, 0.4);
+    padding: 20rpx 0;
+    box-sizing: border-box;
+}
+
+.setpsWrap {
+    position: relative;
+    width: 250rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+
+}
+
+.stepsItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70rpx;
+}
+
+.left {
+    background: #9083ff;
+    color: #fff;
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center {
+    font-size: 26rpx;
+    margin-right: 20rpx;
+}
+
+.right {
+    font-size: 30rpx;
+    color: #0881ec;
+    font-weight: 700;
+}
+
+.status {
+    font-size: 20rpx;
+    color: #c7c7c7;
+    margin: 0 0 20rpx 30rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.each {
+    flex: 2;
+}
+
+.number {
+    flex: 1;
+}
+
+/* .setpsWrap::before {
+    content: "";
+    position: absolute;
+    left: 40rpx;
+    top: 0;
+    width: 2rpx;
+    height: 100%;
+    background-color: red;
+} */

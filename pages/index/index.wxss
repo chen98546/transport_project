@@ -150,7 +150,7 @@ page {
 }
 
 .noticeTip1 {
-    font-size: 56rpx;
+    font-size: 50rpx;
     font-weight: 500;
 }
 

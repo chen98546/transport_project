@@ -9,6 +9,9 @@ Component({
     addressInfo: {
       type: Object,
     },
+    params: {
+      type: Object,
+    },
   },
 
   // 组件的初始数据
@@ -31,7 +34,13 @@ Component({
       let address = this.data.address;
       let city = this.data.city;
       let postcode = this.data.postcode;
-      let userInfo = { username, phone, address, city, postcode };
+      let userInfo = {
+        username,
+        phone,
+        address,
+        city,
+        postcode
+      };
       if (!username || !phone || !address || !city || !postcode) {
         wx.showToast({
           title: "地址信息不能为空，请补全地址信息",
@@ -39,7 +48,7 @@ Component({
         });
         return;
       }
-      let reg = /^[A-Za-z0-9]+$/;
+      let reg = /^[A-Za-z0-9,，\x20]+$/;
       let info = reg.test(username) && reg.test(address) && reg.test(city);
       if (info) {
         this.triggerEvent("receiveInfo", userInfo);
@@ -53,30 +62,42 @@ Component({
     },
 
     InfoBlurEv1() {
-      let reg = /^[A-Za-z0-9]+$/;
+      let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.username)) {
-        this.setData({ errorMessage1: "格式错误" });
+        this.setData({
+          errorMessage1: "格式错误"
+        });
         return;
       } else {
-        this.setData({ errorMessage1: "" });
+        this.setData({
+          errorMessage1: ""
+        });
       }
     },
     InfoBlurEv2() {
-      let reg = /^[A-Za-z0-9]+$/;
+      let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.address)) {
-        this.setData({ errorMessage2: "格式错误" });
+        this.setData({
+          errorMessage2: "格式错误"
+        });
         return;
       } else {
-        this.setData({ errorMessage2: "" });
+        this.setData({
+          errorMessage2: ""
+        });
       }
     },
     InfoBlurEv3() {
-      let reg = /^[A-Za-z0-9]+$/;
+      let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.city)) {
-        this.setData({ errorMessage3: "格式错误" });
+        this.setData({
+          errorMessage3: "格式错误"
+        });
         return;
       } else {
-        this.setData({ errorMessage3: "" });
+        this.setData({
+          errorMessage3: ""
+        });
       }
     },
   },

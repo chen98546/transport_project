@@ -32,7 +32,7 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
-    
+
 
     // let status = this.data.params.orderList.every(item => {
     //   return item.orderStatus == 1
@@ -48,38 +48,37 @@ Page({
     const pages = getCurrentPages()
     const current = pages[pages.length - 1];
     const event = current.getOpenerEventChannel();
+    if (JSON.stringify(event) == '{}') return
     event.on('getOrderInfoEV', params => {
       this.setData({
         params
       })
-      console.log(params);
-    });
-    if (this.data.params.orderList.length) {
-      for (let i = 0; i < this.data.params.orderList.length; i++) {
-        let list = {
-          nodeId: this.data.nodeId++,
-          value: this.data.params.orderList[i].id,
-          orderStatus: this.data.params.orderList[i].orderStatus,
-        };
-        this.data.orderItemList.push(list);
-      }
-      this.data.orderItemList.map(item => {
-        item.fieldSisabled = false
-        return item
-      }).filter(item => {
-        if (item.orderStatus == 1) {
-          item.fieldSisabled = true
+      if (params.orderList.length) {
+        for (let i = 0; i < params.orderList.length; i++) {
+          let list = {
+            nodeId: this.data.nodeId++,
+            value: params.orderList[i].id,
+            orderStatus: params.orderList[i].orderStatus,
+          };
+          this.data.orderItemList.push(list);
         }
-        return item
-      })
-      this.setData({
-        orderItemList: this.data.orderItemList,
-        disabledInput: true,
-        inputValue: "",
-      });
-    } else {
-      return
-    }
+        this.data.orderItemList.map(item => {
+          item.fieldSisabled = false
+          return item
+        }).filter(item => {
+          if (item.orderStatus == 1) {
+            item.fieldSisabled = true
+          }
+          return item
+        })
+        this.setData({
+          orderItemList: this.data.orderItemList,
+          disabledInput: true,
+          inputValue: "",
+        });
+      }
+    });
+
   },
 
   // 生命周期函数--监听页面隐藏
@@ -277,5 +276,11 @@ Page({
     this.setData({
       closeModal5: false,
     });
+  },
+
+  toServiceEv(){
+    wx.navigateTo({
+      url: '/package-user/pages/service/service',
+    })
   }
 });
