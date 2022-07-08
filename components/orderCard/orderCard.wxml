@@ -22,6 +22,7 @@
     <view class="buttonGroup">
         <van-button plain type="primary" color="#f47575" size="small" wx:if="{{item.orderstate == 0}}" bindtap="toOrderDetailEv" data-item="{{item}}">去填写</van-button>
         <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderstate == 3}}" bindtap="toOrderDetailEv" data-item="{{item}}">去打包</van-button>
+        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderstate == 5}}" bindtap="toOrderDetailEv" data-item="{{item}}">查看物流</van-button>
         <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderstate == 6}}">去处理</van-button>
         <van-button type="info" color="#83a4ff" size="small" class="detail">详情</van-button>
     </view>

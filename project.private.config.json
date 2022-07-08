@@ -14,10 +14,15 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "package-home/pages/payment/payment",
+                    "pathName": "pages/index/index",
                     "query": "",
-                    "scene": null,
-                    "launchMode": "default"
+                    "scene": null
+                },
+                {
+                    "name": "pages/index/index",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

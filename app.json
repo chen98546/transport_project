@@ -6,31 +6,6 @@
     "pages/user/user",
     "pages/login/login"
   ],
-  "usingComponents": {
-    "Coupons": "/components/coupons/coupons",
-    "Address": "/components/address/address",
-    "ConfirmModal": "/components/confirmModal/confirmModal",
-    "FillAddrInfo": "/components/fillAddrInfo/fillAddrInfo",
-    "OrderCard": "/components/orderCard/orderCard",
-    "Unpaid": "/components/unpaid/unpaid",
-    "van-button": "@vant/weapp/button/index",
-    "van-tabbar": "@vant/weapp/tabbar/index",
-    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
-    "van-empty": "@vant/weapp/empty/index",
-    "van-field": "@vant/weapp/field/index",
-    "van-area": "@vant/weapp/area/index",
-    "van-switch": "@vant/weapp/switch/index",
-    "van-index-bar": "@vant/weapp/index-bar/index",
-    "van-index-anchor": "@vant/weapp/index-anchor/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index",
-    "van-picker": "@vant/weapp/picker/index",
-    "van-image": "@vant/weapp/image/index"
-  },
   "tabBar": {
     "custom": true,
     "color": "#7A7E83",
@@ -63,7 +38,8 @@
       }
     ]
   },
-  "subPackages": [{
+  "subPackages": [
+    {
       "root": "package-user",
       "name": "userInfo",
       "pages": [
@@ -78,21 +54,49 @@
         "pages/couponsDetail/couponsDetail"
       ]
     },
-    {
-      "root": "package-home",
-      "name": "home",
-      "pages": [
-        "pages/selectCountry/selectCountry",
-        "pages/fillInAddress/fillInAddress",
-        "pages/orderDetail/orderDetail",
-        "pages/transportNotice/transportNotice",
-        "pages/weight/weight",
-        "pages/warehouseAddr/warehouseAddr",
-        "pages/valuation/valuation",
-        "pages/payment/payment"
-      ]
-    }
-  ],
+  {
+    "root": "package-home",
+    "name": "home",
+    "pages": [
+      "pages/selectCountry/selectCountry",
+      "pages/fillInAddress/fillInAddress",
+      "pages/orderDetail/orderDetail",
+      "pages/transportNotice/transportNotice",
+      "pages/weight/weight",
+      "pages/warehouseAddr/warehouseAddr",
+      "pages/valuation/valuation",
+      "pages/payment/payment",
+      "pages/paymentSuccess/paymentSuccess"
+    ]
+  }
+],
+  "usingComponents": {
+    "Coupons": "/components/coupons/coupons",
+    "Address": "/components/address/address",
+    "ConfirmModal": "/components/confirmModal/confirmModal",
+    "FillAddrInfo": "/components/fillAddrInfo/fillAddrInfo",
+    "OrderCard": "/components/orderCard/orderCard",
+    "Unpaid": "/components/unpaid/unpaid",
+    "van-button": "@vant/weapp/button/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-area": "@vant/weapp/area/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-popup": "@vant/weapp/popup/index"
+  },
+  
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"

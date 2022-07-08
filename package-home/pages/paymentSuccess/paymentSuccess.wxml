@@ -1,0 +1,17 @@
+<view class="payWrap">
+    <view class="payIcon">
+        <image class="payImg" src="/asset/images/paySuccess.png"></image>
+    </view>
+
+    <view class="payText">
+        支付成功
+    </view>
+
+    <view class="content">
+        订单将会在24小时内为您发货，并推送信息给您，请您耐心等待，{{countdown}}秒钟后为您跳转回首页
+    </view>
+
+    <view class="btnWrap">
+        <van-button class="btn" plain type="primary" bind:click="completeEv">完成</van-button>
+    </view>
+</view>

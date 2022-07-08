@@ -1,5 +1,4 @@
-
-.warp{
+.warp {
     width: 93vw;
     margin: 40rpx auto;
     box-sizing: border-box;
@@ -71,4 +70,138 @@
     justify-content: space-between;
     font-size: 28rpx;
     margin: 10rpx 0 20rpx;
+}
+
+.minus {
+    color: #ec0609;
+}
+
+
+.fillEnInfo {
+    font-size: 24rpx;
+    color: #ec0609;
+    margin-left: 15rpx;
+    font-weight: 700;
+}
+
+.van-icon.van-icon-warning-o {
+    font-weight: 700;
+}
+
+
+.warning {
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 20rpx;
+    border-bottom: 4rpx solid #dddddd;
+}
+
+.total {
+    text-align: right;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+
+.price {
+    font-size: 28rpx;
+    font-weight: 700;
+    margin-left: 10rpx;
+}
+
+.yen {
+    color: #ec0609;
+    margin: 0 10rpx;
+}
+
+.deal {
+    display: flex;
+    justify-content: center;
+    color: #494b4d;
+    margin-top: 6rpx;
+}
+
+.deal .van-checkbox .van-checkbox__icon {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: -10rpx;
+    margin-top: 4rpx;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 130rpx !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30rpx;
+    font-size: 26rpx;
+    box-sizing: border-box;
+    border-top: 2rpx solid #f2f2f2;
+}
+
+.footerRight {
+    width: 260rpx;
+    height: 100%;
+    background: #83a4ff;
+    font-size: 32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin: 0;
+    border-radius: 0;
+}
+
+.van-button {
+    width: 100%;
+    height: 100%;
+    background: #83a4ff;
+}
+
+.van-button.van-button--default.van-button--100 {
+    height: 100%;
+}
+
+.popup {
+    padding: 20rpx;
+    color: #888888;
+    font-size: 28rpx;
+}
+
+.sort {
+    margin: 40rpx 0;
+}
+
+.row {
+    margin: 10rpx 0 20rpx;
+    text-indent: 58rpx;
+    line-height: 1.5;
+}
+
+.transportBtn {
+    background-color: #83a4ff;
+    width: 400rpx;
+    color: #fff;
+    font-size: 28rpx;
+    padding: 0;
+    border-radius: 100rpx;
+}
+
+.btnWrap {
+    width: 100%;
+    background-color: #537ef5;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 30rpx 0;
+}
+
+.transportProcess:last-child {
+    margin-bottom: 100rpx;
+}
+
+.sixth {
+    margin-bottom: 100rpx;
 }

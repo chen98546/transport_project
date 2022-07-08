@@ -1,10 +1,12 @@
 {
     "description": "项目配置文件。",
     "packOptions": {
-        "ignore": [{
-            "type": "folder",
-            "value": "/minitest"
-        }],
+        "ignore": [
+            {
+                "type": "folder",
+                "value": "/minitest"
+            }
+        ],
         "include": []
     },
     "setting": {
@@ -16,7 +18,7 @@
         "minified": true,
         "newFeature": false,
         "coverView": true,
-        "nodeModules": false,
+        "nodeModules": true,
         "autoAudits": false,
         "showShadowRootInWxmlPanel": true,
         "scopeDataCheck": false,
@@ -34,6 +36,7 @@
             "disablePlugins": [],
             "outputPath": ""
         },
+        "enableEngineNative": false,
         "useIsolateContext": true,
         "userConfirmedBundleSwitch": false,
         "packNpmManually": false,
@@ -42,11 +45,10 @@
         "disableUseStrict": false,
         "minifyWXML": true,
         "showES6CompileOption": false,
-        "useCompilerPlugins": false,
-        "ignoreUploadUnusedFiles": true
+        "useCompilerPlugins": false
     },
     "compileType": "miniprogram",
-    "libVersion": "2.16.0",
+    "libVersion": "2.25.0",
     "appid": "wx462bc4b528a13c96",
     "projectname": "app",
     "condition": {

@@ -1,6 +1,7 @@
 import {
   copyInfoFn
 } from "../../../utils/methods.js";
+
 Page({
   // 页面的初始数据
   data: {
@@ -23,11 +24,19 @@ Page({
     arrValue: "",
     orderNumber: 20220509140712345678,
     params: [],
-    isPaid: false
+    isPaid: false,
+    showSupplement: true,
+    fieldSisabled: false,
+    package: false
   },
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
+    
+
+    // let status = this.data.params.orderList.every(item => {
+    //   return item.orderStatus == 1
+    // })
 
   },
 
@@ -43,8 +52,8 @@ Page({
       this.setData({
         params
       })
+      console.log(params);
     });
-    console.log(this.data.params.orderList.length);
     if (this.data.params.orderList.length) {
       for (let i = 0; i < this.data.params.orderList.length; i++) {
         let list = {
@@ -54,11 +63,22 @@ Page({
         };
         this.data.orderItemList.push(list);
       }
+      this.data.orderItemList.map(item => {
+        item.fieldSisabled = false
+        return item
+      }).filter(item => {
+        if (item.orderStatus == 1) {
+          item.fieldSisabled = true
+        }
+        return item
+      })
       this.setData({
         orderItemList: this.data.orderItemList,
         disabledInput: true,
         inputValue: "",
       });
+    } else {
+      return
     }
   },
 
@@ -199,7 +219,8 @@ Page({
   confirmHandleEv3() {
     this.setData({
       closeModal4: true,
-      isPaid: true
+      showSupplement: false,
+      package: true
     });
   },
 

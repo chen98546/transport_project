@@ -51,14 +51,16 @@
     <view class="orderNumber">
         <view class="orderItem" wx:for="{{orderItemList}}" wx:key="index">
             <text class="sort">{{index + 1}}.</text>
-            <van-field placeholder="请输入快递单号" icon="{{!params.orderstate ? 'delete-o' : ''}}" style="width: 100%;" bind:click-icon="removeItemEv" value="{{item.value}}" bind:change="changeEv" data-index="{{index}}" />
+            <van-field placeholder="请输入快递单号" icon="{{!params.orderstate ? 'delete-o' : ''}}" style="width: 100%;" bind:click-icon="removeItemEv" value="{{item.value}}" bind:change="changeEv" data-index="{{index}}" disabled="{{item.fieldSisabled}}" />
             <view slot="right-icon" class="statusTag" wx:if="{{params.orderstate}}">{{item.orderStatus ? '已入库' : '待入仓'}}</view>
         </view>
 
-        <view class="supplement" wx:if="{{orderItemList.length}}" bindtap="addOrderItemEv">
-            <text>+</text>
-            <text>补充快递单号</text>
-        </view>
+        <block wx:if="{{showSupplement}}">
+            <view class="supplement" wx:if="{{orderItemList.length}}" bindtap="addOrderItemEv">
+                <text>+</text>
+                <text>补充快递单号</text>
+            </view>
+        </block>
     </view>
 </view>
 
@@ -74,7 +76,7 @@
         预选渠道：<text>普通货物</text>
     </view>
     <view class="row">
-        订单状态：<text style="color: #e18100;">待填写</text>
+        订单状态：<text style="color: #e18100;">{{ !package ? '待填写' : '待拣货'}}</text>
     </view>
     <view class="row" wx:if="{{isPaid}}">
         支付状态：<text style="color: #e18100;">待支付</text>
@@ -91,7 +93,7 @@
         <button class="btn submitBtn" wx:else bindtap="submitBtnEv">提交订单</button>
     </block>
     <block wx:else>
-        <button class="btn submitBtn" wx:if="{{params.orderstate && !isPaid}}" bindtap="orderPackageEv">确认打包</button>
+        <button class="btn submitBtn" wx:if="{{params.orderstate && !isPaid}}" hidden="{{package}}" bindtap="orderPackageEv">确认打包</button>
         <button class="btn submitBtn" wx:elif="{{isPaid}}" bindtap="paidOptionsEv">支付选项</button>
     </block>
 </view>

@@ -88,17 +88,15 @@ Page({
         terminus: '美国',
         orderNumber: '20220506015545223312',
         orderList: [{
-            id: 124543,
-            orderStatus: 0
-          },
-          {
-            id: 478556,
-            orderStatus: 0
-          }, {
-            id: 784524529,
-            orderStatus: 0
-          },
-        ]
+          id: 124543,
+          orderStatus: 0
+        }, {
+          id: 478556,
+          orderStatus: 0
+        }, {
+          id: 784524529,
+          orderStatus: 0
+        }, ]
       },
       {
         id: 3,
@@ -131,7 +129,7 @@ Page({
           },
           {
             id: 454524526,
-            orderStatus: 0
+            orderStatus: 1
           }, {
             id: 785245,
             orderStatus: 1

@@ -2,7 +2,7 @@
 Page({
   // 页面的初始数据
   data: {
-    countdown: 5,
+    countdown: 3,
     timer: null,
     disabledBtn: true,
   },
