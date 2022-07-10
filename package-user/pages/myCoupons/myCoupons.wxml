@@ -1,6 +1,6 @@
 <!-- <view class="box" catchtouchmove="{{closeModal ? 'return' : ''}}"> -->
 <view class="box">
-    <Coupons couponsList="{{couponsList}}"></Coupons>
+    <Coupons couponsList="{{couponsList}}" route="{{route}}"></Coupons>
 
     <ConfirmModal closeModal="{{closeModal}}">
         <view slot="modalTitle" class="ConfirmModalTitle">兑换优惠券</view>

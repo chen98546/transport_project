@@ -28,10 +28,5 @@ Component({
         }
       })
     },
-    toPayPageEv(){
-      wx.navigateTo({
-        url: '/package-home/pages/payment/payment',
-      })
-    }
   },
 });

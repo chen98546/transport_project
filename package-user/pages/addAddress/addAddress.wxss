@@ -49,3 +49,14 @@
 .settingDefault {
     font-size: 26rpx;
 }
+
+.van-button.van-button--info.van-button--normal.van-button--round {
+    color: #fff;
+    width: 88vw;
+    font-size: 28rpx;
+    position: fixed;
+    left: 50%;
+    bottom: 30rpx;
+    transform: translateX(-50%);
+    height: var(--button-default-height,80rpx);
+}

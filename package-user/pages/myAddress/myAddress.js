@@ -5,7 +5,7 @@ Page({
     address: [
       {
         id: 1,
-        username: "老六",
+        username: "laoliu",
         userPhone: 18600005555,
         userAddr: "MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A TUCSON, AZ 85705 USA",
         city: "Los Angeles",
@@ -14,7 +14,7 @@ Page({
       },
       {
         id: 2,
-        username: "张三",
+        username: "zhangsan",
         userPhone: 15566668888,
         userAddr: "MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A TUCSON, AZ 85705 USA",
         city: "Washington",
@@ -23,7 +23,7 @@ Page({
       },
       {
         id: 3,
-        username: "李四",
+        username: "lisi",
         userPhone: 13322226666,
         userAddr: "MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A TUCSON, AZ 85705 USA",
         city: "Washington",
@@ -64,4 +64,11 @@ Page({
 
   // 用户点击右上角分享
   onShareAppMessage: function () {},
+
+  toAddAddressEv(){
+    console.log(123);
+    wx.navigateTo({
+      url: '/package-user/pages/addAddress/addAddress',
+    })
+  }
 });

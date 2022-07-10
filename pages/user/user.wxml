@@ -35,10 +35,11 @@
 
 
 <view class="myOrder">
-    <view class="list" wx:for="{{pathList}}" wx:key="index" bindtap="toSpecifiedPageEv" data-url="{{item.url}}">
+    <!-- <view class="list" wx:for="{{pathList}}" wx:key="index" bindtap="toSpecifiedPageEv" data-url="{{item.url}}">
         <view class="listLeft">{{item.text}}</view>
         <view class="listRight">
             <van-icon name="arrow" />
         </view>
-    </view>
+    </view> -->
+    <van-cell wx:for="{{pathList}}" title="{{item.text}}" url="{{item.url}}" wx:key="index" is-link />
 </view>

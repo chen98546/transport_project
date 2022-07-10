@@ -53,6 +53,13 @@ Page({
       this.setData({
         params
       })
+
+      if (params.payState == 0 && params.orderstate == 2) {
+        this.setData({
+          isPaid: true
+        })
+      }
+
       if (params.orderList.length) {
         for (let i = 0; i < params.orderList.length; i++) {
           let list = {
@@ -235,6 +242,7 @@ Page({
       closeModal5: true,
       isPaid: true
     });
+
     wx.navigateTo({
       url: '/package-home/pages/valuation/valuation',
     })
@@ -278,7 +286,7 @@ Page({
     });
   },
 
-  toServiceEv(){
+  toServiceEv() {
     wx.navigateTo({
       url: '/package-user/pages/service/service',
     })

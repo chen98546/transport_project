@@ -76,6 +76,7 @@ Page({
         meet: "满210元使用",
       },
     ],
+    route: ''
   },
 
   // 生命周期函数--监听页面加载
@@ -86,9 +87,14 @@ Page({
       else item.style = "none";
       return item;
     }).sort((a, b) => b.status - a.status)
+    let pages = getCurrentPages()
+    let prevPage = pages[pages.length - 2]
     this.setData({
-      couponsList
+      couponsList,
+      route:prevPage.route
     });
+
+
   },
   // 优惠卷的选择判定（满减，有效期，折扣的最大值，优先判定的条件）
 

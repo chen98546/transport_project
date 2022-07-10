@@ -7,12 +7,32 @@ Page({
         countdown: 5,
         timer: null,
         disabledBtn: true,
-        disabled: true
+        disabled: true,
+        coupons: {},
+        p1: 0,
+        p2: 0,
+        transferCost: 218,
+        surcharge: 68,
+        totalPrice: 0
     },
 
     // 生命周期函数--监听页面加载
     onLoad: function (options) {
+        const pages = getCurrentPages()
+        const current = pages[pages.length - 1];
+        const event = current.getOpenerEventChannel();
+        if (JSON.stringify(event) == '{}') return
+        event.on('valuationPriceEv', params => {
+            this.setData({
+                p1: params.p1 || 0,
+                p2: params.p2 || 0,
+            })
+        });
 
+        let totalPrice = (Number(this.data.transferCost) + Number(this.data.surcharge) + Number(this.data.p1 || 0) + Number(this.data.p2 || 0)).toFixed(2)
+        this.setData({
+            totalPrice
+        })
     },
 
     // 生命周期函数--监听页面初次渲染完成
@@ -71,6 +91,11 @@ Page({
     payEv() {
         wx.navigateTo({
             url: '/package-home/pages/paymentSuccess/paymentSuccess',
+        })
+    },
+    toCouponsEv() {
+        wx.navigateTo({
+            url: '/package-user/pages/myCoupons/myCoupons',
         })
     }
 });

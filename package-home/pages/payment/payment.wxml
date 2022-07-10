@@ -38,26 +38,26 @@
     </view>
     <view class="flex">
         <view class="flexLeft">转运费</view>
-        <view class="flexRight">￥138.00</view>
+        <view class="flexRight">￥{{transferCost}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">附加费</view>
-        <view class="flexRight">￥38.00</view>
+        <view class="flexRight">￥{{surcharge}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">丢失险</view>
-        <view class="flexRight">￥0.00</view>
+        <view class="flexRight">￥{{p1}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">关税险</view>
-        <view class="flexRight">￥28.00</view>
+        <view class="flexRight">￥{{p2}}</view>
     </view>
-    <view class="flex">
+    <view class="flex" catchtap="toCouponsEv">
         <view class="flexLeft">
             <van-icon name="balance-pay" color="#ec0609" size="36rpx" />
             优惠券
         </view>
-        <view class="flexRight minus">-￥8
+        <view class="flexRight minus">-￥{{coupons.num || 20}}
             <van-icon name="arrow" color="#181818" />
         </view>
     </view>
@@ -67,14 +67,14 @@
     </view>
 
     <view class="total">
-        已优惠<text class="yen">￥8</text>
-        小计<text class="price">￥28.00</text>
+        已优惠<text class="yen">￥{{coupons.num || 20}}</text>
+        小计<text class="price">￥{{totalPrice}}</text>
     </view>
 </view>
 
 <view class="footer">
     <view class="footerLeft">
-        <view>订单总金额：￥138.00</view>
+        <view>订单总金额：￥{{totalPrice}}</view>
         <view class="deal">
             <van-checkbox value="{{flag}}" bindtap="isFlagFn">
                 阅读并同意《电子运单契约条款》

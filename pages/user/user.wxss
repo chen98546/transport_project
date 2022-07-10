@@ -95,13 +95,16 @@
     color: #1a1a1a;
     font-size: 24rpx;
 }
-
+/* 
 .list {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 2rpx solid #f1f1f1;
-    /* padding: 0 0 20rpx; */
     padding: 20rpx 0;
-}
+} */
 
+
+.van-cell  {
+    padding: var(--cell-vertical-padding,15rpx 0) !important;
+}

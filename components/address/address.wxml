@@ -18,8 +18,8 @@
         </view>
 
         <view class="copAddressRight">
-            <van-icon name="edit" size="40rpx" color="#999999" bindtap="editAddressEv" data-item="{{item}}" />
-            <van-icon name="delete-o" class="delIcon" size="40rpx" bindtap="removeAddressEv" data-index="{{index}}" color="#999999" />
+            <van-icon name="edit" size="40rpx" color="#999999" catchtap="editAddressEv" data-item="{{item}}" />
+            <van-icon name="delete-o" class="delIcon" size="40rpx" catchtap="removeAddressEv" data-index="{{index}}" color="#999999" />
         </view>
     </view>
 </view>

@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: center;
 }
-
+ 
 .noticeIcon2 {
     background-color: #83a4ff;
 }

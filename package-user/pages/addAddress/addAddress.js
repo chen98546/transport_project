@@ -1,15 +1,28 @@
 // package-User/pages/addAddress/addAddress.js
-import { areaList } from "@vant/area-data";
+import {
+  areaList
+} from "@vant/area-data";
 Page({
   // 页面的初始数据
   data: {
     areaList,
     isShowCountry: false,
     checked: true,
+    params: null
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    const pages = getCurrentPages()
+    const current = pages[pages.length - 1];
+    const event = current.getOpenerEventChannel();
+    event.on('transmitAddrEv', params => {
+      console.log(666, params);
+      this.setData({
+        params
+      })
+    });
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
@@ -37,7 +50,29 @@ Page({
       isShowCountry: !this.data.isShowCountry,
     });
   },
-  onChange({ detail }) {
-    this.setData({ checked: detail });
+  onChange({
+    detail
+  }) {
+    this.setData({
+      checked: detail
+    });
   },
+
+  cancelEv() {
+    this.setData({
+      isShowCountry: false,
+    });
+  },
+
+  confirmEv(e) {
+    this.setData({
+      isShowCountry: false,
+    });
+  },
+  confirmAddAddressEv() {
+    wx.navigateBack()
+  },
+  confirmEditAddressEv() {
+    wx.navigateBack()
+  }
 });

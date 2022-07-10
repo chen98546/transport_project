@@ -14,14 +14,14 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "pages/login/login",
+                    "pathName": "pages/order/order",
                     "query": "",
-                    "launchMode": "default",
-                    "scene": null
+                    "scene": null,
+                    "launchMode": "default"
                 },
                 {
                     "name": "pages/index/index",
-                    "pathName": "package-user/pages/addAddress/addAddress",
+                    "pathName": "pages/index/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -30,8 +30,8 @@
                     "name": "",
                     "pathName": "package-home/pages/orderDetail/orderDetail",
                     "query": "",
-                    "scene": null,
-                    "launchMode": "default"
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

@@ -91,25 +91,45 @@ Page({
         }
     },
 
+
     nextStepEv() {
-        if (this.data.checked1 || this.data.checked2) {
-            if (!this.data.value) {
+        if (!this.data.checked1 && !this.data.checked2) {
+            this.setData({
+                closeModal: false
+            });
+        } else if (!this.data.checked1 || !this.data.checked2) {
+            if (!Number(this.data.value)) {
                 wx.showToast({
                     title: '请输入保价的价格',
                     icon: 'none'
                 })
                 return
             } else {
+                this.setData({
+                    closeModal: false
+                });
+            }
+        } else if (this.data.checked1 && this.data.checked2) {
+            if (!Number(this.data.value)) {
+                wx.showToast({
+                    title: '请输入保价的价格',
+                    icon: 'none'
+                })
+                return
+            } else {
+                let price = {
+                    p1: this.data.p1,
+                    p2: this.data.p2,
+                }
                 wx.navigateTo({
                     url: '/package-home/pages/payment/payment',
+                    success(res) {
+                        res.eventChannel.emit('valuationPriceEv', price)
+                    }
                 })
             }
         }
-        if (!this.data.checked1 || !this.data.checked2) {
-            this.setData({
-                closeModal: false
-            });
-        }
+
     },
 
 
@@ -118,8 +138,15 @@ Page({
         this.setData({
             closeModal: true
         });
+        let price = {
+            p1: this.data.p1,
+            p2: this.data.p2,
+        }
         wx.navigateTo({
             url: '/package-home/pages/payment/payment',
+            success(res) {
+                res.eventChannel.emit('valuationPriceEv', price)
+            }
         })
     },
     // 模态框确认操作
