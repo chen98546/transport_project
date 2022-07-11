@@ -28,7 +28,7 @@
                 },
                 {
                     "name": "",
-                    "pathName": "pages/user/user",
+                    "pathName": "package-user/pages/myAddress/myAddress",
                     "query": "",
                     "scene": null,
                     "launchMode": "default"

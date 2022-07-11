@@ -13,8 +13,8 @@
     </view>
     <view class="copAddressBottom">
         <view class="copAddressLeft">
-            <van-checkbox value="{{ item.status }}" icon-size="30rpx" checked-color="#e7691d" bindtap="isFlagFn" data-id="{{item.id}}" />
-            <text style="color:{{item.status ? '#e7691d' : '#333'}}" bindtap="isFlagFn" data-id="{{item.id}}">{{item.status ? '默认收货地址' : '设为默认收货地址'}}</text>
+            <van-checkbox value="{{ item.status }}" icon-size="30rpx" checked-color="#e7691d" catchtap="isFlagFn" data-id="{{item.id}}" />
+            <text style="color:{{item.status ? '#e7691d' : '#333'}}" catchtap="isFlagFn" data-id="{{item.id}}">{{item.status ? '默认收货地址' : '设为默认收货地址'}}</text>
         </view>
 
         <view class="copAddressRight">

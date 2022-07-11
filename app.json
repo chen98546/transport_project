@@ -96,7 +96,8 @@
     "van-picker": "@vant/weapp/picker/index",
     "van-image": "@vant/weapp/image/index",
     "van-popup": "@vant/weapp/popup/index",
-    "van-steps": "@vant/weapp/steps/index"
+    "van-steps": "@vant/weapp/steps/index",
+    "van-search": "@vant/weapp/search/index"
   },
   
   "permission": {

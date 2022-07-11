@@ -2,6 +2,7 @@
 import {
   addAddressFn,
   updateAddressFn,
+  setAddressDetaultFn
 } from '../../api/address.js'
 Component({
   options: {
@@ -22,9 +23,6 @@ Component({
     checked: {
       type: Boolean
     },
-    addrId: {
-      type: String
-    }
   },
 
   // 组件的初始数据
@@ -131,7 +129,7 @@ Component({
         city: this.data.city,
         code: this.data.postcode,
         country: "us",
-        status: 0,
+        status: this.data.checked ? 1 : 0,
         type: 1
       }
       if (!info.name || !info.phone || !info.area || !info.city || !info.code) {
@@ -157,7 +155,7 @@ Component({
     async confirmEditAddressEv(e) {
       let memberId = wx.getStorageSync('userInfo').id
       let info = {
-        id: this.data.addrId,
+        id: this.data.params.id,
         memberId,
         name: this.data.username,
         phone: this.data.phone,
@@ -184,6 +182,9 @@ Component({
         wx.navigateBack()
       } else {
         return
+      }
+      if (this.data.checked) {
+        await setAddressDetaultFn(this.data.params.id)
       }
     },
   },

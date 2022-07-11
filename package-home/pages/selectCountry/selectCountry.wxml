@@ -1,8 +1,9 @@
-<van-index-bar  index-list="{{ indexList }}">
+<van-search sticky value="{{ value }}" placeholder="请输入搜索关键词" />
+<van-index-bar sticky-offset-top="{{110}}rpx" index-list="{{ indexList }}">
     <block wx:for="{{contryMap}}" wx:key="index">
         <van-index-anchor index="{{index}}" />
         <block wx:for="{{contryMap[index]}}" wx:for-item="addr" wx:key="index">
-            <van-cell title="{{addr}}" bindtap="getAddressEv" data-addr="{{addr}}" />
+            <van-cell  sticky-offset-top="{{110}}rpx" title="{{addr}}" bindtap="getAddressEv" data-addr="{{addr}}" />
         </block>
     </block>
 </van-index-bar>

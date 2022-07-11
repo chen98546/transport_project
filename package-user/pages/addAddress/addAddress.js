@@ -12,23 +12,29 @@ Page({
     checked: 0,
     params: null,
     info: {},
-    addrId: ''
   },
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
-    this.setData({
-      addrId: options.id
-    })
     const pages = getCurrentPages()
     const current = pages[pages.length - 1];
     const event = current.getOpenerEventChannel();
+    if (JSON.stringify(event) == '{}') return
     event.on('transmitAddrEv', params => {
       this.setData({
         params
       })
-
     });
+    if(!this.data.params) return 
+    if (this.data.params.status) {
+      this.setData({
+        checked: true
+      })
+    } else {
+      this.setData({
+        checked: false
+      })
+    }
   },
 
   // 生命周期函数--监听页面初次渲染完成
@@ -59,7 +65,7 @@ Page({
     });
   },
 
-  // 选中的国家
+  // 设置默认地址
   async onChange(e) {
     this.setData({
       checked: e.detail
