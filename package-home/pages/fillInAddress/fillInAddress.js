@@ -1,4 +1,6 @@
-import { copyInfoFn } from "../../../utils/methods.js";
+import {
+  copyInfoFn
+} from "../../../utils/methods.js";
 Page({
   // 页面的初始数据
   data: {
@@ -39,14 +41,17 @@ Page({
     copyInfoFn(e.currentTarget.dataset.phonenum);
   },
 
+  // 跳转转运流程
   receiveInfoEv(data) {
     wx.navigateTo({
       url: "/package-home/pages/transportNotice/transportNotice",
     });
   },
 
+  // 冒泡触发receiveInfoEv
   transportEv() {},
 
+  // 跳转我的地址页面
   selectAddrEv() {
     wx.navigateTo({
       url: "/package-user/pages/myAddress/myAddress",

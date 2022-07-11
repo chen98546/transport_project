@@ -1,4 +1,8 @@
 // components/fillAddrInfo/fillAddrInfo.js
+import {
+  addAddressFn,
+  updateAddressFn,
+} from '../../api/address.js'
 Component({
   options: {
     multipleSlots: true, // 在组件定义时的选项中启用多 slot 支持
@@ -12,6 +16,15 @@ Component({
     params: {
       type: Object,
     },
+    isHome: {
+      type: Boolean
+    },
+    checked: {
+      type: Boolean
+    },
+    addrId: {
+      type: String
+    }
   },
 
   // 组件的初始数据
@@ -28,6 +41,7 @@ Component({
 
   // 组件的方法列表
   methods: {
+    // 首页立即转运按钮
     transmitInfoEv() {
       let username = this.data.username;
       let phone = this.data.phone;
@@ -61,6 +75,7 @@ Component({
       }
     },
 
+    // 用户名失焦事件
     InfoBlurEv1() {
       let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.username)) {
@@ -74,6 +89,8 @@ Component({
         });
       }
     },
+
+    // 地址失焦事件
     InfoBlurEv2() {
       let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.address)) {
@@ -87,6 +104,8 @@ Component({
         });
       }
     },
+
+    // 城市失焦事件
     InfoBlurEv3() {
       let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.city)) {
@@ -100,5 +119,73 @@ Component({
         });
       }
     },
+
+    // 确认添加地址事件
+    async confirmAddAddressEv() {
+      let memberId = wx.getStorageSync('userInfo').id
+      let info = {
+        memberId,
+        name: this.data.username,
+        phone: this.data.phone,
+        area: this.data.address,
+        city: this.data.city,
+        code: this.data.postcode,
+        country: "us",
+        status: 0,
+        type: 1
+      }
+      if (!info.name || !info.phone || !info.area || !info.city || !info.code) {
+        wx.showToast({
+          title: "地址信息不能为空，请补全地址信息",
+          icon: "none",
+        });
+        return;
+      }
+      let res = await addAddressFn(info);
+      if (res.status == 200) {
+        wx.showToast({
+          title: '地址添加成功',
+          icon: 'none'
+        })
+        wx.navigateBack()
+      } else {
+        return
+      }
+    },
+
+    // 确认修改地址事件
+    async confirmEditAddressEv(e) {
+      let memberId = wx.getStorageSync('userInfo').id
+      let info = {
+        id: this.data.addrId,
+        memberId,
+        name: this.data.username,
+        phone: this.data.phone,
+        area: this.data.address,
+        city: this.data.city,
+        code: this.data.postcode,
+        country: "us",
+        status: this.data.checked ? 1 : 0,
+        type: 1
+      }
+      if (!info.name || !info.phone || !info.area || !info.city || !info.code) {
+        wx.showToast({
+          title: "地址信息不能为空，请补全地址信息",
+          icon: "none",
+        });
+        return;
+      }
+      let res = await updateAddressFn(info);
+      if (res.status == 200) {
+        wx.showToast({
+          title: '地址添加成功',
+          icon: 'none'
+        })
+        wx.navigateBack()
+      } else {
+        return
+      }
+    },
   },
+
 });

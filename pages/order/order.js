@@ -346,6 +346,7 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
+  // tab栏切换
   changTabEv(e) {
     let orderInfoList = this.data.testData
       .map((item) => {

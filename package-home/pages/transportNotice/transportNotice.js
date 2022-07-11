@@ -10,10 +10,14 @@ Page({
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
     this.data.timer = setInterval(() => {
-      this.setData({ countdown: this.data.countdown - 1 });
+      this.setData({
+        countdown: this.data.countdown - 1
+      });
       if (this.data.countdown <= 0) {
         clearInterval(this.data.timer);
-        this.setData({ disabledBtn: false });
+        this.setData({
+          disabledBtn: false
+        });
       }
     }, 1000);
   },
@@ -39,6 +43,7 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
+  // 跳转订单详情页面
   transportBtnEv() {
     wx.navigateTo({
       url: "/package-home/pages/orderDetail/orderDetail",

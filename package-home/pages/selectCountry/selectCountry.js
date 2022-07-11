@@ -83,18 +83,13 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
+  // 选择国家
   getAddressEv(e) {
     let pages = getCurrentPages(); //当前页面
     let prevPage = pages[pages.length - 2]; //上一页面
     prevPage.setData({
       addr: e.target.dataset.addr
     });
-    wx.navigateBack({
-      delta: 1,
-    });
+    wx.navigateBack();
   },
-
-  getSelectIndexEv(e){
-    console.log(e);
-  }
 });

@@ -34,8 +34,7 @@ Page({
     // 用户点击右上角分享
     onShareAppMessage: function () {},
 
-
-
+    // 保价输入框
     fieldChangeEv(e) {
         this.setData({
             value: e.detail
@@ -60,6 +59,8 @@ Page({
         }
     },
 
+
+    // 丢失险
     onChangeEv1() {
         this.setData({
             checked1: !this.data.checked1
@@ -76,6 +77,7 @@ Page({
         }
     },
 
+    // 关税险
     onChangeEv2() {
         this.setData({
             checked2: !this.data.checked2
@@ -92,6 +94,7 @@ Page({
     },
 
 
+    // 弹窗下一步按钮
     nextStepEv() {
         if (!this.data.checked1 && !this.data.checked2) {
             this.setData({

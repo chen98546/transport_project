@@ -96,7 +96,7 @@
         <view slot="modalTitle" class="channelTitle">预选渠道</view>
         <view slot="userAddress" class="channelAddress">
             <block wx:for="{{channelList}}" wx:key="index">
-                <text style="color:{{item.selected ? '#fff' : '#83a4ff'}};background: {{item.selected ? '#83a4ff' : '#fff'}};" class="channel" bindtap="selectedChannelEv" data-id="{{item.id}}">{{item.text}}</text>
+                <text style="color:{{item.selected ? '#fff' : '#83a4ff'}};background: {{item.selected ? '#83a4ff' : '#fff'}};" class="channel" bindtap="selectedChannelEv" data-id="{{item.id}}">{{item.name}}</text>
             </block>
         </view>
         <view slot="modalRefuse" bindtap="cancelEv">取消</view>

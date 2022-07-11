@@ -1,5 +1,5 @@
 <view class="userHeader">
-    <block wx:if="{{!token}}">
+    <block wx:if="{{!userInfo}}">
         <view class="userLeft">
             <image class="avatar" src="/asset/images/logo.png"></image>
         </view>
@@ -9,11 +9,11 @@
     </block>
     <block wx:else>
         <view class="userLeft">
-            <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+            <image class="avatar" src="{{userInfo.avatar}}"></image>
         </view>
         <view class="userRight">
             <view class="username">{{userInfo.nickName}}</view>
-            <view class="usercode">编码：HBK</view>
+            <view class="usercode">编码：{{userInfo.memberNo}}</view>
         </view>
     </block>
 </view>
@@ -35,11 +35,5 @@
 
 
 <view class="myOrder">
-    <!-- <view class="list" wx:for="{{pathList}}" wx:key="index" bindtap="toSpecifiedPageEv" data-url="{{item.url}}">
-        <view class="listLeft">{{item.text}}</view>
-        <view class="listRight">
-            <van-icon name="arrow" />
-        </view>
-    </view> -->
     <van-cell wx:for="{{pathList}}" title="{{item.text}}" url="{{item.url}}" wx:key="index" is-link />
 </view>

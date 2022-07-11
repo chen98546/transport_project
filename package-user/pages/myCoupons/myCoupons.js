@@ -1,4 +1,6 @@
-// package-User/pages/myTicket/myTicket.js
+import {
+  getcouponListFn
+} from '../../../api/coupon.js'
 Page({
   // 页面的初始数据
   data: {
@@ -80,7 +82,8 @@ Page({
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {
+  onLoad: async function (options) {
+    // 优惠券状态
     let couponsList = this.data.couponsList.map((item) => {
       if (item.status == 0) item.style = "grayscale(1)";
       else if (item.status == 1) item.style = "opacity(0.5)";
@@ -91,12 +94,12 @@ Page({
     let prevPage = pages[pages.length - 2]
     this.setData({
       couponsList,
-      route:prevPage.route
+      route: prevPage.route
     });
-
-
+    let memberId = wx.getStorageSync('userInfo').id
+    // 优惠券列表  优惠卷的选择判定（满减，有效期，折扣的最大值，优先判定的条件）
+    let res = await getcouponListFn(memberId)
   },
-  // 优惠卷的选择判定（满减，有效期，折扣的最大值，优先判定的条件）
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
@@ -132,6 +135,7 @@ Page({
     });
   },
 
+  // 显示模态框
   transportBtn() {
     this.setData({
       closeModal: false

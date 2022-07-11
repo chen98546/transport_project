@@ -14,12 +14,12 @@ Page({
     userInfo: "",
     session_key: "",
     purePhoneNumber: "",
-    token:''
   },
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
     let _this = this
+    // 获取session_key和openid
     wx.login({
       timeout: 10000,
       success: async (res) => {
@@ -41,27 +41,10 @@ Page({
   },
 
   // 生命周期函数--监听页面初次渲染完成
-  onReady: function () {
-    let _this = this
-    wx.login({
-      timeout: 10000,
-      async success(res) {
-        let {
-          token
-        } = await wxlogin(res.code);
-        _this.setData({token})
-      },
-      fail(res) {
-        _this.showToast("未登录");
-      },
-      complete(res) {},
-    });
-  },
+  onReady: function () {},
 
   // 生命周期函数--监听页面显示
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   // 生命周期函数--监听页面隐藏
   onHide: function () {},
@@ -100,7 +83,6 @@ Page({
       title: "拒绝授权",
       icon: "error"
     });
-    wx.setStorageSync("token", '');
   },
   // 模态框确认操作
   modalAllowFn() {
@@ -110,28 +92,38 @@ Page({
   },
 
   // 获取授权
-  async loginFn() {
+  loginFn() {
     if (!this.data.flag) return;
-
     wx.getUserProfile({
       desc: "授权登录",
       success: (res) => {
-        this.setData({
-          userInfo: res.userInfo,
-          closeModal: false
+        wx.login({
+          timeout: 10000,
+          success: async (result) => {
+            let info = {
+              code: result.code,
+              nickName: res.userInfo.nickName,
+              avatarUrl: res.userInfo.avatarUrl
+            }
+            let {
+              data
+            } = await wxlogin(info);
+            this.setData({
+              closeModal: false,
+              userInfo: data
+            })
+          },
+          fail() {
+            _this.showToast("未登录");
+          },
         });
-        console.log(12580,this.data.token);
-        wx.setStorageSync("token", this.data.token);
-
       },
-      fail(res) {
+      fail() {
         wx.showToast({
           title: "取消登录",
           icon: "error"
         });
-        wx.setStorageSync("token", '');
       },
-      complete(res) {},
     });
   },
 
@@ -154,7 +146,6 @@ Page({
         title: "取消操作",
         icon: "error"
       });
-      wx.setStorageSync("token", '');
       return;
     }
 

@@ -42,6 +42,7 @@ Page({
     // 用户点击右上角分享
     onShareAppMessage: function () {},
 
+    // 支付成功跳转回首页
     completeEv() {
         wx.switchTab({
             url: '/pages/index/index',

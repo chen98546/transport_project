@@ -1,4 +1,4 @@
-<FillAddrInfo params="{{params}}">
+<FillAddrInfo params="{{params}}"  isHome="{{false}}" checked="{{checked}}" addrId="{{addrId}}">
     <van-field slot="country" label="Country" placeholder="Please select a country" icon="arrow" class="country" bind:click-input="showCountryEv" disabled />
 </FillAddrInfo>
 
@@ -8,8 +8,5 @@
 
 <view class="settingDefaultBox">
     <view class="settingDefault">设为默认</view>
-    <van-switch checked="{{ checked }}" active-color="#00e065" inactive-color="#dcdee0"  size="48rpx" bind:change="onChange" />
+    <van-switch checked="{{ checked }}" active-color="#00e065" inactive-color="#dcdee0" size="48rpx" bind:change="onChange" />
 </view>
-
-<van-button wx:if="{{!params}}" round type="info" color="#83a4ff" bindtap="confirmAddAddressEv">确认添加</van-button>
-<van-button wx:else round type="info" color="#83a4ff" bindtap="confirmEditAddressEv">确认修改</van-button>

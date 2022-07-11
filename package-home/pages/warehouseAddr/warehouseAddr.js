@@ -1,4 +1,6 @@
-import { copyInfoFn } from "../../../utils/methods.js";
+import {
+  copyInfoFn
+} from "../../../utils/methods.js";
 Page({
   // 页面的初始数据
   data: {
@@ -34,9 +36,10 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
+  // 复制仓库地址
   copyInfoEv() {
     let address = this.data.address;
-   let fullAddress =  address.addrDetail + address.phone + address.postcode + address.addressee;
+    let fullAddress = address.addrDetail + address.phone + address.postcode + address.addressee;
     copyInfoFn(fullAddress);
   },
 });

@@ -1,14 +1,19 @@
 <view class="addAddress">
     <van-cell-group>
-        <van-field label="Name：" placeholder="Please fill in the recipient‘s name" border="{{ false }}" model:value="{{ username }}" error-message="{{errorMessage1}}" value="{{ addressInfo.username || params.username }}" bind:blur="InfoBlurEv1" />
-        <van-field label="Phone：" type="number" placeholder="Please fill in the recipient‘s phone" border="{{ false }}" model:value="{{ phone }}" value="{{addressInfo.userPhone || params.userPhone }}" />
-        <van-field label="Address：" placeholder="Please fill in the address" border="{{ false }}" model:value="{{ address }}" error-message="{{errorMessage2}}" bind:blur="InfoBlurEv2" value="{{addressInfo.userAddr || params.userAddr }}" />
+        <van-field label="Name：" placeholder="Please fill in the recipient‘s name" border="{{ false }}" model:value="{{ username }}" error-message="{{errorMessage1}}" value="{{ addressInfo.name || params.name }}" bind:blur="InfoBlurEv1" />
+        <van-field label="Phone：" type="number" placeholder="Please fill in the recipient‘s phone" border="{{ false }}" model:value="{{ phone }}" value="{{addressInfo.phone || params.phone }}" />
+        <van-field label="Address：" placeholder="Please fill in the address" border="{{ false }}" model:value="{{ address }}" error-message="{{errorMessage2}}" bind:blur="InfoBlurEv2" value="{{addressInfo.area || params.area }}" />
         <van-field label="City：" placeholder="Please fill in the city" border="{{ false }}" model:value="{{ city }}" error-message="{{errorMessage3}}" bind:blur="InfoBlurEv3" value="{{  addressInfo.city ||  params.city }}" />
-        <van-field label="PostCode：" type="number" placeholder="Please fill in the postcode" border="{{ false }}" model:value="{{ postcode  }}" value="{{ addressInfo.postcode || params.postcode }}" />
+        <van-field label="PostCode：" type="number" placeholder="Please fill in the postcode" border="{{ false }}" model:value="{{ postcode  }}" value="{{ addressInfo.code || params.code }}" />
         <slot name="country" />
     </van-cell-group>
 
-    <view bindtap="transmitInfoEv" class="buttonStyle">
+    <view wx:if="{{isHome}}" bindtap="transmitInfoEv" class="buttonStyle">
         <slot name="button" />
+    </view>
+
+    <view wx:else class="buttonGroup">
+        <van-button slot="addBtn" wx:if="{{!params}}" round type="info" color="#83a4ff" bindtap="confirmAddAddressEv">确认添加</van-button>
+        <van-button slot="editBtn" wx:else round type="info" color="#83a4ff" bindtap="confirmEditAddressEv">确认修改</van-button>
     </view>
 </view>

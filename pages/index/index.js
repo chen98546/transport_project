@@ -1,53 +1,38 @@
-// pages/index/index.js
+import {
+  getBannerList
+} from '../../api/banner.js'
+import {
+  getGoodsPropertyFn
+} from '../../api/goods.js'
 Page({
   // 页面的初始数据
   data: {
     closeModal: true,
-    swiperData: [
-      {
-        id: "banner1",
-        src: "/asset/images/banner1.png",
-      },
-      {
-        id: "banner2",
-        src: "/asset/images/banner3.png",
-      },
-      {
-        id: "banner3",
-        src: "/asset/images/banner1.png",
-      },
-      {
-        id: "banner4",
-        src: "/asset/images/banner3.png",
-      },
-      {
-        id: "banner5",
-        src: "/asset/images/banner1.png",
-      },
-      {
-        id: "banner6",
-        src: "/asset/images/banner3.png",
-      },
-    ],
-    channelList: [
-      { id: 1, text: "普通货物", selected: true },
-      { id: 2, text: "电子产品", selected: false },
-      { id: 3, text: "液体粉末", selected: false },
-      { id: 4, text: "内地EMS", selected: false },
-      { id: 5, text: "广东EMS", selected: false },
-    ],
+    swiperData: [],
+    channelList: [],
     addr: "美国",
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: async function (options) {
+    let {
+      data
+    } = await getBannerList()
+    this.setData({
+      swiperData: data
+    })
+    let res = await getGoodsPropertyFn()
+    this.setData({
+      swiperData: data,
+      channelList: res.data.reverse()
+    })
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
 
   // 生命周期函数--监听页面显示
-  onShow: function () {
-  },
+  onShow: function () {},
 
   // 生命周期函数--监听页面隐藏
   onHide: function () {},
@@ -64,6 +49,7 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
+  // 预选渠道
   selectedChannelEv(e) {
     let channelList = this.data.channelList.map((item) => {
       if (item.id == e.target.dataset.id) {
@@ -73,45 +59,65 @@ Page({
       }
       return item;
     });
-    this.setData({ channelList });
+    this.setData({
+      channelList
+    });
   },
 
+  // 模态框显示隐藏
   transportBtnEv() {
-    this.setData({ closeModal: false });
+    this.setData({
+      closeModal: false
+    });
   },
+
+  // 模态框取消
   cancelEv() {
-    this.setData({ closeModal: true });
+    this.setData({
+      closeModal: true
+    });
   },
+
+  // 模态框下一步操作
   nextStepEv() {
-    this.setData({ closeModal: true });
+    this.setData({
+      closeModal: true
+    });
     wx.navigateTo({
       url: "/package-home/pages/fillInAddress/fillInAddress",
     });
   },
+
+  // 选择国家
   selectContryEv() {
     wx.navigateTo({
       url: "/package-home/pages/selectCountry/selectCountry",
     });
   },
 
+  // 跳转转运须知
   toTransportEv() {
     wx.navigateTo({
       url: "/package-user/pages/transportNotice/transportNotice",
     });
   },
 
+  // 跳转客服页面
   toServicePageEv() {
     wx.navigateTo({
       url: "/package-user/pages/service/service",
     });
   },
+
+  // 跳转重量预估页面
   toWeightEv() {
     wx.navigateTo({
       url: "/package-home/pages/weight/weight",
     });
   },
 
-  toWarehouseAddrEv(){
+  // 跳转选择地址页面
+  toWarehouseAddrEv() {
     wx.navigateTo({
       url: "/package-home/pages/warehouseAddr/warehouseAddr",
     });

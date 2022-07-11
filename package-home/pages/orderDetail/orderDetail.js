@@ -31,14 +31,7 @@ Page({
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {
-
-
-    // let status = this.data.params.orderList.every(item => {
-    //   return item.orderStatus == 1
-    // })
-
-  },
+  onLoad: function (options) {},
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
@@ -49,6 +42,7 @@ Page({
     const current = pages[pages.length - 1];
     const event = current.getOpenerEventChannel();
     if (JSON.stringify(event) == '{}') return
+    // 接收订单列表对应订单的数据
     event.on('getOrderInfoEV', params => {
       this.setData({
         params
@@ -108,6 +102,7 @@ Page({
     copyInfoFn(e.currentTarget.dataset.phonenum);
   },
 
+  // 失焦弹出对应数量的订单输入框
   gettingDataEv(e) {
     this.setData({
       inputValue: e.detail.value
@@ -136,22 +131,30 @@ Page({
     }
   },
 
+  // 删除订单号输入框
   removeItemEv(e) {
-    this.data.orderItemList.splice(e.target.dataset.index, 1);
-    this.setData({
-      orderItemList: this.data.orderItemList
-    });
-    if (!this.data.orderItemList.length) {
-      this.setData({
-        disabledInput: false,
-        submitBtn: true
-      });
-    } else {
-      this.setData({
-        disabledInput: true,
-        submitBtn: false
-      });
-    }
+    wx.showModal({
+      title: '是否确认删除该订单',
+      success(res) {
+        if (res.confirm) {
+          this.data.orderItemList.splice(e.target.dataset.index, 1);
+          this.setData({
+            orderItemList: this.data.orderItemList
+          });
+          if (!this.data.orderItemList.length) {
+            this.setData({
+              disabledInput: false,
+              submitBtn: true
+            });
+          } else {
+            this.setData({
+              disabledInput: true,
+              submitBtn: false
+            });
+          }
+        }
+      }
+    })
   },
 
   // 补充单号
@@ -248,6 +251,7 @@ Page({
     })
   },
 
+  // 快递单号选项卡内容改变时触发
   changeEv(e) {
     let orderItemList = this.data.orderItemList.map((item, index) => {
       if (index == e.target.dataset.index) item.value = e.detail;
@@ -260,12 +264,14 @@ Page({
     });
   },
 
+  // 弹框取消
   cancleBtnEv() {
     this.setData({
       closeModal2: false
     });
   },
 
+  // 提交订单
   submitBtnEv() {
     let arrValue = this.data.orderItemList.map((item) => item.value);
     this.setData({
@@ -274,18 +280,21 @@ Page({
     });
   },
 
+  // 订单打包
   orderPackageEv() {
     this.setData({
       closeModal4: false,
     });
   },
 
+  // 支付选项
   paidOptionsEv() {
     this.setData({
       closeModal5: false,
     });
   },
 
+  // 跳转客服页面
   toServiceEv() {
     wx.navigateTo({
       url: '/package-user/pages/service/service',

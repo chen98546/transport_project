@@ -1,26 +1,33 @@
-// package-User/pages/addAddress/addAddress.js
 import {
   areaList
 } from "@vant/area-data";
+import {
+  setAddressDetaultFn
+} from '../../../api/address.js'
 Page({
   // 页面的初始数据
   data: {
     areaList,
     isShowCountry: false,
-    checked: true,
-    params: null
+    checked: 0,
+    params: null,
+    info: {},
+    addrId: ''
   },
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
+    this.setData({
+      addrId: options.id
+    })
     const pages = getCurrentPages()
     const current = pages[pages.length - 1];
     const event = current.getOpenerEventChannel();
     event.on('transmitAddrEv', params => {
-      console.log(666, params);
       this.setData({
         params
       })
+
     });
   },
 
@@ -45,34 +52,31 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
+  // 国家选择显示隐藏
   showCountryEv() {
     this.setData({
       isShowCountry: !this.data.isShowCountry,
     });
   },
-  onChange({
-    detail
-  }) {
+
+  // 选中的国家
+  async onChange(e) {
     this.setData({
-      checked: detail
+      checked: e.detail
     });
   },
 
+  // 取消按钮
   cancelEv() {
     this.setData({
       isShowCountry: false,
     });
   },
 
-  confirmEv(e) {
+  // 确认按钮
+  confirmEv() {
     this.setData({
       isShowCountry: false,
     });
   },
-  confirmAddAddressEv() {
-    wx.navigateBack()
-  },
-  confirmEditAddressEv() {
-    wx.navigateBack()
-  }
 });

@@ -1,18 +1,35 @@
 const request = require("./require.js");
-module.exports.wxlogin = function (code) {
+// module.exports.wxlogin = function (code) {
+//   return request({
+//     url: "http://127.0.0.1:5566/maoyan/wxlogin",
+//     method: "post",
+//     data: { code },
+//   });
+// };
+
+module.exports.wxlogin = function (userInfo) {
   return request({
-    url: "http://127.0.0.1:5566/maoyan/wxlogin",
+    url: "http://103.24.177.147:8084/api/member/v2/login",
     method: "post",
-    data: { code },
+    data: userInfo
+  });
+};
+module.exports.getFlowFn = function () {
+  return request({
+    url: "http://103.24.177.147:8084/api/content/getFlow",
   });
 };
 
 module.exports.fetchPhoneNumber = function (sessionKey, encryptedData, iv) {
-  console.log(10086,sessionKey, encryptedData, iv);
+  console.log(10086, sessionKey, encryptedData, iv);
   return request({
     url: "http://127.0.0.1:5566/maoyan/getPhoneNumber",
     method: "post",
-    data: { sessionKey, encryptedData, iv },
+    data: {
+      sessionKey,
+      encryptedData,
+      iv
+    },
   });
 };
 
@@ -20,23 +37,8 @@ module.exports.fetchOpenId = function (code) {
   return request({
     url: "http://127.0.0.1:5566/maoyan/getOpenid",
     method: "post",
-    data: { code },
-  });
-};
-
-module.exports.fetchUserWTSMovie = function () {
-  return request({
-    url: "https://maoyanapi.w0824.com/seeMovie",
-  });
-};
-
-module.exports.fetchUserWxPay = function (movieId, openId) {
-  return request({
-    url: `"https://maoyanapi.w0824.com/wxpay"`,
-    method: "post",
     data: {
-      movieId,
-      openId,
+      code
     },
   });
 };

@@ -1,9 +1,10 @@
-// pages/user/user.js
+import {
+  getFlowFn
+} from '../../api/user.js'
 Page({
   // 页面的初始数据
   data: {
-    myOrderList: [
-      {
+    myOrderList: [{
         id: 1,
         icon: "pending-payment",
         text: "待付款",
@@ -32,8 +33,7 @@ Page({
         path: "/pages/order/order",
       },
     ],
-    pathList: [
-      {
+    pathList: [{
         id: 1,
         text: "我的地址",
         url: "/package-user/pages/myAddress/myAddress",
@@ -48,8 +48,16 @@ Page({
         text: "我的优惠券",
         url: "/package-user/pages/myCoupons/myCoupons",
       },
-      { id: 4, text: "活动中心", url: "/package-user/pages/activity/activity" },
-      { id: 5, text: "联系客服", url: "/package-user/pages/service/service" },
+      {
+        id: 4,
+        text: "活动中心",
+        url: "/package-user/pages/activity/activity"
+      },
+      {
+        id: 5,
+        text: "联系客服",
+        url: "/package-user/pages/service/service"
+      },
       {
         id: 6,
         text: "转运流程",
@@ -60,19 +68,24 @@ Page({
         text: "转运须知",
         url: "/package-user/pages/transportNotice/transportNotice",
       },
-      { id: 8, text: "关于我们", url: "/package-user/pages/aboutUs/aboutUs" },
+      {
+        id: 8,
+        text: "关于我们",
+        url: "/package-user/pages/aboutUs/aboutUs"
+      },
     ],
-    token: "",
     userInfo: {},
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: async function (options) {
+    // 转运流程
+    let res = await getFlowFn()
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
     this.setData({
-      token: wx.getStorageSync("token"),
       userInfo: wx.getStorageSync("userInfo"),
     });
   },
@@ -95,18 +108,14 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
-  toSpecifiedPageEv(e) {
-    wx.navigateTo({
-      url: e.target.dataset.url,
-    });
-  },
-
+  // 跳转订单列表
   toOrderListPageEv() {
     wx.switchTab({
       url: "/pages/order/order",
     });
   },
 
+  // 跳转登录
   toLoginEv() {
     wx.navigateTo({
       url: "/pages/login/login",

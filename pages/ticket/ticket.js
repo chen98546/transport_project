@@ -59,8 +59,8 @@ Page({
   // 用户点击右上角分享
   onShareAppMessage: function () {},
 
+  // 携带参数跳转优惠券页面
   toCouponEv(e){
-    console.log(e);
     wx.navigateTo({
       url: '/package-user/pages/couponsDetail/couponsDetail?coupons='+ JSON.stringify(e.target.dataset.coupons),
     })

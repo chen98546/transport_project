@@ -9,8 +9,6 @@ module.exports = (options) => {
     let data = {
       ...options,
       success(res) {
-        console.log(222, res);
-
         if (res.data == "\n") {
           wx.showToast({
             title: "数据请求超时",

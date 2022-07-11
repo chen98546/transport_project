@@ -22,6 +22,7 @@ Page({
         const current = pages[pages.length - 1];
         const event = current.getOpenerEventChannel();
         if (JSON.stringify(event) == '{}') return
+        // 接收投保页面的数据
         event.on('valuationPriceEv', params => {
             this.setData({
                 p1: params.p1 || 0,
@@ -65,6 +66,7 @@ Page({
             this.setData({
                 showPopup: true
             })
+            // 倒计时
             this.data.timer = setInterval(() => {
                 this.setData({
                     countdown: this.data.countdown - 1
@@ -79,6 +81,7 @@ Page({
         }
     },
 
+    // 同意本条款按钮
     agreeBtnEv() {
         if (!this.data.disabledBtn) {
             this.setData({
@@ -88,11 +91,14 @@ Page({
         }
     },
 
+    // 支付按钮  成功后跳转会首页
     payEv() {
         wx.navigateTo({
             url: '/package-home/pages/paymentSuccess/paymentSuccess',
         })
     },
+
+    // 跳转我的优惠券页面
     toCouponsEv() {
         wx.navigateTo({
             url: '/package-user/pages/myCoupons/myCoupons',

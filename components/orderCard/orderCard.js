@@ -14,12 +14,13 @@ Component({
 
   // 组件的方法列表
   methods: {
-    // 复制
+    // 复制手机号
     copyOrderNumber(e) {
       copyInfoFn(e.currentTarget.dataset.phonenum);
       console.log(this.data.orderInfo);
 
     },
+    // 发送数据并跳转订单详情
     toOrderDetailEv(e) {
       wx.navigateTo({
         url: '/package-home/pages/orderDetail/orderDetail',

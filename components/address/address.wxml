@@ -1,13 +1,13 @@
 <view class="copAddressBox" wx:for="{{address}}" wx:key="index" data-address="{{item}}"  bindtap="getAddressEv">
     <view class="copAddress">
-        <view class="surnames" style="background: {{item.status ? '#ffa726' : '#1296db'}};">{{item.status ? '我' : item.surnames}}</view>
+        <view class="surnames" style="background: {{item.status ? '#ffa726' : '#1296db'}};">{{ item.surnames}}</view>
         <view class="userInfo">
             <view class="usertext">
-                <view class="username">{{item.username}}</view>
+                <view class="username">{{item.name}}</view>
                 <view class="userPhone">{{item.encryPhone}}</view>
             </view>
             <view class="userAddress">
-                {{item.userAddr}}
+                {{item.area}}
             </view>
         </view>
     </view>
@@ -19,7 +19,7 @@
 
         <view class="copAddressRight">
             <van-icon name="edit" size="40rpx" color="#999999" catchtap="editAddressEv" data-item="{{item}}" />
-            <van-icon name="delete-o" class="delIcon" size="40rpx" catchtap="removeAddressEv" data-index="{{index}}" color="#999999" />
+            <van-icon name="delete-o" class="delIcon" size="40rpx" catchtap="removeAddressEv" data-id="{{item.id}}" color="#999999" />
         </view>
     </view>
 </view>

@@ -16,8 +16,8 @@
                     "name": "",
                     "pathName": "pages/order/order",
                     "query": "",
-                    "scene": null,
-                    "launchMode": "default"
+                    "launchMode": "default",
+                    "scene": null
                 },
                 {
                     "name": "pages/index/index",
@@ -28,10 +28,10 @@
                 },
                 {
                     "name": "",
-                    "pathName": "package-home/pages/orderDetail/orderDetail",
+                    "pathName": "pages/user/user",
                     "query": "",
-                    "launchMode": "default",
-                    "scene": null
+                    "scene": null,
+                    "launchMode": "default"
                 }
             ]
         }

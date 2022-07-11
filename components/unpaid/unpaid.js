@@ -26,6 +26,7 @@ Component({
 
     // 组件的方法列表
     methods: {
+        // 图片预览
         previewMediaEv(e) {
             let list = this.data.imageList.map(item => {
                 return item.src
