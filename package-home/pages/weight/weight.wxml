@@ -10,7 +10,7 @@
         <view class="noticeTip2" bindtap="noticeTipEv">{{selectChanne}}</view>
     </view>
     <view class="noticeCard noticeCardCalc">
-        <view class="noticeTip1">预估重量</view>
+        <view class="noticeTip1">预估重量(斤)</view>
         <view class="noticeTip2">
             <input class="weight" value="{{weightNum}}" bindinput="changeWeightEv" type="number" placeholder="请输入重量(斤)" placeholder-class="placeholder" />
         </view>

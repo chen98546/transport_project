@@ -1,20 +1,27 @@
 <view class="coupons" wx:for="{{couponsList}}" wx:key="index" style="filter:{{item.style }}" bindtap="couponsDetailEv" data-coupons="{{item}}">
-    <view class="couponsLeft">
+    <block wx:if="{{item.amount || item.discount}}">
+        <view class="couponsLeft">
         <image class="couponsLeftImg" src="/asset/images/usable1.png"></image>
-        <view class="price">
-            <text class="num">{{item.num}}</text>
-            <text class="yen">{{item.deduction ? '折' : '元'}}</text>
+        <view class="price" wx:if="{{item.amount}}">
+            <text class="num">{{item.amount}}</text>
+            <text class="yen">元</text>
         </view>
-        <view class="minus">{{item.meet}}</view>
+        <view class="price" wx:elif="{{item.discount}}">
+            <text class="num">{{item.discount * 10 }}</text>
+            <text class="yen">折</text>
+        </view>
+        <view class="minus" wx:if="{{item.usedMinAmount}}">满{{item.usedMinAmount}}元使用</view>
+        <view class="minus" wx:else>无限制</view>
     </view>
     <view class="couponsRight">
         <image class="discount" src="/asset/images/usable2.png"></image>
         <text class="deduction">抵扣券</text>
         <view class="discountText">
-            <view class="newDiscount">新品优惠券</view>
-            <view class="discountDate">{{item.validityDate}} - {{item.expiryDate}}</view>
+            <view class="newDiscount">{{item.title}}</view>
+            <view class="discountDate">{{item.startTime}} - {{item.endTime}}</view>
         </view>
-        <image wx:if="{{item.status == 1}}" class="statusImg" src="/asset/images/used2.png"></image>
-        <image wx:if="{{item.status == 0}}" class="statusImg" src="/asset/images/overdue2.png"></image>
+        <image wx:if="{{item.status == 20}}" class="statusImg" src="/asset/images/used2.png"></image>
+        <image wx:if="{{item.status == 30}}" class="statusImg" src="/asset/images/overdue2.png"></image>
     </view>
+    </block>
 </view>

@@ -1,5 +1,5 @@
 <view class="valuationCard">
-    <view class="orderNumber">订单号：202205050612315645456</view>
+    <view class="orderNumber">订单号：{{orderNo}}</view>
     <view class="valuation">
         <van-icon name="shield-o" color="#e7691d" size="50rpx" />
         <view>保价</view>
@@ -42,7 +42,7 @@
 </view>
 
 <view class="buttonGroup">
-    <button class="btn">联系客服</button>
+    <button class="btn"  bindtap="toServiceEv">联系客服</button>
     <button class="btn submitBtn" bindtap="nextStepEv">下一步</button>
 </view>
 

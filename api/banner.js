@@ -5,4 +5,4 @@ module.exports.getBannerList = function () {
     return request({
         url: api + "carousel/images",
     });
-};
+}; 

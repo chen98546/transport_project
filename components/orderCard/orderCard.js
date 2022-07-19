@@ -17,17 +17,23 @@ Component({
     // 复制手机号
     copyOrderNumber(e) {
       copyInfoFn(e.currentTarget.dataset.phonenum);
-      console.log(this.data.orderInfo);
-
     },
     // 发送数据并跳转订单详情
     toOrderDetailEv(e) {
       wx.navigateTo({
-        url: '/package-home/pages/orderDetail/orderDetail',
+        url: '/package-home/pages/orderDetail/orderDetail?id=' + e.target.dataset.item.id,
         success(res) {
           res.eventChannel.emit('getOrderInfoEV', e.target.dataset.item)
         }
       })
     },
+    orderDetailEve(e) { 
+      wx.navigateTo({
+        url: '/package-home/pages/orderDetail/orderDetail?id=' + e.target.dataset.item.id,
+        success(res) {
+          res.eventChannel.emit('getOrderInfoEV', e.target.dataset.item)
+        }
+      })
+    }
   },
 });

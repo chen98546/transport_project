@@ -1,32 +1,34 @@
 <view wx:for="{{orderInfo}}" wx:key="index" class="OrderCard">
-    <view class="orderNumber" bindtap="copyOrderNumber" data-phoneNum="{{item.orderNumber}}">
-        订单号：<text>{{item.orderNumber}}</text>
+    <view class="orderNumber" bindtap="copyOrderNumber" data-phoneNum="{{item.orderNo}}">
+        订单号：<text>{{item.orderNo}}</text>
         <text class="copyOrderNumber">复制</text>
     </view>
 
     <view class="bournCard">
-        <view class="bournCardAddr">中国</view>
+        <view class="bournCardAddr">{{item.provenance}}</view>
         <view class="bournCardPlane">
             <image class="bournCardPlaneIcon" src="/asset/images/plane.png"></image>
-            <view class="status" wx:if="{{ item.payState == 0 && item.orderstate == 2}}">待支付</view>
-            <view class="status" wx:elif="{{item.orderstate == 0}}">待填写</view>
-            <view class="status" wx:elif="{{item.orderstate == 1}}">待入仓</view>
-            <view class="status" wx:elif="{{item.orderstate == 2}}">待拣货</view>
-            <view class="status" wx:elif="{{item.orderstate == 3}}">待打包</view>
-            <view class="status" wx:elif="{{item.orderstate == 4}}">待出仓</view>
-            <view class="status" wx:elif="{{item.orderstate == 5}}">已出仓</view>
-            <view class="status" wx:elif="{{item.orderstate == 6}}">有异常</view>
-            <view class="status" wx:elif="{{item.orderstate == 7}}">已完成</view>
+            <view class="status" wx:if="{{item.orderStatus == 0}}">待填写</view>
+            <view class="status" wx:elif="{{item.orderStatus == 1 && item.hasDvNum == item.expressNum}}">待打包</view>
+            <view class="status" wx:elif="{{item.orderStatus == 1}}">待入仓</view>
+            <view class="status" wx:elif="{{item.orderStatus == 2}}">待拣货</view>
+            <view class="status" wx:elif="{{item.orderStatus == 3}}">待打包</view>
+            <view class="status" wx:elif="{{ item.paymentStatus == 0 && item.orderStatus == 4}}">待支付</view>
+            <view class="status" wx:elif="{{item.paymentStatus == 1 && item.orderStatus == 4}}">待出仓</view>
+            <view class="status" wx:elif="{{item.orderStatus == 5}}">已出仓</view>
+            <view class="status" wx:elif="{{item.orderStatus == 6}}">有异常</view>
+            <view class="status" wx:elif="{{item.orderStatus == 7}}">已取消</view>
         </view>
-        <view class="bournCardAddr">美国</view>
+        <view class="bournCardAddr">{{item.recipientCountry}}</view>
     </view>
 
     <view class="buttonGroup">
-        <van-button plain type="primary" color="#f47575" size="small" wx:if="{{item.orderstate == 0}}" bindtap="toOrderDetailEv" data-item="{{item}}">去填写</van-button>
-        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderstate == 3}}" bindtap="toOrderDetailEv" data-item="{{item}}">去打包</van-button>
-        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{ item.payState == 0 && item.orderstate == 2 }}" bindtap="toOrderDetailEv" data-item="{{item}}">去支付</van-button>
-        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderstate == 5}}" data-item="{{item}}">查看物流</van-button>
-        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderstate == 6}}">去处理</van-button>
-        <van-button type="info" color="#83a4ff" size="small" class="detail">详情</van-button>
+        <van-button plain type="primary" color="#f47575" size="small" wx:if="{{item.orderStatus == 0}}" bindtap="toOrderDetailEv" data-item="{{item}}">去填写</van-button>
+       <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderStatus == 1 && item.hasDvNum == item.expressNum}}" bindtap="toOrderDetailEv" data-item="{{item}}">去打包</van-button>
+         <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{ item.paymentStatus == 0  && item.orderStatus == 4}}" bindtap="toOrderDetailEv" data-item="{{item}}">去支付</van-button>
+        <!-- <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{ item.paymentStatus == 1 || item.orderStatus == 4 }}" bindtap="toOrderDetailEv" data-item="{{item}}">已支付</van-button> -->
+        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderStatus == 5}}" data-item="{{item}}">查看物流</van-button>
+        <van-button plain type="primary" color="#f47575" size="small" wx:elif="{{item.orderStatus == 6}}">去处理</van-button>
+        <van-button type="info" color="#83a4ff" size="small" class="detail" data-item="{{item}}" catchtap="orderDetailEve">详情</van-button>
     </view>
 </view>

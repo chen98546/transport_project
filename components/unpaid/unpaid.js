@@ -4,6 +4,9 @@ Component({
     properties: {
         isPaid: {
             type: Boolean
+        },
+        orderInfo: {
+            type: Object
         }
     },
 

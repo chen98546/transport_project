@@ -6,10 +6,6 @@
     z-index: 99 !important;
 } */
 
-.van-button__text {
-
-}
-
 .van-button.van-button--primary.van-button--small.van-button--plain {
     width: 150rpx !important;
 }

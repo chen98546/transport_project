@@ -39,6 +39,8 @@ Component({
 
   // 组件的方法列表
   methods: {
+    commonFn() {},
+
     // 首页立即转运按钮
     transmitInfoEv() {
       let username = this.data.username;
@@ -46,6 +48,7 @@ Component({
       let address = this.data.address;
       let city = this.data.city;
       let postcode = this.data.postcode;
+      this.commonFn()
       let userInfo = {
         username,
         phone,
@@ -73,8 +76,23 @@ Component({
       }
     },
 
+    // InfoBlurFn(data) {
+    //   let errorMessage = '';
+    //   let reg = /^[A-Za-z0-9,，\x20]+$/;
+    //   if (!reg.test(data)) {
+    //     errorMessage = "格式错误"
+    //     return;
+    //   } else {
+    //     errorMessage = ""
+    //   }
+    //   return errorMessage
+    // },
+
     // 用户名失焦事件
-    InfoBlurEv1() {
+    InfoBlurEv1() { 
+      // this.setData({
+      //   errorMessage1: this.InfoBlurFn(this.data.username)
+      // })
       let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.username)) {
         this.setData({
@@ -90,6 +108,7 @@ Component({
 
     // 地址失焦事件
     InfoBlurEv2() {
+      // this.InfoBlurFn(this.data.address, this.data.errorMessage2)
       let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.address)) {
         this.setData({
@@ -105,6 +124,7 @@ Component({
 
     // 城市失焦事件
     InfoBlurEv3() {
+      // this.InfoBlurFn(this.data.city, this.data.errorMessage3)
       let reg = /^[A-Za-z0-9,，\x20]+$/;
       if (!reg.test(this.data.city)) {
         this.setData({

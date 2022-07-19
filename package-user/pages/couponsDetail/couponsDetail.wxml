@@ -1,20 +1,21 @@
 <view class="coupons">
     <view class="couponsLeft">
         <view class="price">
-            <text class="yen" wx:if="{{!coupons.deduction}}">￥</text>
-            <text class="num">{{coupons.num}}</text>
-            <text class="yen" wx:if="{{coupons.deduction}}">折</text>
+            <text class="yen" wx:if="{{!coupons.discount}}">￥</text>
+            <text class="num">{{coupons.amount || coupons.discount}}</text>
+            <text class="yen" wx:if="{{coupons.discount}}">折</text>
         </view>
-        <view class="minus">{{coupons.meet}}</view>
+        <view class="minus" wx:if="{{coupons.usedMinAmount}}">满{{coupons.usedMinAmount}}元使用</view>
+        <view class="minus" wx:else>无限制</view>
     </view>
     <view class="couponsRight">
         <view class="discountText">
             <view class="newDiscount">
                 <text class="tag">满减券</text>
-                双十一无门槛10元券
+                {{coupons.title}}
             </view>
             <view class="discountDate">
-                {{coupons.expiryDate}}到期<text class="onlyDate">(仅剩1天)</text>
+                {{coupons.endTime}}到期<text class="onlyDate"></text>
                 <van-button round type="info" size="mini" color="#f6390d">立即领取</van-button>
             </view>
         </view>
@@ -31,11 +32,11 @@
         <view class="detailTitle">使用须知</view>
         <view class="itemInfo">
             有效期：
-            <view>{{coupons.validityDate}}至{{coupons.expiryDate}}</view>
+            <view>{{coupons.startTime}}至{{coupons.endTime}}</view>
         </view>
         <view class="itemInfo">
             不可用日期：
-            <view>2022.03.03至2022.05.05</view>
+            <view>{{coupons.endTime}}之后</view>
         </view>
         <view class="itemInfo">
             使用时间：
@@ -43,13 +44,13 @@
         </view>
         <view class="itemInfo">
             适用范围：
-            <view>全场通用</view>
+            <view>{{coupons.propertyTypeName}}</view>
         </view>
 
         <view class="itemInfo">
             使用规则：
-            <view class="list">适用于运费</view>
-            <view class="list">适用于普通货物，电子产品</view>
+            <view class="list">适用于{{coupons.amountTypeName}}</view>
+            <view class="list">适用于{{coupons.propertyTypeName}}</view>
             <view class="list">使用优惠券下单，有效期以优惠券规则为准</view>
             <view class="list">不可叠加使用</view>
             <view class="list">不兑现、不提现</view>

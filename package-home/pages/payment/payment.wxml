@@ -1,3 +1,4 @@
+<wxs src="/utils/filter.wxs" module="filter"></wxs>
 <view class="warehouse warp">
     <view class="noticeIcon">
         <van-icon name="location-o" color="#fff" size="40rpx" />
@@ -5,15 +6,14 @@
     <view class="warehouseBox">
         <view class="warehouseInfo">
             <view class="warehouseInfoLeft">
-                用户1
+                {{orderInfo.recipient}}
             </view>
             <view class="warehouseInfoRight">
-                15699998888
+                {{orderInfo.recipientPhone}}
             </view>
         </view>
         <view class="warehouseAddress">
-            MEGASYSTEMS INC 799 E DRAGRAM SUITE 5A
-            TUCSON, AZ 85705 USA
+            {{orderInfo.recipientCity + orderInfo.recipientAddress}}
         </view>
     </view>
 </view>
@@ -22,42 +22,43 @@
 <view class="warp">
     <view class="flex">
         <view class="flexLeft">订单号：</view>
-        <view class="flexRight">202245454054631313125</view>
+        <view class="flexRight">{{orderInfo.orderNo}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">转运线路</view>
-        <view class="flexRight">中国 - 美国</view>
+        <view class="flexRight">{{orderInfo.provenance}} - {{orderInfo.recipientCountry}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">预选渠道</view>
-        <view class="flexRight">普通货物</view>
+        <view class="flexRight">{{orderInfo.orderTypeText}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">货物属性</view>
-        <view class="flexRight">普通货物</view>
+        <view class="flexRight">{{orderInfo.orderTypeText}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">转运费</view>
-        <view class="flexRight">￥{{transferCost}}</view>
+        <view class="flexRight">￥{{orderInfo.amount}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">附加费</view>
-        <view class="flexRight">￥{{surcharge}}</view>
+        <view class="flexRight">￥{{orderInfo.amountPaid}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">丢失险</view>
-        <view class="flexRight">￥{{p1}}</view>
+        <view class="flexRight">￥{{orderInfo.lossRisk}}</view>
     </view>
     <view class="flex">
         <view class="flexLeft">关税险</view>
-        <view class="flexRight">￥{{p2}}</view>
+        <view class="flexRight">￥{{orderInfo.tariffsRisk}}</view>
     </view>
     <view class="flex" catchtap="toCouponsEv">
         <view class="flexLeft">
             <van-icon name="balance-pay" color="#ec0609" size="36rpx" />
             优惠券
         </view>
-        <view class="flexRight minus">-￥{{coupons.num || 20}}
+        <view class="flexRight minus">-￥
+            {{couponsItem.amount || filter.toFixed(orderInfo.amount - (orderInfo.amount * couponsItem.discount), 2) }}
             <van-icon name="arrow" color="#181818" />
         </view>
     </view>
@@ -67,14 +68,14 @@
     </view>
 
     <view class="total">
-        已优惠<text class="yen">￥{{coupons.num || 20}}</text>
-        小计<text class="price">￥{{totalPrice}}</text>
+        已优惠<text class="yen">￥{{couponsItem.amount || filter.toFixed(orderInfo.amount - (orderInfo.amount * couponsItem.discount), 2) }}</text>
+        小计<text class="price">￥{{orderInfo.amountTotal}}</text>
     </view>
 </view>
 
 <view class="footer">
     <view class="footerLeft">
-        <view>订单总金额：￥{{totalPrice}}</view>
+        <view>订单总金额：￥{{orderInfo.amountTotal}}</view>
         <view class="deal">
             <van-checkbox value="{{flag}}" bindtap="isFlagFn">
                 阅读并同意《电子运单契约条款》

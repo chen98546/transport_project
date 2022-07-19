@@ -4,27 +4,30 @@ import {
 import {
   getGoodsPropertyFn
 } from '../../api/goods.js'
+import {
+  warehouseAddress
+} from '../../api/address.js'
 Page({
   // 页面的初始数据
   data: {
     closeModal: true,
     swiperData: [],
     channelList: [],
-    addr: "美国",
+    addr: "叙利亚",
+    warehouseInfo: ''
   },
 
   // 生命周期函数--监听页面加载
   onLoad: async function (options) {
-    let {
-      data
-    } = await getBannerList()
-    this.setData({
-      swiperData: data
-    })
-    let res = await getGoodsPropertyFn()
-    this.setData({
-      swiperData: data,
-      channelList: res.data.reverse()
+    let bannerList = await getBannerList() // 轮播图
+    let weightRes = await getGoodsPropertyFn() // 重量和渠道
+    let houseAddr = await warehouseAddress() // 仓库地址
+    wx.setStorageSync('weight', weightRes.data)
+    wx.setStorageSync('warehouseAddress', houseAddr.data[0])
+    this.setData({ 
+      channelList: weightRes.data.reverse(),
+      swiperData: bannerList.data,
+      warehouseInfo: houseAddr.data[0]
     })
   },
 
@@ -32,7 +35,9 @@ Page({
   onReady: function () {},
 
   // 生命周期函数--监听页面显示
-  onShow: function () {},
+  onShow: function () {
+    wx.setStorageSync('contry', this.data.addr)
+  },
 
   // 生命周期函数--监听页面隐藏
   onHide: function () {},
@@ -65,15 +70,25 @@ Page({
   },
 
   // 模态框显示隐藏
-  transportBtnEv() {
+  transportBtnEv(e) {
+    let channelList = this.data.channelList.map((item, index, arr) => {
+      arr[0].selected = true
+      return item
+    })
     this.setData({
-      closeModal: false
+      channelList,
+      closeModal: false,
     });
   },
 
   // 模态框取消
   cancelEv() {
+    let channelList = this.data.channelList.map((item) => {
+      item.selected = false
+      return item
+    })
     this.setData({
+      channelList,
       closeModal: true
     });
   },
@@ -83,6 +98,12 @@ Page({
     this.setData({
       closeModal: true
     });
+    this.data.channelList.forEach((item) => {
+      if (item.selected) {
+        wx.setStorageSync('selected', item)
+        item.selected = false
+      }
+    })
     wx.navigateTo({
       url: "/package-home/pages/fillInAddress/fillInAddress",
     });

@@ -14,7 +14,7 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "pages/order/order",
+                    "pathName": "pages/user/user",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -28,7 +28,14 @@
                 },
                 {
                     "name": "",
-                    "pathName": "package-user/pages/myAddress/myAddress",
+                    "pathName": "pages/order/order",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "package-home/pages/valuation/valuation",
                     "query": "",
                     "scene": null,
                     "launchMode": "default"

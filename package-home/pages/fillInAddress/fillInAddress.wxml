@@ -6,12 +6,12 @@
         <text>仓库地址</text>
     </view>
     <view class="warehouseInfo">
-        <view class="warehouseInfoLeft">{{warehouseInfo.warehouse}}</view>
-        <view class="warehouseInfoRight" bindtap="copyPhoneNumber" data-phoneNum="{{warehouseInfo.warehouseNum}}">
-            {{warehouseInfo.warehouseNum}}<text class="copyPhoneNumber">复制</text>
+        <view class="warehouseInfoLeft">{{warehouseInfo.name}}</view>
+        <view class="warehouseInfoRight" bindtap="copyPhoneNumber" data-phoneNum="{{ warehouseInfo.phone}}">
+            {{warehouseInfo.phone}}<text class="copyPhoneNumber">复制</text>
         </view>
     </view>
-    <view class="warehouseAddress">{{warehouseInfo.warehouseAddr}}</view>
+    <view class="warehouseAddress">{{warehouseInfo.provinces + warehouseInfo.city + warehouseInfo.address}}</view>
 </view>
 
 <view class="wrap receipt">

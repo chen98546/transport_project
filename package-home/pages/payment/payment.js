@@ -1,4 +1,10 @@
-// package-home/pages/payment/payment.js
+import {
+    payOrderFn,
+    getOrderInfo
+} from '../../../api/order.js'
+import {
+    getcouponListFn
+} from '../../../api/coupon.js'
 Page({
     // 页面的初始数据
     data: {
@@ -9,15 +15,15 @@ Page({
         disabledBtn: true,
         disabled: true,
         coupons: {},
-        p1: 0,
-        p2: 0,
-        transferCost: 218,
-        surcharge: 68,
-        totalPrice: 0
+        id: '',
+        orderInfo: {},
+        usableCoupons: [],
+        couponsItem: {},
+        payInfo: {},
     },
 
     // 生命周期函数--监听页面加载
-    onLoad: function (options) {
+    onLoad: async function (options) {
         const pages = getCurrentPages()
         const current = pages[pages.length - 1];
         const event = current.getOpenerEventChannel();
@@ -25,14 +31,40 @@ Page({
         // 接收投保页面的数据
         event.on('valuationPriceEv', params => {
             this.setData({
-                p1: params.p1 || 0,
-                p2: params.p2 || 0,
+                id: params.id,
             })
         });
 
-        let totalPrice = (Number(this.data.transferCost) + Number(this.data.surcharge) + Number(this.data.p1 || 0) + Number(this.data.p2 || 0)).toFixed(2)
+        let res = await getOrderInfo(this.data.id)
         this.setData({
-            totalPrice
+            orderInfo: res.data
+        })
+        // 预选渠道
+        res.data.orderType == 1 && (res.data.orderTypeText = '电子产品')
+        res.data.orderType == 2 && (res.data.orderTypeText = '液体粉末')
+        res.data.orderType == 3 && (res.data.orderTypeText = '内地EMS')
+        res.data.orderType == 4 && (res.data.orderTypeText = '广东EMS')
+        res.data.orderType == 5 && (res.data.orderTypeText = '普通货物')
+
+        let memberId = wx.getStorageSync('userInfo').id
+        let coupons = await getcouponListFn(memberId)
+        let usableCoupons = coupons.data.filter(item => item.propertyType.indexOf(res.data.orderType)).map(item => {
+            if (this.data.orderInfo.amount >= item.usedMinAmount) {
+                item.amount && (item.totalPrice = this.data.orderInfo.amount - item.amount).toFixed(2);
+                item.discount && (item.totalPrice = this.data.orderInfo.amount * item.discount).toFixed(2);
+                return item
+            }
+        }).filter(item => item).sort((a, b) => a.totalPrice - b.totalPrice)
+        this.setData({
+            usableCoupons,
+            couponsItem: usableCoupons[0]
+        })
+        this.data.orderInfo.amountTotal = ((this.data.couponsItem.totalPrice || 0) + this.data.orderInfo.amountPaid + this.data.orderInfo.lossRisk + this.data.orderInfo.tariffsRisk).toFixed(2)
+        let payInfo = await payOrderFn(this.data.id);
+
+        this.setData({
+            payInfo: payInfo.data,
+            orderInfo: this.data.orderInfo
         })
     },
 
@@ -40,7 +72,18 @@ Page({
     onReady: function () {},
 
     // 生命周期函数--监听页面显示
-    onShow: function () {},
+    onShow: function () {
+        if (JSON.stringify(this.data.coupons) !== '{}') {
+            this.data.coupons.amount && (this.data.coupons.totalPrice = this.data.orderInfo.amount - this.data.coupons.amount).toFixed(2);
+            this.data.coupons.discount && (this.data.coupons.totalPrice = this.data.orderInfo.amount * this.data.coupons.discount).toFixed(2);
+            this.data.orderInfo.amountTotal = ((this.data.coupons.totalPrice || 0) + this.data.orderInfo.amountPaid + this.data.orderInfo.lossRisk + this.data.orderInfo.tariffsRisk).toFixed(2);
+            this.setData({
+                couponsItem: this.data.coupons,
+                orderInfo: this.data.orderInfo
+            })
+        }
+
+    },
 
     // 生命周期函数--监听页面隐藏
     onHide: function () {},
@@ -93,15 +136,26 @@ Page({
 
     // 支付按钮  成功后跳转会首页
     payEv() {
-        wx.navigateTo({
-            url: '/package-home/pages/paymentSuccess/paymentSuccess',
+        let payInfo = this.data.payInfo
+        wx.requestPayment({
+            timeStamp: payInfo.timeStamp,
+            nonceStr: payInfo.nonceStr,
+            package: payInfo.package,
+            signType: payInfo.signType,
+            paySign: payInfo.paySign,
+            success(res) {
+                wx.navigateTo({
+                    url: '/package-home/pages/paymentSuccess/paymentSuccess',
+                })
+            },
         })
+
     },
 
     // 跳转我的优惠券页面
     toCouponsEv() {
         wx.navigateTo({
-            url: '/package-user/pages/myCoupons/myCoupons',
+            url: '/package-user/pages/myCoupons/myCoupons?price=' + this.data.orderInfo.amount,
         })
     }
 });

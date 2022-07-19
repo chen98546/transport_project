@@ -23,10 +23,7 @@
 .couponsRight {
     height: 200rpx;
     position: relative;
-}
-
-.discountText {
-    margin-right: 30rpx;
+    flex: 1.6;
 }
 
 .deduction {
@@ -60,18 +57,25 @@
     font-weight: 700;
     color: #5b5b5b;
     line-height: 3;
+    margin-left: 24rpx;
+    width: 340rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .discountDate {
     color: #c3c3c3;
+    text-align: center;
 }
 
 .price {
     margin-top: 10rpx;
+    margin-right: 20rpx;
 }
 
 .num {
-    font-size: 90rpx;
+    font-size: 80rpx;
     margin-right: 15rpx;
 }
 
@@ -81,9 +85,10 @@
 
 .minus {
     font-size: 28rpx;
+    letter-spacing: 2rpx;
 }
 
-.statusImg{
+.statusImg {
     position: absolute;
     right: 50rpx;
     bottom: 0;

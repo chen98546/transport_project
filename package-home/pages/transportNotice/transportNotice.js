@@ -1,8 +1,10 @@
-// package-home/pages/transportNotice/transportNotice.js
+import {
+  createOrderData
+} from '../../../api/order.js'
 Page({
   // 页面的初始数据
   data: {
-    countdown: 3,
+    countdown: 0,
     timer: null,
     disabledBtn: true,
   },
@@ -44,9 +46,30 @@ Page({
   onShareAppMessage: function () {},
 
   // 跳转订单详情页面
-  transportBtnEv() {
+  async transportBtnEv() {
+    let warehouseAddress = wx.getStorageSync('warehouseAddress')
+    let address = wx.getStorageSync('address')
+    let info = {
+      provenance: '中国',
+      destination: wx.getStorageSync('contry'),
+      memberId: wx.getStorageSync('userInfo').id,
+      orderType: wx.getStorageSync('selected').id,
+      shelfer: warehouseAddress.name,
+      shelfPhone: warehouseAddress.phone,
+      shelfAddress: warehouseAddress.provinces + warehouseAddress.city + warehouseAddress.address,
+      recipient: address.username,
+      recipientPhone: address.phone,
+      recipientCountry: wx.getStorageSync('contry'),
+      recipientCode: address.postcode,
+      recipientAddress: address.address,
+      recipientCity: address.city,
+    }
+    let res = await createOrderData(info)
     wx.navigateTo({
-      url: "/package-home/pages/orderDetail/orderDetail",
+      url: "/package-home/pages/orderDetail/orderDetail?id=" + res.data.id,
+      success(result) {
+        result.eventChannel.emit('emitOrderInfo', res.data)
+      }
     });
   },
 });

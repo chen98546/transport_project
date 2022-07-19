@@ -19,6 +19,7 @@ Page({
     address: wx.getStorageSync('address'), // 收货地址信息 
     inputValue: '', // 快递个数
     disabledInput: false, // 禁用快递个数input框
+    disabledField: false, // 禁用快递单号input框
     orderItemList: [], // 生成快递单号输入框
     orderInfo: {}, // 当前订单的详细信息
     isSubmit: false, // 是否显示提交订单按钮
@@ -33,7 +34,8 @@ Page({
     timer: null, // 取消订单后延时返回上一页或首页
     orderNoArr: [], // 所有快递单号集合
     showSupplement: true, // 是否显示补充快递单号按钮
-    dvAllStatus: false, // 所有快递单号的状态 
+    dvAllStatus: false, // 所有快递单号的状态
+    dvArr: [], // 快递单号状态对应标签（带入仓/已入库）
   },
 
   // 生命周期函数--监听页面加载
@@ -41,15 +43,29 @@ Page({
     const pages = getCurrentPages()
     if (pages[0].route == 'pages/order/order') {
       let res = await getOrderInfo(options.id)
+      console.log(res.data.expressItems);
       if (res.data.orderStatus != 0) {
+        for (let i = 0; i < res.data.expressItems.length; i++) {
+          this.data.orderItemList.push({
+            value: res.data.expressItems[i].expressNo
+          })
+        }
         this.setData({
-          orderItemList: res.data.expressItems,
-          dvAllStatus: res.data.expressItems.every(item => item.isDv),
-          disabledInput: true,
-          inputValue: res.data.expressItems.length,
-          showSupplement: false
+          orderItemList: this.data.orderItemList,
+          dvArr: res.data.expressItems,
+          dvAllStatus: res.data.expressItems.every(item => item.isDv)
         })
+        if (res.data.orderStatus != 1) {
+          this.setData({
+            inputValue: res.data.expressItems.length,
+            disabledInput: true,
+            disabledField: true,
+            showSupplement: false
+          })
+        }
       }
+
+
     }
     const current = pages[pages.length - 1];
     const event = current.getOpenerEventChannel();
@@ -109,7 +125,7 @@ Page({
 
   // 公共函数：判断是否显示提交订单按钮
   isShowSubmitBtnFn() {
-    let itemValueIsEmpty = this.data.orderItemList.every(item => item.expressNo != '')
+    let itemValueIsEmpty = this.data.orderItemList.every(item => item.value != '')
     if (itemValueIsEmpty) {
       // 快递单号不为空时显示提交订单按钮
       this.setData({
@@ -141,7 +157,7 @@ Page({
     // 生成快递单号输入框
     for (let i = 0; i < e.detail.value; i++) {
       this.data.orderItemList.push({
-        expressNo: ''
+        value: ''
       })
     }
     if (e.detail.value != Number(e.detail.value) || !Number(e.detail.value)) {
@@ -169,7 +185,8 @@ Page({
   // 快递单号内容发生改变事件
   orderItemChangeEv(e) {
     // 将输入的快递单号赋值给对应的每一项
-    this.data.orderItemList.forEach((item, index) => index == e.target.dataset.index && (item.expressNo = e.detail))
+    this.data.orderItemList.forEach((item, index) => index == e.target.dataset.index && (item.value = e.detail))
+    console.log('detail', e.detail);
     this.isShowSubmitBtnFn();
   },
   // 快递单号输入框失焦事件
@@ -195,7 +212,7 @@ Page({
   addOrderNoAllowEv() {
     // 点击添加一个快递单号输入框
     this.data.orderItemList.push({
-      expressNo: ''
+      value: ''
     })
     this.isShowSubmitBtnFn();
     this.setData({
@@ -297,7 +314,7 @@ Page({
       return
     }
     // 判断快递单号是否有为空的
-    let allOrderIsEmpty = this.data.orderItemList.some(item => item.expressNo == '');
+    let allOrderIsEmpty = this.data.orderItemList.some(item => item.value == '');
     // 有空的则不能直接提交订单
     if (allOrderIsEmpty) {
       wx.showToast({
@@ -308,9 +325,8 @@ Page({
     }
     this.setData({
       closeConfirmOrderModal: false, // 显示弹窗
-      orderNoArr: this.data.orderItemList.map(item => item.expressNo).join(',') // 快递单号集合
+      orderNoArr: this.data.orderItemList.map(item => item.value).join(',') // 快递单号集合
     })
-
   },
   // 提交订单弹窗取消事件
   confirmOrderNoRefuseEv() {
@@ -330,10 +346,11 @@ Page({
       icon: 'success',
       mask: true,
     })
-    setTimeout(() => {
+
+    this.data.timer = setTimeout(() => {
       wx.switchTab({
         url: '/pages/order/order',
-        success: () => {
+        success() {
           clearTimeout(this.data.timer)
         }
       })
@@ -357,6 +374,7 @@ Page({
   // 确认打包弹窗确认事件
   async confirmPackingNoAllowEv() {
     let res = await confirmPacking(this.options.id)
+    console.log(res);
     if (res.status == 200) {
       wx.showToast({
         title: '订单打包成功',
@@ -367,7 +385,7 @@ Page({
       this.data.timer = setTimeout(() => {
         wx.switchTab({
           url: '/pages/order/order',
-          success: () => {
+          success() {
             clearTimeout(this.data.timer)
           }
         })
@@ -398,9 +416,6 @@ Page({
     })
     wx.navigateTo({
       url: '/package-home/pages/valuation/valuation?id=' + this.data.orderInfo.id,
-      success: (res) => {
-        res.eventChannel.emit('orderNoEv', this.data.orderInfo.orderNo)
-      }
     })
   }
 

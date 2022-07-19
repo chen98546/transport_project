@@ -9,10 +9,10 @@
     </view>
     <view class="main">
         <view class="addressee info">
-            收件人：{{address.addressee}}
+            收件人：{{address.name}}
         </view>
         <view class="address info">
-            收货地址：<view class="addrDetail">{{address.addrDetail}}</view>
+            收货地址：<view class="addrDetail">{{address.provinces + address.city + address.address}}</view>
         </view>
         <view class="phone info">联系电话：{{address.phone}}</view>
         <view class="postcode info">邮政编码：{{address.postcode}}</view>

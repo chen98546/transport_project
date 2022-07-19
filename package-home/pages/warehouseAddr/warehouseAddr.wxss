@@ -79,3 +79,8 @@
     line-height: 1.6;
     margin-bottom: 50rpx;
 }
+
+
+.addressee {
+    margin-left: 30rpx;
+}

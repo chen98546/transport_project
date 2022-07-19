@@ -4,16 +4,16 @@ import {
 Page({
   // 页面的初始数据
   data: {
-    warehouseInfo: {
-      warehouse: "物流仓库",
-      warehouseNum: "15566669999",
-      warehouseAddr: "深圳市龙华区龙华街道工业路壹城环智中心C座2607室",
-    },
+    warehouseInfo:{},
     address: {},
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.setData({
+      warehouseInfo: wx.getStorageSync('warehouseAddress')
+    })
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
@@ -42,7 +42,8 @@ Page({
   },
 
   // 跳转转运流程
-  receiveInfoEv(data) {
+  receiveInfoEv(e) {
+    wx.setStorageSync('address', e.detail)
     wx.navigateTo({
       url: "/package-home/pages/transportNotice/transportNotice",
     });

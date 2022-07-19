@@ -4,16 +4,20 @@ import {
 Page({
   // 页面的初始数据
   data: {
-    address: {
-      addressee: "河马仓库",
-      addrDetail: "深圳市龙华区龙华街道工业路壹城环智中心C座2607室",
-      phone: "16966665555",
-      postcode: "518000",
-    },
+    address: wx.getStorageSync('warehouseAddress'),
   },
 
   // 生命周期函数--监听页面加载
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    let address = this.data.address;
+    let index = address.address.indexOf('(')
+    let postcodeIndex = address.address.indexOf('：')
+    address.postcode = address.address.slice(postcodeIndex + 1, address.address.length - 1);
+    address.address = address.address.slice(0, index);
+    this.setData({
+      address: this.data.address
+    })
+  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {},
@@ -39,7 +43,7 @@ Page({
   // 复制仓库地址
   copyInfoEv() {
     let address = this.data.address;
-    let fullAddress = address.addrDetail + address.phone + address.postcode + address.addressee;
+    let fullAddress = address.provinces + address.city + address.address + address.phone + address.name;
     copyInfoFn(fullAddress);
   },
 });

@@ -1,4 +1,6 @@
-// package-home/pages/valuation/valuation.js
+import {
+    setSafeFn
+} from '../../../api/order.js'
 Page({
     // 页面的初始数据
     data: {
@@ -7,11 +9,25 @@ Page({
         p1: 0,
         p2: 0,
         value: '',
-        closeModal: true
+        closeModal: true,
+        orderNo: ''
     },
 
     // 生命周期函数--监听页面加载
-    onLoad: function (options) {},
+    onLoad: function (options) {
+        const pages = getCurrentPages()
+        const current = pages[pages.length - 1];
+        const event = current.getOpenerEventChannel();
+        if (JSON.stringify(event) == '{}') return
+        // 接收订单列表对应订单的数据
+        event.on('orderNoEv', params => {
+            this.setData({
+                orderNo: params
+            })
+        });
+
+        
+    },
 
     // 生命周期函数--监听页面初次渲染完成
     onReady: function () {},
@@ -76,7 +92,6 @@ Page({
             })
         }
     },
-
     // 关税险
     onChangeEv2() {
         this.setData({
@@ -94,13 +109,22 @@ Page({
     },
 
 
+    // 跳转客服页面
+    toServiceEv() {
+        wx.navigateTo({
+            url: '/package-user/pages/service/service',
+        })
+    },
+
+
     // 弹窗下一步按钮
-    nextStepEv() {
+    async nextStepEv() {
         if (!this.data.checked1 && !this.data.checked2) {
             this.setData({
                 closeModal: false
             });
-        } else if (!this.data.checked1 || !this.data.checked2) {
+        }
+        if (this.data.checked1 || this.data.checked2) {
             if (!Number(this.data.value)) {
                 wx.showToast({
                     title: '请输入保价的价格',
@@ -112,7 +136,9 @@ Page({
                     closeModal: false
                 });
             }
-        } else if (this.data.checked1 && this.data.checked2) {
+        }
+
+        if (this.data.checked1 && this.data.checked2) {
             if (!Number(this.data.value)) {
                 wx.showToast({
                     title: '请输入保价的价格',
@@ -120,40 +146,41 @@ Page({
                 })
                 return
             } else {
-                let price = {
-                    p1: this.data.p1,
-                    p2: this.data.p2,
+                this.setData({
+                    closeModal: true
+                });
+                let result = await setSafeFn(this.options.id, this.data.value, this.data.p1, this.data.p2)
+                if (result.status == 200) {
+                    wx.navigateTo({
+                        url: '/package-home/pages/payment/payment',
+                        success: (res) => {
+                            res.eventChannel.emit('valuationPriceEv', {
+                                id: this.options.id
+                            })
+                        }
+                    })
                 }
-                wx.navigateTo({
-                    url: '/package-home/pages/payment/payment',
-                    success(res) {
-                        res.eventChannel.emit('valuationPriceEv', price)
-                    }
-                })
             }
         }
 
     },
-
-
-    // 模态框取消操作
-    cancleHandleEv() {
+    // 承担风险按钮事件
+    async cancleHandleEv() {
         this.setData({
             closeModal: true
         });
-        let price = {
-            p1: this.data.p1,
-            p2: this.data.p2,
-        }
+        await setSafeFn(this.options.id, this.data.value || 0, this.data.p1 || 0, this.data.p2 || 0)
         wx.navigateTo({
             url: '/package-home/pages/payment/payment',
-            success(res) {
-                res.eventChannel.emit('valuationPriceEv', price)
+            success: (res) => {
+                res.eventChannel.emit('valuationPriceEv', {
+                    id: this.options.id
+                })
             }
         })
     },
-    // 模态框确认操作
-    confirmHandleEv() {
+    // 购买保险按钮事件
+    async confirmHandleEv() {
         this.setData({
             closeModal: true,
         });
